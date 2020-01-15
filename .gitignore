@@ -1,0 +1,13 @@
+*/migrations/
+
+# Vietualenv files
+venv/
+
+# Pyhon cache files
+__pycache__/
+
+# Python eggs
+*.egg-info/
+
+# Django default database file
+*.sqlite3
