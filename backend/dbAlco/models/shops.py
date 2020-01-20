@@ -10,7 +10,12 @@ class Shop(models.Model):
 class Pub(models.Model):
     name = models.CharField(max_length=255)
     location = models.TextField()  # TODO: być może zastąpić geodjango
+
+
+class PubRating(models.Model):
     rating = models.DecimalField(decimal_places=1, max_digits=2)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    pub = models.ForeignKey(Pub, on_delete=models.CASCADE, related_name='ratings')
 
 
 class PubOccurrence(models.Model):
@@ -25,4 +30,3 @@ class ShopOccurrence(models.Model):
     date = models.DateField()
     shop = models.ForeignKey(Shop, null=True, on_delete=models.CASCADE)
     price = models.DecimalField(decimal_places=2, max_digits=10)
-

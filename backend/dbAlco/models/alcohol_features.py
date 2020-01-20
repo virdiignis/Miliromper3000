@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Country(models.Model):
-    name = models.CharField(max_length=128)
+    name = models.CharField(max_length=128, primary_key=True)
 
 
 class Producer(models.Model):

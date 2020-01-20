@@ -1,2 +1,2 @@
-from .alcoserializers import *
+from .alcohol_serializers import *
 
