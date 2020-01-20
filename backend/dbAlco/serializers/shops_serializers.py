@@ -22,13 +22,13 @@ class PubSerializer(ModelSerializer):
         fields = ('name', 'location', 'ratings')
 
 
-class PubOccurenceSerializer(HyperlinkedModelSerializer):
+class PubOccurrenceSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = PubOccurrence
         fields = ('alcohol', 'date', 'pub', 'price')
 
 
-class ShopOccurenceSerializer(HyperlinkedModelSerializer):
+class ShopOccurrenceSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = ShopOccurrence
         fields = ('alcohol', 'date', 'shop', 'price')
