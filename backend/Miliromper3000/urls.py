@@ -37,6 +37,7 @@ router.register(r'shops', views.ShopViewSet)
 router.register(r'pubs/occurrences', views.PubOccurrenceViewSet)
 router.register(r'pubs/ratings', views.PubRatingViewSet)
 router.register(r'pubs', views.PubViewSet)
+router.register(r'users', views.UserViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
