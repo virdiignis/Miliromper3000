@@ -1,4 +1,4 @@
-from rest_framework.serializers import HyperlinkedModelSerializer, ModelSerializer
+from rest_framework.serializers import ModelSerializer
 from dbAlco.models.alcohol import *
 
 
@@ -11,10 +11,10 @@ class AlcoholSerializer(ModelSerializer):
 class AlcoholTypeSerializer(ModelSerializer):
     class Meta:
         model = AlcoholType
-        fields = ['genral_type', 'specific_type']
+        fields = ['general_type', 'specific_type']
 
 
 class AlcoholGeneralTypeSerializer(ModelSerializer):
     class Meta:
         model = AlcoholGeneralType
-        fields = ['name']
+        fields = "__all__"

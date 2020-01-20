@@ -7,8 +7,8 @@ class Country(models.Model):
 
 
 class Producer(models.Model):
-    name = models.CharField(max_length=50)
-    country = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, primary_key=True)
+    country = models.ForeignKey(Country, to_field="name", on_delete=models.SET_NULL, null=True)
 
 
 class AlcoholRating(models.Model):

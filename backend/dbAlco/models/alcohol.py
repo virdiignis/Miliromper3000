@@ -13,7 +13,7 @@ class AlcoholType(models.Model):
 
 
 class Alcohol(models.Model):
-    name = models.CharField(max_length=1024, verbose_name='Alcohol product name')
+    name = models.CharField(max_length=1024)
     producer = models.ForeignKey(Producer, on_delete=models.CASCADE)
     alcohol_content = models.DecimalField(decimal_places=2, max_digits=5, null=True)
     production_country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
