@@ -28,7 +28,7 @@ class IngredientProportionSerializer(ModelSerializer):
 
 class AlcoholProportionSerializer(ModelSerializer):
     class Meta:
-        model = IngredientProportion
+        model = AlcoholProportion
         fields = ('alcohol', 'amount', 'unit')
 
 
@@ -45,4 +45,4 @@ class DrinkSerializer(ModelSerializer):
 
     class Meta:
         model = Drink
-        fields = ('name', 'description', 'instruction', 'how_to_serve', 'stuff', 'glass', 'ingredients', 'alcohols')
+        fields = ('name', 'description', 'instruction', 'how_to_serve', 'stuff', 'glass', 'ingredients', 'alcohols', 'ratings')

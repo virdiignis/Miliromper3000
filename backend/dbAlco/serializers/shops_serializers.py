@@ -8,7 +8,7 @@ class ShopSerializer(ModelSerializer):
         fields = ('name', 'location')
 
 
-class PubRatingSerializer(HyperlinkedModelSerializer):
+class PubRatingSerializer(ModelSerializer):
     class Meta:
         model = PubRating
         fields = ('rating', 'user')
@@ -22,13 +22,13 @@ class PubSerializer(ModelSerializer):
         fields = ('name', 'location', 'ratings')
 
 
-class PubOccurrenceSerializer(HyperlinkedModelSerializer):
+class PubOccurrenceSerializer(ModelSerializer):
     class Meta:
         model = PubOccurrence
         fields = ('alcohol', 'date', 'pub', 'price')
 
 
-class ShopOccurrenceSerializer(HyperlinkedModelSerializer):
+class ShopOccurrenceSerializer(ModelSerializer):
     class Meta:
         model = ShopOccurrence
         fields = ('alcohol', 'date', 'shop', 'price')

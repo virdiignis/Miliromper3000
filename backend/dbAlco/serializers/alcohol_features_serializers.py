@@ -14,7 +14,7 @@ class ProducerSerializer(ModelSerializer):
         fields = ['name', 'country']
 
 
-class AlcoholRatingSerializer(HyperlinkedModelSerializer):
+class AlcoholRatingSerializer(ModelSerializer):
     class Meta:
         model = AlcoholRating
         fields = ['alcohol', 'user', 'rating', 'comment', 'favourite']
