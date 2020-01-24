@@ -7,17 +7,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alkoapp.R
 
-class ShowDrinksActivity : AppCompatActivity(){
+class ShowDrinksActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.show_drinks_fragment)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter
 
-        val model = ViewModelProviders.of(this)[ShowDrinksViewModel::class.java]
-
-
-        }
     }
 }
+
