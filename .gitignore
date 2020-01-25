@@ -10,7 +10,7 @@ __pycache__/
 *.egg-info/
 
 # Django default database file
-*.sqlite3
+#*.sqlite3
 
 
 *.iml
@@ -27,3 +27,4 @@ __pycache__/
 /captures
 .externalNativeBuild
 .cxx
+backend/dbAlco/migrations/

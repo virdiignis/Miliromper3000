@@ -8,17 +8,16 @@ import retrofit2.http.GET
 
 interface DrinksApi {
 
-    @GET("Drinks)
-    suspend fun getMovies() : Response<List<Drink>>
-
+    @GET("drinks")
+    suspend fun getDrinks() : Response<List<Drink>>
 
     companion object{
-        operator fun invoke() : MoviesApi {
+        operator fun invoke() : DrinksApi {
             return Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("https://api.simplifiedcoding.in/course-apis/recyclerview/")
+                .baseUrl("http://127.0.0.1:8000/")
                 .build()
-                .create(MoviesApi::class.java)
+                .create(DrinksApi::class.java)
         }
     }
 }

@@ -6,10 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alkoapp.R
 import com.example.alkoapp.data.models.Drink
+import com.example.alkoapp.util.RecyclerViewClickListener
 import kotlinx.android.synthetic.main.recycler_view_item.view.*
 
 class MyDrinksAdapter(
-    private var myDataset: ArrayList<Drink>
+    private var myDataset: ArrayList<Drink>,
+    private val listener: RecyclerViewClickListener
 ) :
     RecyclerView.Adapter<MyDrinksAdapter.DrinkHolder>() {
 
@@ -50,10 +52,12 @@ class MyDrinksAdapter(
         val drinkName = itemView.textView2
         val drinkRaiting = itemView.textView3
 
+
+//        TODO:
         fun bind(drinkItem: Drink) {
-            drinkId.text = (drinkItem.id)
-            drinkName.text = (drinkItem.name)
-            drinkRaiting.text = (drinkItem.rating)
+            drinkId.text = (drinkItem.name)
+            drinkName.text = (drinkItem.instruction)
+            drinkRaiting.text = (drinkItem.description)
         }
 
     }
