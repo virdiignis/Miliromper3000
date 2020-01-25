@@ -8,6 +8,7 @@ class AlcoholsRepository(
     private val api: AlcoholApi
 ) : SafeApiRequest() {
 
+//    suspend fun getAlcohols() = apiRequest { api.getAlcohols() }
     suspend fun getAlcohols() = apiRequest { api.getAlcohols() }
 
 
