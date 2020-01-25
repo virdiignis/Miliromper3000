@@ -5,3 +5,9 @@ data class Type(
     val id: Int,
     val specific_type: String
 )
+{
+    override fun toString(): String {
+        return "$general_type, $specific_type"
+    }
+}
+
