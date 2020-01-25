@@ -12,12 +12,10 @@ import com.example.alkoapp.R
 import com.example.alkoapp.data.models.Drink
 import com.example.alkoapp.data.network.DrinksApi
 import com.example.alkoapp.data.repository.DrinksRepository
-import com.example.alkoapp.ui.showalcohol.ShowAlcoholViewModel
-import com.example.alkoapp.util.RecyclerViewClickListener
 import kotlinx.android.synthetic.main.show_drinks_fragment.*
 
-class ShowDrinksFragment : Fragment(),
-    RecyclerViewClickListener {
+class ShowDrinksFragment : Fragment()
+     {
     private lateinit var viewModel: ShowDrinksViewModel
     private lateinit var factory: DrinksViewModelFactory
     override fun onCreateView(
@@ -39,15 +37,15 @@ class ShowDrinksFragment : Fragment(),
         viewModel.getDrinks()
 
         viewModel.drinks.observe(viewLifecycleOwner, Observer { drinks ->
-            drinksBase.also {
+            drinks_recycle_view.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
-                it.adapter = MyDrinksAdapter(drinks, this)
+                it.adapter = DrinksAdapter(drinks)
             }
         })
     }
 
-    override fun onRecyclerViewItemClick(view: View, item: Drink) {
+    fun onRecyclerViewItemClick(view: View, item: Drink) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
