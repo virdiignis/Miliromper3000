@@ -12,6 +12,7 @@ import com.example.alkoapp.R
 import com.example.alkoapp.data.models.Drink
 import com.example.alkoapp.data.network.DrinksApi
 import com.example.alkoapp.data.repository.DrinksRepository
+import com.example.alkoapp.ui.showalcohol.ShowAlcoholViewModel
 import com.example.alkoapp.util.RecyclerViewClickListener
 import kotlinx.android.synthetic.main.show_drinks_fragment.*
 
@@ -46,7 +47,7 @@ class ShowDrinksFragment : Fragment(),
         })
     }
 
-    override fun onRecyclerViewItemClick(view: View, drink: Drink) {
+    override fun onRecyclerViewItemClick(view: View, item: Drink) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
