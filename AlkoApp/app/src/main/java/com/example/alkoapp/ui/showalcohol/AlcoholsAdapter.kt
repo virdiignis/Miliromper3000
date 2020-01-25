@@ -54,7 +54,7 @@ class AlcoholsAdapter(
 //        TODO:
         fun bind(item: Alcohol) {
             name.text = (item.name)
-            descr.text = (item.description as CharSequence?)
+            descr.text = item.type.toString()
             rate.text = (item.producer)
         }
 

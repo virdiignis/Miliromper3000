@@ -38,13 +38,7 @@ class ShowAlcoholFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this, factory).get(ShowAlcoholViewModel::class.java)
 
-        try{
-            viewModel.getAlcohols()
-        }
-        catch (e: Exception)
-        {
-            Log.d("Ops!", "Ops")
-        }
+        viewModel.getAlcohols()
 
         viewModel.alcohols.observe(viewLifecycleOwner, Observer { alcohols ->
             alcohols_recycle_view!!.also {
