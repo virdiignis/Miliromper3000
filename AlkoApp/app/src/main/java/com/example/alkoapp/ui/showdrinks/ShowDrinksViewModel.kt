@@ -3,9 +3,8 @@ package com.example.alkoapp.ui.showdrinks
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.alkoapp.models.Drink
-import com.example.alkoapp.models.DrinksDataset
-import kotlinx.coroutines.CoroutineScope
+import com.example.alkoapp.data.models.Drink
+import com.example.alkoapp.data.DrinksDataset
 import kotlinx.coroutines.Job
 
 class ShowDrinksViewModel : ViewModel() {

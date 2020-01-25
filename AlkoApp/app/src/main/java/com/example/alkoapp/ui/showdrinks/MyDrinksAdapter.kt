@@ -3,11 +3,9 @@ package com.example.alkoapp.ui.showdrinks
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alkoapp.R
-import com.example.alkoapp.models.Drink
+import com.example.alkoapp.data.models.Drink
 import kotlinx.android.synthetic.main.recycler_view_item.view.*
 
 class MyDrinksAdapter(

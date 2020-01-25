@@ -1,4 +1,4 @@
-package com.example.alkoapp.models
+package com.example.alkoapp.data.models
 
 data class Drink(
     val id: String,
