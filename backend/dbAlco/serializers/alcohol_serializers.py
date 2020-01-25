@@ -8,7 +8,15 @@ class AlcoholTypeSerializer(ModelSerializer):
         fields = "__all__"
 
 
-class AlcoholSerializer(ModelSerializer):
+class AlcoholGetSerializer(ModelSerializer):
+    type = AlcoholTypeSerializer(read_only=True)
+
+    class Meta:
+        model = Alcohol
+        fields = "__all__"
+
+
+class AlcoholModifySerializer(ModelSerializer):
     class Meta:
         model = Alcohol
         fields = "__all__"

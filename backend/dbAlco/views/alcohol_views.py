@@ -4,7 +4,12 @@ from rest_framework import generics, viewsets
 
 class AlcoholViewSet(viewsets.ModelViewSet):
     queryset = Alcohol.objects.all()
-    serializer_class = AlcoholSerializer
+
+    def get_serializer_class(self):
+        if self.action in ("list", "retrieve"):
+            return AlcoholGetSerializer
+        else:
+            return AlcoholModifySerializer
 
 
 class AlcoholTypeViewSet(viewsets.ModelViewSet):
