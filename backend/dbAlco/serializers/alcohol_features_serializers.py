@@ -5,16 +5,16 @@ from dbAlco.models.alcohol_features import *
 class CountrySerializer(ModelSerializer):
     class Meta:
         model = Country
-        fields = ['name']
+        fields = "__all__"
 
 
 class ProducerSerializer(ModelSerializer):
     class Meta:
         model = Producer
-        fields = ['name', 'country']
+        fields = "__all__"
 
 
 class AlcoholRatingSerializer(ModelSerializer):
     class Meta:
         model = AlcoholRating
-        fields = ['alcohol', 'user', 'rating', 'comment', 'favourite']
+        fields = "__all__"

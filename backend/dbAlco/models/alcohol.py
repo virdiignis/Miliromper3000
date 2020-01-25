@@ -11,6 +11,9 @@ class AlcoholType(models.Model):
     general_type = models.ForeignKey(AlcoholGeneralType, on_delete=models.CASCADE)
     specific_type = models.CharField(max_length=128)
 
+    class Meta:
+        unique_together = ('general_type', 'specific_type')
+
 
 class Alcohol(models.Model):
     name = models.CharField(max_length=1024)

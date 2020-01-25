@@ -3,16 +3,16 @@ from django.db import models
 
 
 class Ingredient(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, primary_key=True)
 
 
 class BartenderStuff(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, primary_key=True)
     image = models.ImageField(upload_to="images/")
 
 
 class Glass(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, primary_key=True)
     image = models.ImageField(upload_to="images")
 
 
@@ -31,12 +31,18 @@ class IngredientProportion(models.Model):
     amount = models.DecimalField(max_digits=5, decimal_places=1)
     unit = models.CharField(max_length=10)
 
+    class Meta:
+        unique_together = ('drink', 'ingredient')
+
 
 class AlcoholProportion(models.Model):
     drink = models.ForeignKey(Drink, on_delete=models.CASCADE, related_name="alcohols")
     alcohol = models.ForeignKey("Alcohol", on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=5, decimal_places=1)
     unit = models.CharField(max_length=10)
+
+    class Meta:
+        unique_together = ('drink', 'alcohol')
 
 
 class DrinkRating(models.Model):

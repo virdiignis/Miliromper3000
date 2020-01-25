@@ -5,13 +5,13 @@ from dbAlco.models.shops import *
 class ShopSerializer(ModelSerializer):
     class Meta:
         model = Shop
-        fields = ('name', 'location')
+        fields = "__all__"
 
 
 class PubRatingSerializer(ModelSerializer):
     class Meta:
         model = PubRating
-        fields = ('rating', 'user')
+        fields = "__all__"
 
 
 class PubSerializer(ModelSerializer):
@@ -19,16 +19,16 @@ class PubSerializer(ModelSerializer):
 
     class Meta:
         model = Pub
-        fields = ('name', 'location', 'ratings')
+        fields = "__all__"
 
 
 class PubOccurrenceSerializer(ModelSerializer):
     class Meta:
         model = PubOccurrence
-        fields = ('alcohol', 'date', 'pub', 'price')
+        fields = "__all__"
 
 
 class ShopOccurrenceSerializer(ModelSerializer):
     class Meta:
         model = ShopOccurrence
-        fields = ('alcohol', 'date', 'shop', 'price')
+        fields = "__all__"

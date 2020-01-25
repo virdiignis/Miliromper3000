@@ -5,37 +5,37 @@ from dbAlco.models.drink import *
 class IngredientSerializer(ModelSerializer):
     class Meta:
         model = Ingredient
-        fields = ['name']
+        fields = "__all__"
 
 
 class BartenderStuffSerializer(ModelSerializer):
     class Meta:
         model = BartenderStuff
-        fields = ['name', 'image']
+        fields = "__all__"
 
 
 class GlassSerializer(ModelSerializer):
     class Meta:
         model = Glass
-        fields = ['name', 'image']
+        fields = "__all__"
 
 
 class IngredientProportionSerializer(ModelSerializer):
     class Meta:
         model = IngredientProportion
-        fields = ('ingredient', 'amount', 'unit')
+        fields = "__all__"
 
 
 class AlcoholProportionSerializer(ModelSerializer):
     class Meta:
         model = AlcoholProportion
-        fields = ('alcohol', 'amount', 'unit')
+        fields = "__all__"
 
 
 class DrinkRatingSerializer(ModelSerializer):
     class Meta:
         model = DrinkRating
-        fields = ('drink', 'user', 'rating', 'favourite')
+        fields = "__all__"
 
 
 class DrinkSerializer(ModelSerializer):
