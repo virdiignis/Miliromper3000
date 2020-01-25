@@ -15,7 +15,7 @@ interface AlcoholApi {
         operator fun invoke() : AlcoholApi {
             return Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("http://127.0.0.1:8000/")
+                .baseUrl("http://10.0.2.2:8000/")
                 .build()
                 .create(AlcoholApi::class.java)
         }
