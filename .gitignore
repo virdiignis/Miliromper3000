@@ -10,6 +10,9 @@ __pycache__/
 *.egg-info/
 
 # Django default database file
+*.sqlite3
+
+.idea/
 
 #*.sqlite3
 
@@ -17,12 +20,6 @@ __pycache__/
 *.iml
 .gradle
 /local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
 .DS_Store
 /build
 /captures
@@ -30,5 +27,4 @@ __pycache__/
 .cxx
 
 backend/dbAlco/migrations/
-.idea/
 
