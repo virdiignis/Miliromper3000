@@ -46,7 +46,7 @@ class ShowAlcoholFragment : Fragment() {
         }
 
         viewModel.alcohols.observe(viewLifecycleOwner, Observer { alcohols ->
-            alcohols_recycle_view.also {
+            alcohols_recycle_view!!.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
                 it.adapter = AlcoholsAdapter(alcohols)
