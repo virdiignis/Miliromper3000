@@ -29,3 +29,6 @@ __pycache__/
 .externalNativeBuild
 .cxx
 
+backend/dbAlco/migrations/
+.idea/
+

@@ -1,63 +1,64 @@
-package com.example.alkoapp.ui.showdrinks
+package com.example.alkoapp.ui.showalcohol
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alkoapp.R
-import com.example.alkoapp.data.models.Drink
+import com.example.alkoapp.data.models.Alcohol
+
 import com.example.alkoapp.util.RecyclerViewClickListener
 import kotlinx.android.synthetic.main.recycler_view_item.view.*
 
-class MyDrinksAdapter(
-    private var myDataset: ArrayList<Drink>,
-    private val listener: RecyclerViewClickListener
+class AlcoholsAdapter(
+    private var myDataset: ArrayList<Alcohol>
+//    ,private val listener: RecyclerViewClickListener
 ) :
-    RecyclerView.Adapter<MyDrinksAdapter.DrinkHolder>() {
+    RecyclerView.Adapter<AlcoholsAdapter.AlcoholItemHolder>() {
 
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): DrinkHolder {
-        return DrinkHolder(
+    ): AlcoholItemHolder {
+        return AlcoholItemHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_item, parent, false)
         )
     }
 
     // Replace the contents of a view (invoked by the layout manager)
-    override fun onBindViewHolder(holder: DrinkHolder, position: Int) {
+    override fun onBindViewHolder(holder: AlcoholItemHolder, position: Int) {
         when (holder) {
 
-            is DrinkHolder -> {
+            is AlcoholItemHolder -> {
                 holder.bind(myDataset[position])
             }
 
         }
     }
 
-    fun submitList(drinkList: ArrayList<Drink>){
-        myDataset = drinkList
+    fun submitList(list: ArrayList<Alcohol>){
+        myDataset = list
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = myDataset.size
 
 
-    class DrinkHolder(
+    class AlcoholItemHolder(
         itemView: View
     ) : RecyclerView.ViewHolder(itemView) {
-        val drinkId = itemView.textView1
-        val drinkName = itemView.textView2
-        val drinkRaiting = itemView.textView3
+        val name = itemView.textView1
+        val descr = itemView.textView2
+        val rate = itemView.textView3
 
 
 //        TODO:
-        fun bind(drinkItem: Drink) {
-            drinkId.text = (drinkItem.name)
-            drinkName.text = (drinkItem.instruction)
-            drinkRaiting.text = (drinkItem.description)
+        fun bind(item: Alcohol) {
+            name.text = (item.name)
+            descr.text = (item.description as CharSequence?)
+            rate.text = (item.producer)
         }
 
     }
