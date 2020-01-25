@@ -6,13 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alkoapp.R
 import com.example.alkoapp.data.models.Alcohol
-
-import com.example.alkoapp.util.RecyclerViewClickListener
 import kotlinx.android.synthetic.main.recycler_view_item.view.*
 
 class AlcoholsAdapter(
     private var myDataset: ArrayList<Alcohol>
-//    ,private val listener: RecyclerViewClickListener
 ) :
     RecyclerView.Adapter<AlcoholsAdapter.AlcoholItemHolder>() {
 

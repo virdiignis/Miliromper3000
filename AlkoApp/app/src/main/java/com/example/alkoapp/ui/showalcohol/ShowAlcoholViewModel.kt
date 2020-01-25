@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.alkoapp.data.models.Alcohol
 import com.example.alkoapp.data.repository.AlcoholsRepository
-
 import com.example.alkoapp.util.Coroutines
 import kotlinx.coroutines.Job
 

@@ -26,7 +26,7 @@ class ShowAlcoholFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.show_drinks_fragment, container, false)
+        return inflater.inflate(R.layout.show_alcohol_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -37,6 +37,7 @@ class ShowAlcoholFragment : Fragment() {
         factory = AlcoholsViewModelFactory(repository)
 
         viewModel = ViewModelProviders.of(this, factory).get(ShowAlcoholViewModel::class.java)
+
         try{
             viewModel.getAlcohols()
         }
