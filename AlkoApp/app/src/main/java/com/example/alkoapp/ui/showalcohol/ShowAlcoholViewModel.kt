@@ -18,7 +18,7 @@ class ShowAlcoholViewModel(
     val alcohols: LiveData<ArrayList<Alcohol>>
         get() = _alcohols
 
-    //TODO: place for coroutine to collect live data
+
     fun getAlcohols(){
         job = Coroutines.ioThenMain(
             {repository.getAlcohols()},

@@ -1,5 +1,6 @@
 package com.example.alkoapp.ui.showalcohol
 
+import android.content.Context
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
@@ -13,12 +14,14 @@ import com.example.alkoapp.R
 import com.example.alkoapp.data.models.Alcohol
 import com.example.alkoapp.data.network.AlcoholApi
 import com.example.alkoapp.data.repository.AlcoholsRepository
+import com.example.alkoapp.ui.onealco.OneAlcoFragment
+import com.example.alkoapp.ui.showdrinks.ShowDrinksFragment
 
 import kotlinx.android.synthetic.main.show_alcohol_fragment.*
 import java.lang.Exception
 
 
-class ShowAlcoholFragment : Fragment() {
+class ShowAlcoholFragment : Fragment(), AlcoholClickListener {
     private lateinit var viewModel: ShowAlcoholViewModel
     private lateinit var factory: AlcoholsViewModelFactory
     override fun onCreateView(
@@ -44,14 +47,20 @@ class ShowAlcoholFragment : Fragment() {
             alcohols_recycle_view!!.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
-                it.adapter = AlcoholsAdapter(alcohols)
+                it.adapter = AlcoholsAdapter(alcohols, this)
             }
         })
     }
 
-    fun onRecyclerViewItemClick(view: View, item: Alcohol) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+    override fun onRecyclerViewItemClick(view: View, item: Alcohol) {
+        Log.d("here", item.name)
+        super.getFragmentManager()?.beginTransaction()
+            ?.replace(id, OneAlcoFragment() )?.commit()
+
+
+
     }
 
-
 }
+

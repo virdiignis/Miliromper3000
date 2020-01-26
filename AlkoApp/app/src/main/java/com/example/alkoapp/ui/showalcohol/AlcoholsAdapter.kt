@@ -9,7 +9,8 @@ import com.example.alkoapp.data.models.Alcohol
 import kotlinx.android.synthetic.main.recycler_view_item.view.*
 
 class AlcoholsAdapter(
-    private var myDataset: ArrayList<Alcohol>
+    private var myDataset: ArrayList<Alcohol>,
+    val listener: AlcoholClickListener
 ) :
     RecyclerView.Adapter<AlcoholsAdapter.AlcoholItemHolder>() {
 
@@ -20,22 +21,23 @@ class AlcoholsAdapter(
         viewType: Int
     ): AlcoholItemHolder {
         return AlcoholItemHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_item, parent, false)
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.recycler_view_alcohol,
+                parent,
+                false
+            )
         )
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: AlcoholItemHolder, position: Int) {
-        when (holder) {
 
-            is AlcoholItemHolder -> {
-                holder.bind(myDataset[position])
-            }
+        holder.bind(myDataset[position], listener)
 
-        }
+
     }
 
-    fun submitList(list: ArrayList<Alcohol>){
+    fun submitList(list: ArrayList<Alcohol>) {
         myDataset = list
     }
 
@@ -50,12 +52,14 @@ class AlcoholsAdapter(
         val descr = itemView.textView2
         val rate = itemView.textView3
 
-
-//        TODO:
-        fun bind(item: Alcohol) {
+        fun bind(item: Alcohol, listener: AlcoholClickListener) {
             name.text = (item.name)
             descr.text = item.type.toString()
             rate.text = (item.producer)
+
+            itemView.setOnClickListener{
+                listener.onRecyclerViewItemClick(itemView,item)
+            }
         }
 
     }
