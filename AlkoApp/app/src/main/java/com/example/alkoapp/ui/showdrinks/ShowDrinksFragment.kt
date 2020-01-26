@@ -2,6 +2,7 @@ package com.example.alkoapp.ui.showdrinks
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +13,10 @@ import com.example.alkoapp.R
 import com.example.alkoapp.data.models.Drink
 import com.example.alkoapp.data.network.DrinksApi
 import com.example.alkoapp.data.repository.DrinksRepository
+import com.example.alkoapp.ui.onedrink.OneDrinkFragment
 import kotlinx.android.synthetic.main.show_drinks_fragment.*
 
-class ShowDrinksFragment : Fragment()
-     {
+class ShowDrinksFragment : Fragment(), DrinkClickListener {
     private lateinit var viewModel: ShowDrinksViewModel
     private lateinit var factory: DrinksViewModelFactory
     override fun onCreateView(
@@ -40,13 +41,15 @@ class ShowDrinksFragment : Fragment()
             drinks_recycle_view.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
-                it.adapter = DrinksAdapter(drinks)
+                it.adapter = DrinksAdapter(drinks, this)
             }
         })
     }
 
-    fun onRecyclerViewItemClick(view: View, item: Drink) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onRecyclerViewItemClick(view: View, item: Drink) {
+        Log.d("drink", item.name)
+        super.getFragmentManager()?.beginTransaction()
+            ?.replace(id, OneDrinkFragment(item))?.commit()
     }
 
 

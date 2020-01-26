@@ -1,6 +1,5 @@
 package com.example.alkoapp.ui.showalcohol
 
-import android.content.Context
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
@@ -15,10 +14,7 @@ import com.example.alkoapp.data.models.Alcohol
 import com.example.alkoapp.data.network.AlcoholApi
 import com.example.alkoapp.data.repository.AlcoholsRepository
 import com.example.alkoapp.ui.onealco.OneAlcoFragment
-import com.example.alkoapp.ui.showdrinks.ShowDrinksFragment
-
 import kotlinx.android.synthetic.main.show_alcohol_fragment.*
-import java.lang.Exception
 
 
 class ShowAlcoholFragment : Fragment(), AlcoholClickListener {
@@ -54,10 +50,9 @@ class ShowAlcoholFragment : Fragment(), AlcoholClickListener {
 
 
     override fun onRecyclerViewItemClick(view: View, item: Alcohol) {
-        Log.d("here", item.name)
+        Log.d("alcohol", item.name)
         super.getFragmentManager()?.beginTransaction()
-            ?.replace(id, OneAlcoFragment(item) )?.commit()
-
+            ?.replace(id, OneAlcoFragment(item))?.commit()
 
 
     }

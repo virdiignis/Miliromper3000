@@ -33,13 +33,8 @@ class AlcoholsAdapter(
     override fun onBindViewHolder(holder: AlcoholItemHolder, position: Int) {
 
         holder.bind(myDataset[position], listener)
-
-
     }
 
-    fun submitList(list: ArrayList<Alcohol>) {
-        myDataset = list
-    }
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = myDataset.size
@@ -57,8 +52,8 @@ class AlcoholsAdapter(
             descr.text = item.type.toString()
             rate.text = (item.producer)
 
-            itemView.setOnClickListener{
-                listener.onRecyclerViewItemClick(itemView,item)
+            itemView.setOnClickListener {
+                listener.onRecyclerViewItemClick(itemView, item)
             }
         }
 
