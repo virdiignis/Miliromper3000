@@ -49,7 +49,7 @@ class ShowDrinksFragment : Fragment(), DrinkClickListener {
     override fun onRecyclerViewItemClick(view: View, item: Drink) {
         Log.d("drink", item.name)
         super.getFragmentManager()?.beginTransaction()
-            ?.replace(id, OneDrinkFragment(item))?.commit()
+            ?.replace(id, OneDrinkFragment(item))?.addToBackStack("app")?.commit()
     }
 
 

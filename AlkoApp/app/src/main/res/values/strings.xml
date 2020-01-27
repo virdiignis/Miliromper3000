@@ -2,8 +2,8 @@
     <string name="app_name">AlkoApp</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">AlcoApp</string>
+    <string name="nav_header_subtitle">Have a drink, a good one!</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -14,6 +14,10 @@
     <string name="menu_share">Share</string>
 
     <string name="menu_alcoshow">Show Alcohols</string>
-
     <string name="menu_drinks">Show Drinks</string>
+    <string name="alcohol_name_label">Name</string>
+    <string name="alcohol_type_label">Type</string>
+    <string name="MenuName1">Alcohols</string>
+    <string name="MenuName2">Drinks</string>
+    <string name="MenuName3">Utils</string>
 </resources>

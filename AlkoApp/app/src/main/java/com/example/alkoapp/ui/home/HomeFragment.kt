@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.alkoapp.R
 
 class HomeFragment : Fragment() {
-
     private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(

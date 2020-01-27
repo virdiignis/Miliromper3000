@@ -16,7 +16,7 @@
 
     </group>
 
-    <item android:title="Alcohols">
+    <item android:title="@string/MenuName1">
         <menu>
         <item
             android:id="@+id/nav_alcoshow"
@@ -25,7 +25,7 @@
         </menu>
     </item>
 
-    <item android:title="Drinks" >
+    <item android:title="@string/MenuName2" >
 
         <menu>
             <item
@@ -35,7 +35,7 @@
         </menu>
     </item>
 
-    <item android:title="Utils">
+    <item android:title="@string/MenuName3">
         <menu>
             <item
                 android:id="@+id/nav_tools"
