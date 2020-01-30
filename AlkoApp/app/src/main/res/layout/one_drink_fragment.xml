@@ -29,6 +29,16 @@
             app:title="@{drink.name}"
             app:titleMarginEnd="4dp" />
 
+        <ImageButton
+            android:id="@+id/favouriteButton"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/btn_star"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbar_drink_header"
+            app:layout_constraintEnd_toEndOf="@+id/toolbar_drink_header"
+            app:layout_constraintTop_toTopOf="@+id/toolbar_drink_header" />
+
         <TextView
             android:id="@+id/glass_label"
             android:layout_width="wrap_content"
