@@ -1,20 +1,20 @@
 package com.example.alkoapp.ui.showalcohol
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.alkoapp.R
 import com.example.alkoapp.data.models.Alcohol
 import com.example.alkoapp.data.network.AlcoholApi
 import com.example.alkoapp.data.repository.AlcoholsRepository
 import com.example.alkoapp.ui.onealco.OneAlcoFragment
-import kotlinx.android.synthetic.main.show_alcohol_fragment.*
+import kotlinx.android.synthetic.main.show_alcohols_fragment.*
 
 
 class ShowAlcoholFragment : Fragment(), AlcoholClickListener {
@@ -25,11 +25,16 @@ class ShowAlcoholFragment : Fragment(), AlcoholClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.show_alcohol_fragment, container, false)
+        return inflater.inflate(R.layout.show_alcohols_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        addAlcoholButton.setOnClickListener{
+            super.getFragmentManager()?.beginTransaction()
+                ?.replace(id, AddAlcoholFragment())?.addToBackStack("app")?.commit()
+        }
 
         val api = AlcoholApi()
         val repository = AlcoholsRepository(api)
@@ -53,9 +58,8 @@ class ShowAlcoholFragment : Fragment(), AlcoholClickListener {
         Log.d("alcohol", item.name)
         super.getFragmentManager()?.beginTransaction()
             ?.replace(id, OneAlcoFragment(item))?.addToBackStack("app")?.commit()
-
-
     }
+
 
 }
 

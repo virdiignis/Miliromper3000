@@ -27,7 +27,7 @@
         android:id="@+id/nav_alcoshow"
         android:name="com.example.alkoapp.ui.showalcohol.ShowAlcoholFragment"
         android:label="@string/menu_alcoshow"
-        tools:layout="@layout/show_alcohol_fragment" />
+        tools:layout="@layout/show_alcohols_fragment" />
     <fragment
         android:id="@+id/nav_drinks"
         android:name="com.example.alkoapp.ui.showdrinks.ShowDrinksFragment"
