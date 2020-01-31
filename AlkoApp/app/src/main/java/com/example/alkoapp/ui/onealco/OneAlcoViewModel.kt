@@ -23,7 +23,6 @@ class OneAlcoViewModel : ViewModel() {
         get() = _ratings
 
     fun getRatings(id : Int) = runBlocking {
-
         job = Coroutines.ioThenMain(
             { repository.getRating(id) },
             { _ratings.value = it as ArrayList<Rate>? }
