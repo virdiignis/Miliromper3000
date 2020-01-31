@@ -1,7 +1,6 @@
 package com.example.alkoapp.ui.showalcohol
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,12 +12,10 @@ import com.example.alkoapp.R
 import com.example.alkoapp.data.models.Alcohol
 import com.example.alkoapp.data.network.AlcoholApi
 import com.example.alkoapp.data.repository.AlcoholsRepository
+import com.example.alkoapp.ui.addalcohol.AddAlcoholFragment
 import com.example.alkoapp.ui.onealco.OneAlcoFragment
-import com.google.gson.Gson
 
 import kotlinx.android.synthetic.main.show_alcohols_fragment.*
-import retrofit2.Call
-import retrofit2.Callback
 
 
 class ShowAlcoholFragment : Fragment(), AlcoholClickListener {
@@ -37,7 +34,9 @@ class ShowAlcoholFragment : Fragment(), AlcoholClickListener {
 
         addAlcoholButton.setOnClickListener {
             super.getFragmentManager()?.beginTransaction()
-                ?.replace(id, AddAlcoholFragment())?.addToBackStack("app")?.commit()
+                ?.replace(id,
+                    AddAlcoholFragment()
+                )?.addToBackStack("app")?.commit()
         }
 
         val api = AlcoholApi()
@@ -59,9 +58,6 @@ class ShowAlcoholFragment : Fragment(), AlcoholClickListener {
 
 
     override fun onRecyclerViewItemClick(view: View, item: Alcohol) {
-
-        viewModel.addAlcohol(item)
-
 
         super.getFragmentManager()?.beginTransaction()
             ?.replace(id, OneAlcoFragment(item))?.addToBackStack("app")?.commit()

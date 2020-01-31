@@ -20,6 +20,7 @@ class ShowAlcoholViewModel(
 
     val alcohols: LiveData<ArrayList<Alcohol>>
         get() = _alcohols
+
     private val _answer = MutableLiveData<String>()
 
     fun getAlcohols() = runBlocking {
@@ -30,15 +31,8 @@ class ShowAlcoholViewModel(
         )
     }
 
-    fun addAlcohol(item : Alcohol) = runBlocking {
-
-        job = Coroutines.ioThenMain(
-            { repository.addAlcohol(item) },
-            { println( it.toString() )}
-        )
 
 
-    }
 
 
 
