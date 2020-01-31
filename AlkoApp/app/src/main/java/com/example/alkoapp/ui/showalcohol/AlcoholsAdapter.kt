@@ -3,6 +3,7 @@ package com.example.alkoapp.ui.showalcohol
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alkoapp.R
 import com.example.alkoapp.data.models.Alcohol
@@ -43,7 +44,7 @@ class AlcoholsAdapter(
     class AlcoholItemHolder(
         itemView: View
     ) : RecyclerView.ViewHolder(itemView) {
-        val name = itemView.textView1
+        val name: TextView = itemView.textView1
         val descr = itemView.textView2
         val rate = itemView.textView3
 

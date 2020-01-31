@@ -1,9 +1,6 @@
 package com.example.alkoapp.data.network
 
-import com.example.alkoapp.data.models.Alcohol
-import com.example.alkoapp.data.models.Country
-import com.example.alkoapp.data.models.Producer
-import com.example.alkoapp.data.models.Type
+import com.example.alkoapp.data.models.*
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import org.json.JSONObject
@@ -11,10 +8,7 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface AlcoholApi {
 
@@ -42,7 +36,8 @@ interface AlcoholApi {
     @GET("/alcohols/types/")
     suspend fun getTypes() : Response<List<Type>>
 
-
+    @GET("/alcohols/ratings/")
+    suspend fun getRatings(@Query("alcohol") id : Int) : Response<List<Rate>>
 
 
     @Headers("Content-Type: application/json")

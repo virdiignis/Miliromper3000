@@ -73,7 +73,9 @@ class AddAlcoholFragment : Fragment() {
     private fun addButtonListener() {
 //        TODO: Walidacjca danych, wysyłanie
 
+        Log.d("Listen", "Simulate walidation")
         Log.d("Listen", "Simulate adding")
+
         super.getFragmentManager()?.beginTransaction()?.replace(id, ShowAlcoholFragment())?.commit()
 
 

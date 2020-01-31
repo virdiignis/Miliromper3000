@@ -16,6 +16,7 @@ class AlcoholsRepository(
     suspend fun getProducers() = apiRequest { api.getProducers() }
     suspend fun getProductionCountries() = apiRequest { api.getProductionCountries() }
     suspend fun getTypes() = apiRequest { api.getTypes() }
+    suspend fun getRating(id : Int) = apiRequest{api.getRatings(id)}
 
     suspend fun addAlcohol (item : JSONObject) = apiRequestPost {api.addAlcohol(item) }
 
