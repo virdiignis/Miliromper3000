@@ -14,7 +14,11 @@ import com.example.alkoapp.data.models.AlcoholX
 import com.example.alkoapp.data.network.AlcoholApi
 import com.example.alkoapp.data.repository.AlcoholsRepository
 import com.example.alkoapp.ui.showalcohol.ShowAlcoholFragment
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_add_alcohol.*
+import kotlinx.android.synthetic.main.recycler_opinion.view.*
+import okhttp3.MediaType
+import okhttp3.RequestBody
 import org.json.JSONObject
 
 
@@ -74,7 +78,7 @@ class AddAlcoholFragment : Fragment() {
         Log.d("Validation", "Simulate walidation")
         var name: String = ""
         var alcoholContent: Float = 0.0F
-        var description: String = ""
+        var description: String = "None :("
         var type: Int = 0
         var countryItem: String = ""
         var producerItem: String = ""
@@ -86,8 +90,8 @@ class AddAlcoholFragment : Fragment() {
             description = this.description.text.toString()
 //            type = this.type_spinner.selectedItem.toString()
             type = this.type_spinner.selectedItemId.toInt()
-            countryItem = this.type_spinner.selectedItem.toString()
-            producerItem = this.type_spinner.selectedItemId.toString()
+            countryItem = this.prodution_country_spinner.selectedItem.toString()
+            producerItem = this.producer_spinner.selectedItem.toString()
 
         } catch (e: Throwable) {
             Log.d("Validation", e.message.toString())
@@ -104,6 +108,11 @@ class AddAlcoholFragment : Fragment() {
             Log.d("Validation", "Name not-valid")
         }
 
+        if (description.isEmpty()) {
+            Log.d("Validation", "Dec not- valid")
+            description ="None :("
+        }
+
         if (alcoholContent >= 0 && alcoholContent < 100) {
             Log.d("Validation", "Alcohol content valid")
         } else {
@@ -115,13 +124,6 @@ class AddAlcoholFragment : Fragment() {
 
         if (flag) {
 
-            var addedItem = JSONObject()
-            addedItem.put("name", name)
-            addedItem.put("description", description)
-            addedItem.put("type", type)
-            addedItem.put("production_country", countryItem)
-            addedItem.put("producer", producerItem)
-            addedItem.put("alcohol_content", alcohol_content)
 
             val anotherItem = AlcoholX(
                 name = name,
@@ -132,10 +134,7 @@ class AddAlcoholFragment : Fragment() {
                 type = type
             )
 
-            Log.d("OPS", "validation check")
             viewModel.addItem(anotherItem)
-
-
 
             super.getFragmentManager()?.beginTransaction()?.replace(id, ShowAlcoholFragment())
                 ?.commit()

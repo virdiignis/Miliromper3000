@@ -18,7 +18,7 @@ class SpinAdapterProducer( val context: Context?, private var producers : ArrayL
     }
 
     override fun getItem(position: Int): Any {
-        return producers[position]
+        return producers[position].name
     }
 
     override fun getItemId(position: Int): Long {
@@ -48,7 +48,7 @@ class SpinAdapterCountry( val context: Context?, private var producers : ArrayLi
     }
 
     override fun getItem(position: Int): Any {
-        return producers[position]
+        return producers[position].name
     }
 
     override fun getItemId(position: Int): Long {

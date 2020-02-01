@@ -14,12 +14,12 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.runBlocking
 import com.example.alkoapp.data.network.SafeApiRequest
 import com.google.gson.Gson
+import okhttp3.RequestBody
 import org.json.JSONObject
 
 class AddAlcoholViewModel(
     private val repository: AlcoholsRepository
-)
-    : ViewModel(){
+) : ViewModel() {
 
     private lateinit var job: Job
 
@@ -30,23 +30,26 @@ class AddAlcoholViewModel(
     val types: LiveData<ArrayList<Type>>
         get() = _types
 
-    val producers : LiveData<ArrayList<Producer>>
+    val producers: LiveData<ArrayList<Producer>>
         get() = _producers
 
-    val countries : LiveData<ArrayList<Country>>
+    val countries: LiveData<ArrayList<Country>>
         get() = _countries
 
-    fun addItem(item : AlcoholX) = runBlocking {
-       try {
+    fun addItem(item: AlcoholX) = runBlocking {
 
         job = Coroutines.ioThenMain(
-            {repository.addAlcohol(item)},
-            { Log.d("yea",  it.toString() )}
-        )}
-       catch (e : Throwable)
-       {
-           Log.d("API", e.message.toString())
-       }
+            {
+                try {
+                    repository.addAlcohol(item)
+
+                } catch (e: Throwable) {
+                    Log.d("ERROR", e.message.toString())
+                }
+            },
+            { Log.d("Response", it.toString()) }
+        )
+
     }
 
     fun getTypes() = runBlocking {
@@ -62,15 +65,13 @@ class AddAlcoholViewModel(
             { _producers.value = it as ArrayList<Producer>? }
         )
     }
+
     fun getProductionCountries() = runBlocking {
         job = Coroutines.ioThenMain(
             { repository.getProductionCountries() },
             { _countries.value = it as ArrayList<Country>? }
         )
     }
-
-
-
 
 
     override fun onCleared() {

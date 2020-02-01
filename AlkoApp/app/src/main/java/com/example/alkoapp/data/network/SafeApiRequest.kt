@@ -16,15 +16,6 @@ abstract class SafeApiRequest {
         }
     }
 
-    suspend fun<T: Any> apiRequestPost(call: suspend () -> Response<T>) : T{
-        val response = call.invoke()
-        if(response.isSuccessful){
-            return response.body()!!
-        }else{
-            //@todo handle api exception
-            throw ApiException(response.code().toString())
-        }
-    }
 
 }
 

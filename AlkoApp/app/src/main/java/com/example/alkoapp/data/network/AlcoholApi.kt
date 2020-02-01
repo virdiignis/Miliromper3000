@@ -3,6 +3,7 @@ package com.example.alkoapp.data.network
 import com.example.alkoapp.data.models.*
 import com.google.gson.Gson
 import com.google.gson.JsonArray
+import okhttp3.RequestBody
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Response
@@ -11,8 +12,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
 interface AlcoholApi {
-
-
 
     companion object{
         operator fun invoke() : AlcoholApi {
@@ -43,7 +42,6 @@ interface AlcoholApi {
     @Headers("Content-Type: application/json")
     @POST("/alcohols/")
     suspend  fun addAlcohol(@Body alcohol: AlcoholX) : Response<Any>
-
 
 
 }
