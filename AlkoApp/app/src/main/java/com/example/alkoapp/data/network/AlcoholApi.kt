@@ -42,7 +42,7 @@ interface AlcoholApi {
 
     @Headers("Content-Type: application/json")
     @POST("/alcohols/")
-    suspend  fun addAlcohol(@Body alcohol: JSONObject) : Response<Any>
+    suspend  fun addAlcohol(@Body alcohol: AlcoholX) : Response<Any>
 
 
 

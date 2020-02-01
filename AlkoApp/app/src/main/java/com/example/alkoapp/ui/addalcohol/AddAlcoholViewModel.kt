@@ -4,11 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.alkoapp.data.models.Alcohol
-import com.example.alkoapp.data.models.Country
-import com.example.alkoapp.data.models.Producer
+import com.example.alkoapp.data.models.*
 
-import com.example.alkoapp.data.models.Type
 import com.example.alkoapp.data.network.AlcoholApi
 import com.example.alkoapp.data.network.ApiException
 import com.example.alkoapp.data.repository.AlcoholsRepository
@@ -39,14 +36,14 @@ class AddAlcoholViewModel(
     val countries : LiveData<ArrayList<Country>>
         get() = _countries
 
-    fun addItem(item : JSONObject) = runBlocking {
+    fun addItem(item : AlcoholX) = runBlocking {
        try {
 
         job = Coroutines.ioThenMain(
             {repository.addAlcohol(item)},
             { Log.d("yea",  it.toString() )}
         )}
-       catch (e : ApiException)
+       catch (e : Throwable)
        {
            Log.d("API", e.message.toString())
        }

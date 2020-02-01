@@ -9,10 +9,13 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.alkoapp.R
+import com.example.alkoapp.data.models.Alcohol
+import com.example.alkoapp.data.models.AlcoholX
 import com.example.alkoapp.data.network.AlcoholApi
 import com.example.alkoapp.data.repository.AlcoholsRepository
 import com.example.alkoapp.ui.showalcohol.ShowAlcoholFragment
 import kotlinx.android.synthetic.main.fragment_add_alcohol.*
+import org.json.JSONObject
 
 
 class AddAlcoholFragment : Fragment() {
@@ -72,46 +75,74 @@ class AddAlcoholFragment : Fragment() {
         var name: String = ""
         var alcoholContent: Float = 0.0F
         var description: String = ""
-        var type: String = ""
+        var type: Int = 0
+        var countryItem: String = ""
+        var producerItem: String = ""
+
 
         try {
             name = this.alco_add_name.text.toString()
             alcoholContent = this.alcohol_content.text.toString().toFloat()
             description = this.description.text.toString()
-            type = this.type_spinner.selectedItem.toString()
+//            type = this.type_spinner.selectedItem.toString()
+            type = this.type_spinner.selectedItemId.toInt()
+            countryItem = this.type_spinner.selectedItem.toString()
+            producerItem = this.type_spinner.selectedItemId.toString()
+
         } catch (e: Throwable) {
             Log.d("Validation", e.message.toString())
             Log.d("Validation", "zonk")
-        } finally {
+        }
 
 
-            Log.d("Validate", "Data collected")
-            var flag: Boolean = true
-            if (name != null && name.length >= 2) {
-                Log.d("Validation", "Name valid")
-            } else {
-                flag = false
-                Log.d("Validation", "Name not-valid")
-            }
+        Log.d("Validate", "Data collected")
+        var flag: Boolean = true
+        if (name != null && name.length >= 2) {
+            Log.d("Validation", "Name valid")
+        } else {
+            flag = false
+            Log.d("Validation", "Name not-valid")
+        }
 
-            if (alcoholContent >= 0 && alcoholContent < 100) {
-                Log.d("Validation", "Alcohol content valid")
-            } else {
-                flag = false
-                Log.d("Validation", "alcoC not-valid")
-            }
+        if (alcoholContent >= 0 && alcoholContent < 100) {
+            Log.d("Validation", "Alcohol content valid")
+        } else {
+            flag = false
+            Log.d("Validation", "alcoC not-valid")
+        }
 
 
-            Log.d("Validation", type)
-            Log.d("Listen", "Simulate adding")
 
-            if (flag) {
-                super.getFragmentManager()?.beginTransaction()?.replace(id, ShowAlcoholFragment())
-                    ?.commit()
+        if (flag) {
 
-            }
+            var addedItem = JSONObject()
+            addedItem.put("name", name)
+            addedItem.put("description", description)
+            addedItem.put("type", type)
+            addedItem.put("production_country", countryItem)
+            addedItem.put("producer", producerItem)
+            addedItem.put("alcohol_content", alcohol_content)
+
+            val anotherItem = AlcoholX(
+                name = name,
+                description = description,
+                alcohol_content = alcoholContent.toString(),
+                producer = producerItem,
+                production_country = countryItem,
+                type = type
+            )
+
+            Log.d("OPS", "validation check")
+            viewModel.addItem(anotherItem)
+
+
+
+            super.getFragmentManager()?.beginTransaction()?.replace(id, ShowAlcoholFragment())
+                ?.commit()
 
         }
+
+
     }
 
 }
