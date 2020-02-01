@@ -39,9 +39,9 @@
         <EditText
             android:id="@+id/alco_add_name"
             android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="24dp"
             android:textAlignment="textEnd"
             android:textSize="18sp"
@@ -64,6 +64,7 @@
 
         <Spinner
             android:id="@+id/type_spinner"
+            style="@android:style/Widget.DeviceDefault.Light.Spinner"
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_marginStart="24dp"
@@ -73,8 +74,10 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.238"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toEndOf="@+id/type_label"
-            app:layout_constraintTop_toBottomOf="@+id/alco_add_name" />
+            app:layout_constraintTop_toBottomOf="@+id/alco_add_name"
+            app:layout_constraintVertical_chainStyle="spread" />
 
         <TextView
             android:id="@+id/alcohol_content_label"
@@ -91,13 +94,13 @@
         <EditText
             android:id="@+id/alcohol_content"
             android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="24dp"
+            android:inputType="numberDecimal"
             android:textAlignment="textEnd"
             android:textSize="18sp"
-            android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/alcohol_content_label"
             app:layout_constraintTop_toBottomOf="@+id/type_spinner" />
