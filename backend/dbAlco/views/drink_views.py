@@ -1,3 +1,6 @@
+from django.db.models import Avg
+from django.http import JsonResponse
+
 from dbAlco.serializers.drink_serializers import *
 from rest_framework import viewsets
 
@@ -35,3 +38,10 @@ class AlcoholProportionViewSet(viewsets.ModelViewSet):
 class DrinkRatingViewSet(viewsets.ModelViewSet):
     queryset = DrinkRating.objects.all()
     serializer_class = DrinkRatingSerializer
+
+
+def drink_average_rating(request, _id):
+    drink = Drink.objects.get(id=_id)
+    avg_rating = drink.ratings.aggregate(Avg("rating"))
+
+    return JsonResponse(avg_rating)

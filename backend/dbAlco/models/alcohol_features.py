@@ -12,7 +12,7 @@ class Producer(models.Model):
 
 
 class AlcoholRating(models.Model):
-    alcohol = models.ForeignKey("Alcohol", on_delete=models.CASCADE)
+    alcohol = models.ForeignKey("Alcohol", on_delete=models.CASCADE, related_name="ratings")
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ratings")
     rating = models.DecimalField(decimal_places=1, max_digits=2)
     comment = models.TextField(null=True)

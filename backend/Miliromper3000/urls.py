@@ -43,4 +43,7 @@ urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
+    path('alcohols/ratings/avg/<int:_id>/', views.alcohol_average_rating),
+    path('drinks/ratings/avg/<int:_id>/', views.drink_average_rating),
+
 ]

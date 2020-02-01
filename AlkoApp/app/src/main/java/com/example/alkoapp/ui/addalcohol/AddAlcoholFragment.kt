@@ -101,7 +101,7 @@ class AddAlcoholFragment : Fragment() {
 
         Log.d("Validate", "Data collected")
         var flag: Boolean = true
-        if (name != null && name.length >= 2) {
+        if (name.length >= 2) {
             Log.d("Validation", "Name valid")
         } else {
             flag = false
