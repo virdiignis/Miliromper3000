@@ -7,8 +7,9 @@ from rest_framework import generics, viewsets, filters
 
 class AlcoholViewSet(viewsets.ModelViewSet):
     queryset = Alcohol.objects.all()
-    filter_backends = [filters.OrderingFilter]
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
     ordering = ['name']
+    search_fields = ['name']
 
     def get_serializer_class(self):
         if self.action in ("list", "retrieve"):
@@ -20,13 +21,17 @@ class AlcoholViewSet(viewsets.ModelViewSet):
 class AlcoholTypeViewSet(viewsets.ModelViewSet):
     queryset = AlcoholType.objects.all()
     serializer_class = AlcoholTypeSerializer
-    filter_backends = [filters.OrderingFilter]
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    ordering = ['general_type', 'specific_type']
+    search_fields = ['general_type', 'specific_type']
 
 
 class AlcoholGeneralTypeViewSet(viewsets.ModelViewSet):
     queryset = AlcoholGeneralType.objects.all()
     serializer_class = AlcoholGeneralTypeSerializer
-    filter_backends = [filters.OrderingFilter]
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    ordering = ['name']
+    search_fields = ['name']
 
 
 def alcohol_average_rating(request, _id):

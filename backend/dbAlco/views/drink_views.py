@@ -8,25 +8,33 @@ from rest_framework import viewsets, filters
 class DrinkViewSet(viewsets.ModelViewSet):
     queryset = Drink.objects.all()
     serializer_class = DrinkSerializer
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
     ordering = ['name']
-    filter_backends = [filters.OrderingFilter]
+    search_fields = ['name', 'description', 'how_to_serve']
 
 
 class IngredientViewSet(viewsets.ModelViewSet):
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
-    filter_backends = [filters.OrderingFilter]
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    ordering = ['name']
+    search_fields = ['name']
 
 
 class BartenderStuffViewSet(viewsets.ModelViewSet):
     queryset = BartenderStuff.objects.all()
     serializer_class = BartenderStuffSerializer
-    filter_backends = [filters.OrderingFilter]
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    ordering = ['name']
+    search_fields = ['name']
 
 
 class GlassViewSet(viewsets.ModelViewSet):
     queryset = Glass.objects.all()
     serializer_class = GlassSerializer
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    ordering = ['name']
+    search_fields = ['name']
 
 
 class IngredientProportionViewSet(viewsets.ModelViewSet):
@@ -42,6 +50,9 @@ class AlcoholProportionViewSet(viewsets.ModelViewSet):
 class DrinkRatingViewSet(viewsets.ModelViewSet):
     queryset = DrinkRating.objects.all()
     serializer_class = DrinkRatingSerializer
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    ordering = ['-favourite']
+    search_fields = ['drink']
 
 
 def drink_average_rating(request, _id):
