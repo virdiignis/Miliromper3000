@@ -9,7 +9,7 @@ class AlcoholViewSet(viewsets.ModelViewSet):
     queryset = Alcohol.objects.all()
     filter_backends = [filters.OrderingFilter, filters.SearchFilter]
     ordering = ['name']
-    search_fields = ['name']
+    search_fields = ['name', 'description']
 
     def get_serializer_class(self):
         if self.action in ("list", "retrieve"):
