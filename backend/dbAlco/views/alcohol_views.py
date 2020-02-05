@@ -2,11 +2,13 @@ from django.db.models import Avg
 from django.http import Http404, JsonResponse, HttpResponse
 from dbAlco.models import Drink
 from dbAlco.serializers.alcohol_serializers import *
-from rest_framework import generics, viewsets
+from rest_framework import generics, viewsets, filters
 
 
 class AlcoholViewSet(viewsets.ModelViewSet):
     queryset = Alcohol.objects.all()
+    filter_backends = [filters.OrderingFilter]
+    ordering = ['name']
 
     def get_serializer_class(self):
         if self.action in ("list", "retrieve"):
@@ -18,11 +20,13 @@ class AlcoholViewSet(viewsets.ModelViewSet):
 class AlcoholTypeViewSet(viewsets.ModelViewSet):
     queryset = AlcoholType.objects.all()
     serializer_class = AlcoholTypeSerializer
+    filter_backends = [filters.OrderingFilter]
 
 
 class AlcoholGeneralTypeViewSet(viewsets.ModelViewSet):
     queryset = AlcoholGeneralType.objects.all()
     serializer_class = AlcoholGeneralTypeSerializer
+    filter_backends = [filters.OrderingFilter]
 
 
 def alcohol_average_rating(request, _id):

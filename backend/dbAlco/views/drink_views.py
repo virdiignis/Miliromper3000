@@ -2,22 +2,26 @@ from django.db.models import Avg
 from django.http import JsonResponse
 
 from dbAlco.serializers.drink_serializers import *
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
 
 
 class DrinkViewSet(viewsets.ModelViewSet):
     queryset = Drink.objects.all()
     serializer_class = DrinkSerializer
+    filter_backends = [filters.OrderingFilter]
+    ordering = ['name']
 
 
 class IngredientViewSet(viewsets.ModelViewSet):
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
+    filter_backends = [filters.OrderingFilter]
 
 
 class BartenderStuffViewSet(viewsets.ModelViewSet):
     queryset = BartenderStuff.objects.all()
     serializer_class = BartenderStuffSerializer
+    filter_backends = [filters.OrderingFilter]
 
 
 class GlassViewSet(viewsets.ModelViewSet):
