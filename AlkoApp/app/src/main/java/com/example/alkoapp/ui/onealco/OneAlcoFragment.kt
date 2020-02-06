@@ -6,18 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.alkoapp.R
 import com.example.alkoapp.data.models.Alcohol
 import com.example.alkoapp.databinding.OneAlcoFragmentBinding
-import com.example.alkoapp.ui.onedrink.RateingAdapter
-import com.example.alkoapp.ui.showalcohol.AlcoholsAdapter
+import com.example.alkoapp.ui.onedrink.RatingAdapter
 import kotlinx.android.synthetic.main.one_alco_fragment.*
-import kotlinx.android.synthetic.main.show_alcohols_fragment.*
 
 
 class OneAlcoFragment(val itemAlcohol: Alcohol) : Fragment() {
@@ -46,7 +42,7 @@ class OneAlcoFragment(val itemAlcohol: Alcohol) : Fragment() {
             alcohol_rate_recycler_view!!.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
-                it.adapter = RateingAdapter(ratings)
+                it.adapter = RatingAdapter(ratings)
             }
         })
 

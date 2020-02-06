@@ -7,12 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.alkoapp.R
 import com.example.alkoapp.data.models.Rate
 import kotlinx.android.synthetic.main.recycler_opinion.view.*
-import kotlinx.android.synthetic.main.recycler_view_item.view.*
 
-class RateingAdapter(
+class RatingAdapter(
     private var rates: ArrayList<Rate>
 ) :
-    RecyclerView.Adapter<RateingAdapter.RateItemHolder>() {
+    RecyclerView.Adapter<RatingAdapter.RateItemHolder>() {
 
 
     // Create new views (invoked by the layout manager)
