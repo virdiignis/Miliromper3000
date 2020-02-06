@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.alkoapp.AddDrinkFragment
 import com.example.alkoapp.R
 import com.example.alkoapp.data.models.Drink
 import com.example.alkoapp.data.network.DrinksApi
@@ -29,6 +30,14 @@ class ShowDrinksFragment : Fragment(), DrinkClickListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        addDrinkButton.setOnClickListener {
+            super.getFragmentManager()?.beginTransaction()
+                ?.replace(
+                    id,
+                    AddDrinkFragment()
+                )?.addToBackStack("app")?.commit()
+        }
 
         val api = DrinksApi()
         val repository = DrinksRepository(api)
