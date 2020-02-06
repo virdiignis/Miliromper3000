@@ -6,12 +6,14 @@ class CountryViewSet(viewsets.ModelViewSet):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
     filter_backends = [filters.OrderingFilter]
+    ordering = ['name']
 
 
 class ProducerViewSet(viewsets.ModelViewSet):
     queryset = Producer.objects.all()
     serializer_class = ProducerSerializer
     filter_backends = [filters.OrderingFilter]
+    ordering = ['name']
 
 
 class AlcoholRatingViewSet(viewsets.ModelViewSet):
