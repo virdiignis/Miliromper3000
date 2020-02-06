@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.alkoapp.AddDrinkFragment
+import com.example.alkoapp.ui.adddrink.AddDrinkFragment
 import com.example.alkoapp.R
 import com.example.alkoapp.data.models.Drink
 import com.example.alkoapp.data.network.DrinksApi
