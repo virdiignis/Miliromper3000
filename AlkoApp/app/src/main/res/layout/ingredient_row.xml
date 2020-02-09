@@ -6,19 +6,22 @@
 
     <Spinner
         android:id="@+id/ingredient_spinner"
-        android:layout_width="254dp"
-        android:layout_height="wrap_content" />
+        android:layout_width="286dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="textEnd" />
 
     <EditText
         android:id="@+id/amount"
         android:layout_width="62dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        android:textAlignment="textEnd" />
 
     <Spinner
         android:id="@+id/unit_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="textEnd" />
 
 </TableRow>

@@ -30,7 +30,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:title="@{alcohol.name}"
-            app:titleMarginEnd="4dp" />
+            app:titleMarginEnd="32dp" />
+
 
         <ImageButton
             android:id="@+id/favouriteButton"
@@ -38,9 +39,20 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/transparent"
             android:src="@android:drawable/btn_star"
-            app:layout_constraintBottom_toBottomOf="@+id/toolbar_alcohol_header"
-            app:layout_constraintEnd_toEndOf="@+id/toolbar_alcohol_header"
-            app:layout_constraintTop_toTopOf="@+id/toolbar_alcohol_header" />
+            app:layout_constraintBottom_toBottomOf="@id/toolbar_alcohol_header"
+            app:layout_constraintEnd_toStartOf="@id/deleteButton"
+            app:layout_constraintTop_toTopOf="@id/toolbar_alcohol_header" />
+
+        <ImageButton
+            android:id="@+id/deleteButton"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/ic_delete"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar_alcohol_header"
+            app:layout_constraintEnd_toEndOf="@id/toolbar_alcohol_header"
+            app:layout_constraintTop_toTopOf="@id/toolbar_alcohol_header" />
+
 
         <TextView
             android:id="@+id/type_label"
@@ -222,6 +234,7 @@
             app:layout_constraintTop_toBottomOf="@+id/ratings_label"
             app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/recycler_opinion" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -80,7 +80,7 @@ class IngredientItemHolder(
     val unitSpinner = itemView.unit_spinner
     val ingredientsSpinner = itemView.ingredient_spinner
 
-    val units: Array<String> = arrayOf("ml", "oz", "g", "cz")
+    val units: Array<String> = arrayOf("ml", "oz", "g", "part", "%")
 
     fun bind(ingredients: ArrayList<Ingredient>){
         unitSpinner.adapter = ArrayAdapter<String>(context!!, android.R.layout.simple_spinner_item, units)
