@@ -6,5 +6,6 @@ data class Drink(
     val how_to_serve: String,
     val instruction: String,
     val name: String,
+    val average_rating: String,
     val stuff: List<Any>
 )

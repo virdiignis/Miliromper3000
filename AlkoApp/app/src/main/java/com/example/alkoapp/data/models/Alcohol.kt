@@ -7,5 +7,6 @@ data class Alcohol(
     val name: String,
     val producer: String,
     val production_country: String,
-    val type: Type
+    val type: Type,
+    val average_rating: String
 )
