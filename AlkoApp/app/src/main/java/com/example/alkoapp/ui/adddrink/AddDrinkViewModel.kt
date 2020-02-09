@@ -38,16 +38,7 @@ class AddDrinkViewModel(
 //    f. do  dowania vidowkow
 //    A no i najważniejsze adapter lub coś do tworzenia customowych View
 
-//    fun bind(){
-//        val a: Array<String> = arrayOf("No", "i", "cyk")
-//
-//        ArrayAdapter<String>(activity!!, android.R.layout.simple_spinner_item, a).also { adapter ->
-//            // Specify the layout to use when the list of choices appears
-//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//            // Apply the adapter to the spinner
-//            type_spinner.adapter = adapter
-//
-//    }
+
 
 
     override fun onCleared() {

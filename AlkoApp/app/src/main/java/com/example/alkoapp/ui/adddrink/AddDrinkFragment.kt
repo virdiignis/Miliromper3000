@@ -1,30 +1,24 @@
 package com.example.alkoapp.ui.adddrink
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TableRow
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.alkoapp.R
 
 
 import com.example.alkoapp.data.network.DrinksApi
 import com.example.alkoapp.data.repository.DrinksRepository
-
 import kotlinx.android.synthetic.main.add_drink_fragment.*
 
 
 class AddDrinkFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = AddDrinkFragment()
-    }
-
     private lateinit var viewModel: AddDrinkViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,18 +37,19 @@ class AddDrinkFragment : Fragment() {
 
         viewModel.getIngredients()
 
-        val ingredientsArray = emptyArray<Int>()
+        viewModel.ingredients.observe(viewLifecycleOwner, Observer { ingredients ->
+            ingredientsTable!!.also {
+                it.layoutManager = LinearLayoutManager(requireContext())
+                it.setHasFixedSize(true)
+                it.adapter = IngredientRowAdapter(ingredients, 4)
+            }
+        })
 
-        viewModel.ingredients.observe(
-            viewLifecycleOwner,
-            Observer { ingredientsArray})
 
 
 
 
-        val ingredientsTable = this.ingredients_table
-        val tableRow : TableRow = TableRow(activity!!)
-        ingredientsTable.addView(tableRow)
+
 
 
     }
