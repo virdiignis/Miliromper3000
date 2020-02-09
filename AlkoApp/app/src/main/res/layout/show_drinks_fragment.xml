@@ -25,6 +25,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <SearchView
+            android:id="@+id/drinksSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="end"
+            android:layoutDirection="rtl" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/drinks_recycle_view"
             android:layout_width="match_parent"

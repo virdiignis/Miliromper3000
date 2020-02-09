@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.alkoapp.ui.adddrink.AddDrinkFragment
@@ -51,6 +52,19 @@ class ShowDrinksFragment : Fragment(), DrinkClickListener {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
                 it.adapter = DrinksAdapter(drinks, this)
+            }
+        })
+
+        drinks_recycle_view.adapter = DrinksAdapter(ArrayList<Drink>(), this)
+
+        drinksSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                (drinks_recycle_view.adapter as DrinksAdapter).filter.filter(newText)
+                return false
             }
         })
     }
