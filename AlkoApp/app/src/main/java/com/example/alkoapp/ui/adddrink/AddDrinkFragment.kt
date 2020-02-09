@@ -9,6 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.alkoapp.R
+import com.example.alkoapp.data.models.Ingredient
+import com.example.alkoapp.data.models.IngredientProportions
 
 
 import com.example.alkoapp.data.network.DrinksApi
@@ -19,12 +21,15 @@ import kotlinx.android.synthetic.main.add_drink_fragment.*
 class AddDrinkFragment : Fragment() {
 
     private lateinit var viewModel: AddDrinkViewModel
+    var counter = 5
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.add_drink_fragment, container, false)
     }
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -37,21 +42,26 @@ class AddDrinkFragment : Fragment() {
 
         viewModel.getIngredients()
 
-        viewModel.ingredients.observe(viewLifecycleOwner, Observer { ingredients ->
+
+        //Counter można zasrtąpić jakimś array
+
+        viewModel.ingredients.observe(viewLifecycleOwner, Observer { ingredients  ->
             ingredientsTable!!.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
-                it.adapter = IngredientRowAdapter(ingredients, 4)
+                it.adapter = IngredientRowAdapter(ingredients, counter)
             }
         })
 
 
 
 
+        add_ingredient_row_button.setOnClickListener{addButtonListener()}
 
+    }
 
-
-
+    private fun addButtonListener() {
+        counter+=1
     }
 
 

@@ -11,11 +11,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alkoapp.R
 import com.example.alkoapp.data.models.Ingredient
+import com.example.alkoapp.data.models.IngredientProportions
 import kotlinx.android.synthetic.main.ingredient_row.view.*
 
 
 class IngredientRowAdapter(
-    private var ingredients: ArrayList<Ingredient>, private val counter: Int
+    private var ingredients: ArrayList<Ingredient>, var counter:Int
 ) : RecyclerView.Adapter<IngredientItemHolder>() {
 
 
@@ -35,7 +36,7 @@ class IngredientRowAdapter(
     }
 
     override fun getItemCount(): Int {
-        return ingredients.size
+        return counter
     }
 
     override fun onBindViewHolder(holder: IngredientItemHolder, position: Int) {

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.alkoapp.data.models.Ingredient
+import com.example.alkoapp.data.models.IngredientProportions
 import com.example.alkoapp.data.repository.DrinksRepository
 import com.example.alkoapp.util.Coroutines
 import kotlinx.coroutines.Job
@@ -18,10 +19,8 @@ class AddDrinkViewModel(
 
     private val _ingredients = MutableLiveData<ArrayList<Ingredient>>()
 
-
     val ingredients: LiveData<ArrayList<Ingredient>>
         get() = _ingredients
-
 
 
 
