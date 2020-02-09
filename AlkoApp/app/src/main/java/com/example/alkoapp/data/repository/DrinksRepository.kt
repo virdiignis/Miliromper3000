@@ -8,6 +8,7 @@ class DrinksRepository(
 ) : SafeApiRequest() {
 
     suspend fun getDrinks() = apiRequest { api.getDrinks() }
+    suspend fun getIngredients() = apiRequest{api.getIngredients()}
 
 
 }
