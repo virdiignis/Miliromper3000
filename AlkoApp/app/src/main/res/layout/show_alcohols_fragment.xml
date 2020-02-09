@@ -22,7 +22,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <SearchView
+            android:id="@+id/alcoSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="end"
+            android:layoutDirection="rtl" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/alcohols_recycle_view"

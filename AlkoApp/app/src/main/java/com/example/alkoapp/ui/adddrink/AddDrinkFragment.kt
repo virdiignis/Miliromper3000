@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.alkoapp.R
-import com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table
 import kotlinx.android.synthetic.main.add_drink_fragment.*
 
 
@@ -31,12 +30,12 @@ class AddDrinkFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(AddDrinkViewModel::class.java)
-
-
-        val row: TableRow =
-            LayoutInflater.from(context).inflate(R.layout.ingredient_row) as TableRow
-
-        ingredientsTable.addView(row)
+//
+//
+//        val row: TableRow =
+//            LayoutInflater.from(context).inflate(R.layout.ingredient_row) as TableRow
+//
+//        ingredientsTable.addView(row)
         // TODO: Use the ViewModel
     }
 

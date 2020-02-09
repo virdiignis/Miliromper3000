@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -39,6 +40,7 @@ class ShowAlcoholFragment : Fragment(), AlcoholClickListener {
                 )?.addToBackStack("app")?.commit()
         }
 
+
         val api = AlcoholApi()
         val repository = AlcoholsRepository(api)
         factory = AlcoholsViewModelFactory(repository)
@@ -52,6 +54,19 @@ class ShowAlcoholFragment : Fragment(), AlcoholClickListener {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
                 it.adapter = AlcoholsAdapter(alcohols, this)
+            }
+        })
+
+        alcohols_recycle_view.adapter = AlcoholsAdapter(ArrayList<Alcohol>(), this)
+
+        alcoSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                (alcohols_recycle_view.adapter as AlcoholsAdapter).filter.filter(newText)
+                return false
             }
         })
     }
