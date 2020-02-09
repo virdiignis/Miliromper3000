@@ -22,6 +22,7 @@ class Alcohol(models.Model):
     production_country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
     description = models.TextField(null=True)
     type = models.ForeignKey(AlcoholType, on_delete=models.CASCADE)
+    average_rating = models.DecimalField(decimal_places=1, max_digits=2, default=0.0)
 
     class Meta:
         unique_together = ("name", "producer")
