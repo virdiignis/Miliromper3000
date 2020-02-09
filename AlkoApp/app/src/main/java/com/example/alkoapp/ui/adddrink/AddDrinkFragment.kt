@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,7 +22,7 @@ import kotlinx.android.synthetic.main.add_drink_fragment.*
 class AddDrinkFragment : Fragment() {
 
     private lateinit var viewModel: AddDrinkViewModel
-    var counter = 5
+    var counter = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +46,7 @@ class AddDrinkFragment : Fragment() {
 
         //Counter można zasrtąpić jakimś array
 
+
         viewModel.ingredients.observe(viewLifecycleOwner, Observer { ingredients  ->
             ingredientsTable!!.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
@@ -56,13 +58,31 @@ class AddDrinkFragment : Fragment() {
 
 
 
-        add_ingredient_row_button.setOnClickListener{addButtonListener()}
+        add_ingredient_row_button.setOnClickListener { addButtonListener() }
+        del_ingredient_row_button2.setOnClickListener { delButtonListener() }
 
     }
 
     private fun addButtonListener() {
-        counter+=1
+        counter += 1
+        adapterUpdate()
+
+    }
+    private fun delButtonListener() {
+        if(counter >1) {
+            counter -= 1
+            adapterUpdate()
+        }
+
     }
 
-
+    private fun adapterUpdate(){
+        viewModel.ingredients.observe(viewLifecycleOwner, Observer { ingredients ->
+            ingredientsTable!!.also {
+                it.layoutManager = LinearLayoutManager(requireContext())
+                it.setHasFixedSize(true)
+                it.adapter = IngredientRowAdapter(ingredients, counter)
+            }
+        })
+    }
 }

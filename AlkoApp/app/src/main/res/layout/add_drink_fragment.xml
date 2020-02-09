@@ -29,6 +29,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add Position" />
+
+            <Button
+                android:id="@+id/del_ingredient_row_button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Del Position" />
         </TableRow>
 
     </LinearLayout>
