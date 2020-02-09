@@ -48,11 +48,14 @@ class AlcoholProportionViewSet(viewsets.ModelViewSet):
 
 
 class DrinkRatingViewSet(viewsets.ModelViewSet):
-    queryset = DrinkRating.objects.all()
     serializer_class = DrinkRatingSerializer
-    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
-    ordering = ['-favourite']
-    search_fields = ['drink']
+
+    def get_queryset(self):
+        _id = self.request.query_params.get('drink', None)
+        if _id is not None:
+            return DrinkRating.objects.filter(drink=_id)
+        else:
+            return DrinkRating.objects.all()
 
 
 def drink_average_rating(request, _id):
