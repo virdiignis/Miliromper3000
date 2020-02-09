@@ -18,6 +18,10 @@ class ProducerViewSet(viewsets.ModelViewSet):
 
 class AlcoholRatingViewSet(viewsets.ModelViewSet):
     serializer_class = AlcoholRatingSerializer
-    queryset = AlcoholRating.objects.all()
-    # def get_queryset(self):
-    #     return AlcoholRating.objects.filter(alcohol=self.request.query_params['alcohol'])
+
+    def get_queryset(self):
+        _id = self.request.query_params.get('alcohol', None)
+        if _id is not None:
+            return AlcoholRating.objects.filter(alcohol=_id)
+        else:
+            return AlcoholRating.objects.all()
