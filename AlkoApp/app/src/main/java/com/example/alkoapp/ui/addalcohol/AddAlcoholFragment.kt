@@ -9,17 +9,12 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.alkoapp.R
-import com.example.alkoapp.data.models.Alcohol
 import com.example.alkoapp.data.models.AlcoholX
 import com.example.alkoapp.data.network.AlcoholApi
 import com.example.alkoapp.data.repository.AlcoholsRepository
 import com.example.alkoapp.ui.showalcohol.ShowAlcoholFragment
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_add_alcohol.*
-import kotlinx.android.synthetic.main.recycler_opinion.view.*
-import okhttp3.MediaType
-import okhttp3.RequestBody
-import org.json.JSONObject
+
 
 
 class AddAlcoholFragment : Fragment() {
