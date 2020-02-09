@@ -70,7 +70,9 @@ class AlcoholsAdapter(
             if (constraint != null && constraint.isNotEmpty()) {
                 val filterList: MutableList<Alcohol> = ArrayList()
                 for (i in 0 until myDatasetFull.size) {
-                    if (myDatasetFull[i].name.toUpperCase().contains(constraint.toString().toUpperCase())) {
+                    if (myDatasetFull[i].name.toUpperCase().contains(constraint.toString().toUpperCase())
+                        || myDatasetFull[i].producer.toUpperCase().contains(constraint.toString().toUpperCase())
+                    ) {
                         filterList.add(myDatasetFull[i])
                     }
                 }
