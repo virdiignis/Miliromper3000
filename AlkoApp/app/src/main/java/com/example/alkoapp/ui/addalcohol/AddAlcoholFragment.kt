@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.alkoapp.R
@@ -96,23 +97,19 @@ class AddAlcoholFragment : Fragment() {
 
         Log.d("Validate", "Data collected")
         var flag: Boolean = true
-        if (name.length >= 2) {
-            Log.d("Validation", "Name valid")
-        } else {
+        if (name.length < 2) {
             flag = false
-            Log.d("Validation", "Name not-valid")
+            Toast.makeText(requireContext(),"Name not-valid. Please, use at least 2 chars",Toast.LENGTH_SHORT).show()
         }
 
         if (description.isEmpty()) {
-            Log.d("Validation", "Dec not- valid")
             description ="None :("
         }
 
-        if (alcoholContent >= 0 && alcoholContent < 100) {
-            Log.d("Validation", "Alcohol content valid")
-        } else {
+        if (alcoholContent < 0 || alcoholContent > 100) {
             flag = false
-            Log.d("Validation", "alcoC not-valid")
+//          Log.d("Validation", "alcoC not-valid")
+            Toast.makeText(requireContext(),"Only positive numbers lower then 100",Toast.LENGTH_SHORT).show()
         }
 
 
@@ -130,6 +127,8 @@ class AddAlcoholFragment : Fragment() {
             )
 
             viewModel.addItem(anotherItem)
+//            TODO: Info about succes or not in adding from database
+            Toast.makeText(requireContext(),"Item added",Toast.LENGTH_SHORT).show()
 
             super.getFragmentManager()?.beginTransaction()?.replace(id, ShowAlcoholFragment())
                 ?.commit()

@@ -1,9 +1,11 @@
 package com.example.alkoapp.ui.adddrink
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -44,9 +46,11 @@ class AddDrinkFragment : Fragment() {
         viewModel.getIngredients()
 
 
+
+
         //Counter można zasrtąpić jakimś array
 
-
+/*
         viewModel.ingredients.observe(viewLifecycleOwner, Observer { ingredients  ->
             ingredientsTable!!.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
@@ -55,6 +59,14 @@ class AddDrinkFragment : Fragment() {
             }
         })
 
+*/
+        viewModel.ingredients.observe(viewLifecycleOwner, Observer { ingredients  ->
+            ingredientsTable!!.also {
+                it.layoutManager = LinearLayoutManager(requireContext())
+                it.setHasFixedSize(true)
+                it.adapter = IngredientRowAdapter(ingredients, counter)
+            }
+        })
 
 
 
@@ -71,8 +83,10 @@ class AddDrinkFragment : Fragment() {
     private fun delButtonListener() {
         if(counter >1) {
             counter -= 1
-            adapterUpdate()
+//            adapterUpdate()
+
         }
+
 
     }
 
