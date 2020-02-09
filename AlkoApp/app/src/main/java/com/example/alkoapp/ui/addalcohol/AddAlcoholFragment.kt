@@ -14,7 +14,7 @@ import com.example.alkoapp.data.models.AlcoholX
 import com.example.alkoapp.data.network.AlcoholApi
 import com.example.alkoapp.data.repository.AlcoholsRepository
 import com.example.alkoapp.ui.showalcohol.ShowAlcoholFragment
-import kotlinx.android.synthetic.main.fragment_add_alcohol.*
+import kotlinx.android.synthetic.main.add_alcohol_fragment.*
 
 
 
@@ -26,7 +26,7 @@ class AddAlcoholFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_alcohol, container, false)
+        return inflater.inflate(R.layout.add_alcohol_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

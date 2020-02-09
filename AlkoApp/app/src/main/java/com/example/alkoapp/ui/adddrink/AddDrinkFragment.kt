@@ -1,19 +1,14 @@
 package com.example.alkoapp.ui.adddrink
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.alkoapp.R
-import com.example.alkoapp.data.models.Ingredient
-import com.example.alkoapp.data.models.IngredientProportions
 
 
 import com.example.alkoapp.data.network.DrinksApi
@@ -61,7 +56,7 @@ class AddDrinkFragment : Fragment() {
 
 */
         viewModel.ingredients.observe(viewLifecycleOwner, Observer { ingredients  ->
-            ingredientsTable!!.also {
+            ingredients_table!!.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
                 it.adapter = IngredientRowAdapter(ingredients, counter)
@@ -70,8 +65,8 @@ class AddDrinkFragment : Fragment() {
 
 
 
-        add_ingredient_row_button.setOnClickListener { addButtonListener() }
-        del_ingredient_row_button2.setOnClickListener { delButtonListener() }
+        add_ingredient_button.setOnClickListener { addButtonListener() }
+        del_ingredient_button.setOnClickListener { delButtonListener() }
 
     }
 
@@ -92,7 +87,7 @@ class AddDrinkFragment : Fragment() {
 
     private fun adapterUpdate(){
         viewModel.ingredients.observe(viewLifecycleOwner, Observer { ingredients ->
-            ingredientsTable!!.also {
+            ingredients_table!!.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
                 it.adapter = IngredientRowAdapter(ingredients, counter)

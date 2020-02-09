@@ -6,13 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
-import android.widget.Spinner
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alkoapp.R
 import com.example.alkoapp.data.models.Ingredient
-import com.example.alkoapp.data.models.IngredientProportions
-import kotlinx.android.synthetic.main.ingredient_row.view.*
+import kotlinx.android.synthetic.main.recycler_ingredient_alcohol_row.view.*
 
 
 class IngredientRowAdapter(
@@ -28,7 +26,7 @@ class IngredientRowAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientItemHolder {
         return IngredientItemHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.ingredient_row,
+                R.layout.recycler_ingredient_alcohol_row,
                 parent,
                 false
             ), parent.context
