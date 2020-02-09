@@ -1,0 +1,1755 @@
+[
+  {
+    "model": "dbAlco.ingredient",
+    "pk": "Blue Quarcao",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.ingredient",
+    "pk": "Cane Sugar",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.ingredient",
+    "pk": "Coca-Cola",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.ingredient",
+    "pk": "Lemon juice",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.ingredient",
+    "pk": "Lime",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.ingredient",
+    "pk": "Tonic",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.ingredient",
+    "pk": "lemon",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.bartenderstuff",
+    "pk": "Shaker",
+    "fields": {
+      "image": "images/shaker.jpg"
+    }
+  },
+  {
+    "model": "dbAlco.bartenderstuff",
+    "pk": "Spoon",
+    "fields": {
+      "image": "images/51t8G5M7pzL._SX425__rx9Dyx9.jpg"
+    }
+  },
+  {
+    "model": "dbAlco.glass",
+    "pk": "Highball",
+    "fields": {
+      "image": "images/800px-Highball_Glass_Tumbler.svg_lIQzNnc.png"
+    }
+  },
+  {
+    "model": "dbAlco.glass",
+    "pk": "Old Fashioned",
+    "fields": {
+      "image": "images/800px-Oldf_Fashioned_Glass_Cg68tjb.jpg"
+    }
+  },
+  {
+    "model": "dbAlco.glass",
+    "pk": "Whisky round glass",
+    "fields": {
+      "image": "images/whisky.jpg"
+    }
+  },
+  {
+    "model": "dbAlco.drink",
+    "pk": 1,
+    "fields": {
+      "name": "Vodka Cola",
+      "description": "simple drink",
+      "instruction": "Add coke to vodka",
+      "how_to_serve": "in highball glass on the rocks",
+      "glass": "Highball",
+      "stuff": [
+        "Spoon"
+      ]
+    }
+  },
+  {
+    "model": "dbAlco.ingredientproportion",
+    "pk": 1,
+    "fields": {
+      "drink": 1,
+      "ingredient": "Coca-Cola",
+      "amount": "100.0",
+      "unit": "ml"
+    }
+  },
+  {
+    "model": "dbAlco.alcoholproportion",
+    "pk": 1,
+    "fields": {
+      "drink": 1,
+      "alcohol": 1,
+      "amount": "100.0",
+      "unit": "ml"
+    }
+  },
+  {
+    "model": "dbAlco.shop",
+    "pk": 1,
+    "fields": {
+      "name": "Biedra",
+      "location": "Poznan"
+    }
+  },
+  {
+    "model": "dbAlco.pub",
+    "pk": 1,
+    "fields": {
+      "name": "PRL",
+      "location": "Pozna\u0144, \u017bydowska"
+    }
+  },
+  {
+    "model": "dbAlco.country",
+    "pk": "England",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.country",
+    "pk": "Germany",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.country",
+    "pk": "Mexico",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.country",
+    "pk": "Poland",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.country",
+    "pk": "Russia",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.country",
+    "pk": "Scotland",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.country",
+    "pk": "USA",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.producer",
+    "pk": "Budweiser",
+    "fields": {
+      "country": "Germany"
+    }
+  },
+  {
+    "model": "dbAlco.producer",
+    "pk": "Carlsberg",
+    "fields": {
+      "country": "USA"
+    }
+  },
+  {
+    "model": "dbAlco.producer",
+    "pk": "Jack Daniels",
+    "fields": {
+      "country": "USA"
+    }
+  },
+  {
+    "model": "dbAlco.producer",
+    "pk": "Johny Walker",
+    "fields": {
+      "country": "Scotland"
+    }
+  },
+  {
+    "model": "dbAlco.producer",
+    "pk": "Mcallan",
+    "fields": {
+      "country": "Scotland"
+    }
+  },
+  {
+    "model": "dbAlco.producer",
+    "pk": "Sobieski",
+    "fields": {
+      "country": "Poland"
+    }
+  },
+  {
+    "model": "dbAlco.producer",
+    "pk": "Tyskie",
+    "fields": {
+      "country": "Poland"
+    }
+  },
+  {
+    "model": "dbAlco.producer",
+    "pk": "Wyborowa",
+    "fields": {
+      "country": "Poland"
+    }
+  },
+  {
+    "model": "dbAlco.alcoholgeneraltype",
+    "pk": "Beer",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.alcoholgeneraltype",
+    "pk": "Champagne",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.alcoholgeneraltype",
+    "pk": "Rum",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.alcoholgeneraltype",
+    "pk": "Tequila",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.alcoholgeneraltype",
+    "pk": "Vodka",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.alcoholgeneraltype",
+    "pk": "Whiskey",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.alcoholgeneraltype",
+    "pk": "Wine",
+    "fields": {}
+  },
+  {
+    "model": "dbAlco.alcoholtype",
+    "pk": 1,
+    "fields": {
+      "general_type": "Whiskey",
+      "specific_type": "Bourbon"
+    }
+  },
+  {
+    "model": "dbAlco.alcoholtype",
+    "pk": 2,
+    "fields": {
+      "general_type": "Vodka",
+      "specific_type": "Pure"
+    }
+  },
+  {
+    "model": "dbAlco.alcoholtype",
+    "pk": 3,
+    "fields": {
+      "general_type": "Vodka",
+      "specific_type": "Lemon"
+    }
+  },
+  {
+    "model": "dbAlco.alcoholtype",
+    "pk": 4,
+    "fields": {
+      "general_type": "Rum",
+      "specific_type": "White"
+    }
+  },
+  {
+    "model": "dbAlco.alcoholtype",
+    "pk": 5,
+    "fields": {
+      "general_type": "Wine",
+      "specific_type": "Red"
+    }
+  },
+  {
+    "model": "dbAlco.alcoholtype",
+    "pk": 6,
+    "fields": {
+      "general_type": "Wine",
+      "specific_type": "White"
+    }
+  },
+  {
+    "model": "dbAlco.alcoholtype",
+    "pk": 7,
+    "fields": {
+      "general_type": "Wine",
+      "specific_type": "Rose"
+    }
+  },
+  {
+    "model": "dbAlco.alcoholtype",
+    "pk": 8,
+    "fields": {
+      "general_type": "Wine",
+      "specific_type": "Fruit"
+    }
+  },
+  {
+    "model": "dbAlco.alcoholtype",
+    "pk": 9,
+    "fields": {
+      "general_type": "Beer",
+      "specific_type": "Lager"
+    }
+  },
+  {
+    "model": "dbAlco.alcoholtype",
+    "pk": 10,
+    "fields": {
+      "general_type": "Beer",
+      "specific_type": "Porter"
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 1,
+    "fields": {
+      "name": "Luksusowa",
+      "producer": "Wyborowa",
+      "alcohol_content": "40.00",
+      "production_country": "Poland",
+      "description": null,
+      "type": 2
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 2,
+    "fields": {
+      "name": "\u017bubr\u00f3wka",
+      "producer": "Wyborowa",
+      "alcohol_content": "40.00",
+      "production_country": "Poland",
+      "description": null,
+      "type": 2
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 3,
+    "fields": {
+      "name": "Jack Daniels",
+      "producer": "Wyborowa",
+      "alcohol_content": "40.00",
+      "production_country": "Poland",
+      "description": "Best whisky to drink with cola",
+      "type": 1
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 4,
+    "fields": {
+      "name": "Tyskie",
+      "producer": "Tyskie",
+      "alcohol_content": "5.50",
+      "production_country": "Poland",
+      "description": "Popular beer, no taste",
+      "type": 9
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 5,
+    "fields": {
+      "name": "Jack Daniels Honey",
+      "producer": "Jack Daniels",
+      "alcohol_content": "38.00",
+      "production_country": "USA",
+      "description": "Tasty whiskey",
+      "type": 9
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 6,
+    "fields": {
+      "name": "Jack Daniels Honey",
+      "producer": "Budweiser",
+      "alcohol_content": "38.00",
+      "production_country": "USA",
+      "description": "Tasty whiskey",
+      "type": 1
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 7,
+    "fields": {
+      "name": "Carlsberg",
+      "producer": "Carlsberg",
+      "alcohol_content": "6.00",
+      "production_country": "USA",
+      "description": "popular beer",
+      "type": 9
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 8,
+    "fields": {
+      "name": "White March",
+      "producer": "Budweiser",
+      "alcohol_content": "5.00",
+      "production_country": "Germany",
+      "description": "popular beer",
+      "type": 9
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 9,
+    "fields": {
+      "name": "Tyskie Strong",
+      "producer": "Tyskie",
+      "alcohol_content": "8.00",
+      "production_country": "Poland",
+      "description": "popular beer",
+      "type": 9
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 10,
+    "fields": {
+      "name": "CArlo rossi",
+      "producer": "Carlsberg",
+      "alcohol_content": "11.00",
+      "production_country": "England",
+      "description": "popular wine",
+      "type": 6
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 11,
+    "fields": {
+      "name": "aa",
+      "producer": "Sobieski",
+      "alcohol_content": "11.00",
+      "production_country": "Russia",
+      "description": "1werfwdfssfz da f a v fadvvLorem Ipsum",
+      "type": 4
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 12,
+    "fields": {
+      "name": "aa",
+      "producer": "Tyskie",
+      "alcohol_content": "11.00",
+      "production_country": "Russia",
+      "description": "1werfwdfssfz da f a v fadvvLorem Ipsum",
+      "type": 4
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 13,
+    "fields": {
+      "name": "sedrfg",
+      "producer": "Wyborowa",
+      "alcohol_content": null,
+      "production_country": null,
+      "description": null,
+      "type": 1
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 14,
+    "fields": {
+      "name": "Zaglowka",
+      "producer": "Wyborowa",
+      "alcohol_content": "40.00",
+      "production_country": "Poland",
+      "description": null,
+      "type": 1
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 15,
+    "fields": {
+      "name": "Zagloawka",
+      "producer": "Wyborowa",
+      "alcohol_content": "40.00",
+      "production_country": "Poland",
+      "description": null,
+      "type": 1
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 16,
+    "fields": {
+      "name": "asa",
+      "producer": "Wyborowa",
+      "alcohol_content": "40.00",
+      "production_country": "Poland",
+      "description": null,
+      "type": 1
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 17,
+    "fields": {
+      "name": "asas",
+      "producer": "Wyborowa",
+      "alcohol_content": "40.00",
+      "production_country": "Poland",
+      "description": null,
+      "type": 1
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 18,
+    "fields": {
+      "name": "Wino wyborow",
+      "producer": "Wyborowa",
+      "alcohol_content": "40.00",
+      "production_country": "Poland",
+      "description": null,
+      "type": 8
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 19,
+    "fields": {
+      "name": "Wino najs",
+      "producer": "Wyborowa",
+      "alcohol_content": "40.00",
+      "production_country": "Poland",
+      "description": null,
+      "type": 8
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 20,
+    "fields": {
+      "name": "aszsxczsxczsxczsxczsxczsxczsxca",
+      "producer": "Wyborowa",
+      "alcohol_content": "40.00",
+      "production_country": "Poland",
+      "description": null,
+      "type": 1
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 21,
+    "fields": {
+      "name": "aaaadsad",
+      "producer": "Wyborowa",
+      "alcohol_content": "33.00",
+      "production_country": "Poland",
+      "description": "None :(",
+      "type": 1
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 22,
+    "fields": {
+      "name": "barubar",
+      "producer": "Wyborowa",
+      "alcohol_content": "66.00",
+      "production_country": "Poland",
+      "description": "None :(",
+      "type": 1
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 23,
+    "fields": {
+      "name": "uikhkuhkh",
+      "producer": "Wyborowa",
+      "alcohol_content": "66.00",
+      "production_country": "Poland",
+      "description": "None :(",
+      "type": 1
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 24,
+    "fields": {
+      "name": "Carlo Rossi",
+      "producer": "Budweiser",
+      "alcohol_content": "69.00",
+      "production_country": "Poland",
+      "description": "dsASDsDsd\naSDA\nasd",
+      "type": 7
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 25,
+    "fields": {
+      "name": "a;jsfdaljf",
+      "producer": "Wyborowa",
+      "alcohol_content": "30.00",
+      "production_country": "Poland",
+      "description": "fjafljka",
+      "type": 1
+    }
+  },
+  {
+    "model": "dbAlco.alcohol",
+    "pk": 26,
+    "fields": {
+      "name": "HB jnbuuy",
+      "producer": "Johny Walker",
+      "alcohol_content": "8.00",
+      "production_country": "Poland",
+      "description": "None :(",
+      "type": 8
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 1,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 1,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 1,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": 1,
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 2,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 2,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 2,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can view permission",
+      "content_type": 2,
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 3,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 3,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 3,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can view group",
+      "content_type": 3,
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add user",
+      "content_type": 4,
+      "codename": "add_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change user",
+      "content_type": 4,
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete user",
+      "content_type": 4,
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can view user",
+      "content_type": 4,
+      "codename": "view_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 5,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 5,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 5,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can view content type",
+      "content_type": 5,
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 6,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 6,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 6,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can view session",
+      "content_type": 6,
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add alcohol",
+      "content_type": 7,
+      "codename": "add_alcohol"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change alcohol",
+      "content_type": 7,
+      "codename": "change_alcohol"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete alcohol",
+      "content_type": 7,
+      "codename": "delete_alcohol"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can view alcohol",
+      "content_type": 7,
+      "codename": "view_alcohol"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can add alcohol general type",
+      "content_type": 8,
+      "codename": "add_alcoholgeneraltype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can change alcohol general type",
+      "content_type": 8,
+      "codename": "change_alcoholgeneraltype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can delete alcohol general type",
+      "content_type": 8,
+      "codename": "delete_alcoholgeneraltype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "Can view alcohol general type",
+      "content_type": 8,
+      "codename": "view_alcoholgeneraltype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+      "name": "Can add bartender stuff",
+      "content_type": 9,
+      "codename": "add_bartenderstuff"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can change bartender stuff",
+      "content_type": 9,
+      "codename": "change_bartenderstuff"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "Can delete bartender stuff",
+      "content_type": 9,
+      "codename": "delete_bartenderstuff"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+      "name": "Can view bartender stuff",
+      "content_type": 9,
+      "codename": "view_bartenderstuff"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+      "name": "Can add country",
+      "content_type": 10,
+      "codename": "add_country"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+      "name": "Can change country",
+      "content_type": 10,
+      "codename": "change_country"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+      "name": "Can delete country",
+      "content_type": 10,
+      "codename": "delete_country"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+      "name": "Can view country",
+      "content_type": 10,
+      "codename": "view_country"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+      "name": "Can add drink",
+      "content_type": 11,
+      "codename": "add_drink"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+      "name": "Can change drink",
+      "content_type": 11,
+      "codename": "change_drink"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+      "name": "Can delete drink",
+      "content_type": 11,
+      "codename": "delete_drink"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+      "name": "Can view drink",
+      "content_type": 11,
+      "codename": "view_drink"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+      "name": "Can add glass",
+      "content_type": 12,
+      "codename": "add_glass"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+      "name": "Can change glass",
+      "content_type": 12,
+      "codename": "change_glass"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 47,
+    "fields": {
+      "name": "Can delete glass",
+      "content_type": 12,
+      "codename": "delete_glass"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 48,
+    "fields": {
+      "name": "Can view glass",
+      "content_type": 12,
+      "codename": "view_glass"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 49,
+    "fields": {
+      "name": "Can add ingredient",
+      "content_type": 13,
+      "codename": "add_ingredient"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 50,
+    "fields": {
+      "name": "Can change ingredient",
+      "content_type": 13,
+      "codename": "change_ingredient"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 51,
+    "fields": {
+      "name": "Can delete ingredient",
+      "content_type": 13,
+      "codename": "delete_ingredient"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 52,
+    "fields": {
+      "name": "Can view ingredient",
+      "content_type": 13,
+      "codename": "view_ingredient"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 53,
+    "fields": {
+      "name": "Can add pub",
+      "content_type": 14,
+      "codename": "add_pub"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 54,
+    "fields": {
+      "name": "Can change pub",
+      "content_type": 14,
+      "codename": "change_pub"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 55,
+    "fields": {
+      "name": "Can delete pub",
+      "content_type": 14,
+      "codename": "delete_pub"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 56,
+    "fields": {
+      "name": "Can view pub",
+      "content_type": 14,
+      "codename": "view_pub"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 57,
+    "fields": {
+      "name": "Can add shop",
+      "content_type": 15,
+      "codename": "add_shop"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 58,
+    "fields": {
+      "name": "Can change shop",
+      "content_type": 15,
+      "codename": "change_shop"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 59,
+    "fields": {
+      "name": "Can delete shop",
+      "content_type": 15,
+      "codename": "delete_shop"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 60,
+    "fields": {
+      "name": "Can view shop",
+      "content_type": 15,
+      "codename": "view_shop"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 61,
+    "fields": {
+      "name": "Can add shop occurrence",
+      "content_type": 16,
+      "codename": "add_shopoccurrence"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 62,
+    "fields": {
+      "name": "Can change shop occurrence",
+      "content_type": 16,
+      "codename": "change_shopoccurrence"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 63,
+    "fields": {
+      "name": "Can delete shop occurrence",
+      "content_type": 16,
+      "codename": "delete_shopoccurrence"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 64,
+    "fields": {
+      "name": "Can view shop occurrence",
+      "content_type": 16,
+      "codename": "view_shopoccurrence"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 65,
+    "fields": {
+      "name": "Can add pub rating",
+      "content_type": 17,
+      "codename": "add_pubrating"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 66,
+    "fields": {
+      "name": "Can change pub rating",
+      "content_type": 17,
+      "codename": "change_pubrating"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 67,
+    "fields": {
+      "name": "Can delete pub rating",
+      "content_type": 17,
+      "codename": "delete_pubrating"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 68,
+    "fields": {
+      "name": "Can view pub rating",
+      "content_type": 17,
+      "codename": "view_pubrating"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 69,
+    "fields": {
+      "name": "Can add pub occurrence",
+      "content_type": 18,
+      "codename": "add_puboccurrence"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 70,
+    "fields": {
+      "name": "Can change pub occurrence",
+      "content_type": 18,
+      "codename": "change_puboccurrence"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 71,
+    "fields": {
+      "name": "Can delete pub occurrence",
+      "content_type": 18,
+      "codename": "delete_puboccurrence"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 72,
+    "fields": {
+      "name": "Can view pub occurrence",
+      "content_type": 18,
+      "codename": "view_puboccurrence"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 73,
+    "fields": {
+      "name": "Can add producer",
+      "content_type": 19,
+      "codename": "add_producer"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 74,
+    "fields": {
+      "name": "Can change producer",
+      "content_type": 19,
+      "codename": "change_producer"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 75,
+    "fields": {
+      "name": "Can delete producer",
+      "content_type": 19,
+      "codename": "delete_producer"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 76,
+    "fields": {
+      "name": "Can view producer",
+      "content_type": 19,
+      "codename": "view_producer"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 77,
+    "fields": {
+      "name": "Can add drink rating",
+      "content_type": 20,
+      "codename": "add_drinkrating"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 78,
+    "fields": {
+      "name": "Can change drink rating",
+      "content_type": 20,
+      "codename": "change_drinkrating"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 79,
+    "fields": {
+      "name": "Can delete drink rating",
+      "content_type": 20,
+      "codename": "delete_drinkrating"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 80,
+    "fields": {
+      "name": "Can view drink rating",
+      "content_type": 20,
+      "codename": "view_drinkrating"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 81,
+    "fields": {
+      "name": "Can add alcohol type",
+      "content_type": 21,
+      "codename": "add_alcoholtype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 82,
+    "fields": {
+      "name": "Can change alcohol type",
+      "content_type": 21,
+      "codename": "change_alcoholtype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 83,
+    "fields": {
+      "name": "Can delete alcohol type",
+      "content_type": 21,
+      "codename": "delete_alcoholtype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 84,
+    "fields": {
+      "name": "Can view alcohol type",
+      "content_type": 21,
+      "codename": "view_alcoholtype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 85,
+    "fields": {
+      "name": "Can add ingredient proportion",
+      "content_type": 22,
+      "codename": "add_ingredientproportion"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 86,
+    "fields": {
+      "name": "Can change ingredient proportion",
+      "content_type": 22,
+      "codename": "change_ingredientproportion"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 87,
+    "fields": {
+      "name": "Can delete ingredient proportion",
+      "content_type": 22,
+      "codename": "delete_ingredientproportion"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 88,
+    "fields": {
+      "name": "Can view ingredient proportion",
+      "content_type": 22,
+      "codename": "view_ingredientproportion"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 89,
+    "fields": {
+      "name": "Can add alcohol rating",
+      "content_type": 23,
+      "codename": "add_alcoholrating"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 90,
+    "fields": {
+      "name": "Can change alcohol rating",
+      "content_type": 23,
+      "codename": "change_alcoholrating"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 91,
+    "fields": {
+      "name": "Can delete alcohol rating",
+      "content_type": 23,
+      "codename": "delete_alcoholrating"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 92,
+    "fields": {
+      "name": "Can view alcohol rating",
+      "content_type": 23,
+      "codename": "view_alcoholrating"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 93,
+    "fields": {
+      "name": "Can add alcohol proportion",
+      "content_type": 24,
+      "codename": "add_alcoholproportion"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 94,
+    "fields": {
+      "name": "Can change alcohol proportion",
+      "content_type": 24,
+      "codename": "change_alcoholproportion"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 95,
+    "fields": {
+      "name": "Can delete alcohol proportion",
+      "content_type": 24,
+      "codename": "delete_alcoholproportion"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 96,
+    "fields": {
+      "name": "Can view alcohol proportion",
+      "content_type": 24,
+      "codename": "view_alcoholproportion"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$180000$HYGIJdaKopCn$6AKjDA5pxAKZCq29YRjszce68Sze47FrLiXG6nwTMDs=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "gbryk",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2020-01-25T12:20:56.679Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "makram",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "makram",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": false,
+      "date_joined": "2020-01-31T22:15:48.753Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "password": "kajami",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "kajami",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": false,
+      "date_joined": "2020-01-31T22:15:59.283Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "dbAlco.alcoholrating",
+    "pk": 1,
+    "fields": {
+      "alcohol": 1,
+      "user": 1,
+      "rating": "9.9",
+      "comment": null,
+      "favourite": true
+    }
+  },
+  {
+    "model": "dbAlco.alcoholrating",
+    "pk": 2,
+    "fields": {
+      "alcohol": 3,
+      "user": 1,
+      "rating": "9.0",
+      "comment": null,
+      "favourite": false
+    }
+  },
+  {
+    "model": "dbAlco.alcoholrating",
+    "pk": 3,
+    "fields": {
+      "alcohol": 2,
+      "user": 1,
+      "rating": "9.9",
+      "comment": null,
+      "favourite": false
+    }
+  },
+  {
+    "model": "dbAlco.alcoholrating",
+    "pk": 4,
+    "fields": {
+      "alcohol": 10,
+      "user": 1,
+      "rating": "8.0",
+      "comment": "Yummy",
+      "favourite": true
+    }
+  },
+  {
+    "model": "dbAlco.alcoholrating",
+    "pk": 5,
+    "fields": {
+      "alcohol": 8,
+      "user": 1,
+      "rating": "8.0",
+      "comment": "d",
+      "favourite": true
+    }
+  },
+  {
+    "model": "dbAlco.alcoholrating",
+    "pk": 6,
+    "fields": {
+      "alcohol": 8,
+      "user": 3,
+      "rating": "5.0",
+      "comment": "d",
+      "favourite": true
+    }
+  },
+  {
+    "model": "dbAlco.alcoholrating",
+    "pk": 7,
+    "fields": {
+      "alcohol": 8,
+      "user": 4,
+      "rating": "4.0",
+      "comment": "d",
+      "favourite": true
+    }
+  },
+  {
+    "model": "dbAlco.alcoholrating",
+    "pk": 8,
+    "fields": {
+      "alcohol": 2,
+      "user": 4,
+      "rating": "4.0",
+      "comment": "d",
+      "favourite": true
+    }
+  },
+  {
+    "model": "dbAlco.alcoholrating",
+    "pk": 9,
+    "fields": {
+      "alcohol": 2,
+      "user": 3,
+      "rating": "9.0",
+      "comment": "d",
+      "favourite": true
+    }
+  },
+  {
+    "model": "dbAlco.alcoholrating",
+    "pk": 10,
+    "fields": {
+      "alcohol": 1,
+      "user": 3,
+      "rating": "9.0",
+      "comment": "d",
+      "favourite": true
+    }
+  },
+  {
+    "model": "dbAlco.alcoholrating",
+    "pk": 11,
+    "fields": {
+      "alcohol": 1,
+      "user": 4,
+      "rating": "3.0",
+      "comment": "d",
+      "favourite": true
+    }
+  },
+  {
+    "model": "dbAlco.alcoholrating",
+    "pk": 12,
+    "fields": {
+      "alcohol": 3,
+      "user": 4,
+      "rating": "4.0",
+      "comment": "d",
+      "favourite": true
+    }
+  },
+  {
+    "model": "dbAlco.alcoholrating",
+    "pk": 13,
+    "fields": {
+      "alcohol": 3,
+      "user": 3,
+      "rating": "1.0",
+      "comment": "d",
+      "favourite": true
+    }
+  },
+  {
+    "model": "dbAlco.alcoholrating",
+    "pk": 14,
+    "fields": {
+      "alcohol": 5,
+      "user": 3,
+      "rating": "1.0",
+      "comment": "d",
+      "favourite": true
+    }
+  },
+  {
+    "model": "dbAlco.alcoholrating",
+    "pk": 15,
+    "fields": {
+      "alcohol": 5,
+      "user": 4,
+      "rating": "9.0",
+      "comment": "d",
+      "favourite": true
+    }
+  },
+  {
+    "model": "dbAlco.alcoholrating",
+    "pk": 16,
+    "fields": {
+      "alcohol": 5,
+      "user": 1,
+      "rating": "5.0",
+      "comment": "d",
+      "favourite": true
+    }
+  },
+  {
+    "model": "dbAlco.alcoholrating",
+    "pk": 17,
+    "fields": {
+      "alcohol": 24,
+      "user": 1,
+      "rating": "2.4",
+      "comment": null,
+      "favourite": false
+    }
+  },
+  {
+    "model": "dbAlco.drinkrating",
+    "pk": 1,
+    "fields": {
+      "drink": 1,
+      "user": 1,
+      "rating": "2.4",
+      "favourite": false
+    }
+  }
+]
