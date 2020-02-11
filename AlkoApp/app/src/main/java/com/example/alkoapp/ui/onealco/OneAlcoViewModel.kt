@@ -1,9 +1,11 @@
 package com.example.alkoapp.ui.onealco
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.alkoapp.data.models.Alcohol
+import com.example.alkoapp.data.models.AlcoholRating
 import com.example.alkoapp.data.models.Rate
 import com.example.alkoapp.data.network.AlcoholApi
 import com.example.alkoapp.data.repository.AlcoholsRepository
@@ -33,6 +35,23 @@ class OneAlcoViewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         if (::job.isInitialized) job.cancel()
+    }
+
+    fun rate(rating: AlcoholRating) {
+        job = Coroutines.ioThenMain(
+            {
+                try {
+                    repository.addRating(rating)
+
+                } catch (e: Throwable) {
+                    Log.d("ERROR", e.message.toString())
+                }
+            },
+            {
+                val s = it.toString()
+                Log.d("Response", it.toString())
+            }
+        )
     }
 
 

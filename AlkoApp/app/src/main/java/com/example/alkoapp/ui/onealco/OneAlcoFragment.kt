@@ -6,11 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RatingBar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.alkoapp.R
 import com.example.alkoapp.data.models.Alcohol
+import com.example.alkoapp.data.models.AlcoholRating
 import com.example.alkoapp.databinding.OneAlcoFragmentBinding
 import com.example.alkoapp.ui.onedrink.RatingAdapter
 import kotlinx.android.synthetic.main.one_alco_fragment.*
@@ -46,6 +48,20 @@ class OneAlcoFragment(val itemAlcohol: Alcohol) : Fragment() {
             }
         })
 
+        ratingBar.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->
+            rate(ratingBar, rating, fromUser)
+        }
+
+    }
+
+    private fun rate(ratingBar: RatingBar, rating: Float, fromUser: Boolean) {
+        val arating = AlcoholRating(
+            alcohol = itemAlcohol.id,
+            rating = rating,
+            user = 1 // TODO: change this when we have login XDD
+        )
+
+        viewModel.rate(arating)
     }
 
 

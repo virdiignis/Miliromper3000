@@ -1,5 +1,6 @@
 package com.example.alkoapp.data.repository
 
+import com.example.alkoapp.data.models.AlcoholRating
 import com.example.alkoapp.data.models.AlcoholX
 import com.example.alkoapp.data.network.AlcoholApi
 import com.example.alkoapp.data.network.SafeApiRequest
@@ -15,6 +16,9 @@ class AlcoholsRepository(
     suspend fun getProductionCountries() = apiRequest { api.getProductionCountries() }
     suspend fun getTypes() = apiRequest { api.getTypes() }
     suspend fun getRating(id : Int) = apiRequest{api.getRatings(id)}
+    suspend fun addRating(rating: AlcoholRating) = apiRequest {
+        api.addRating(rating)
+    }
 
 
     suspend fun addAlcohol (item : AlcoholX) = apiRequest{api.addAlcohol(item) }

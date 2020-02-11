@@ -43,5 +43,9 @@ interface AlcoholApi {
     @POST("/alcohols/")
     suspend  fun addAlcohol(@Body alcohol: AlcoholX) : Response<Any>
 
+    @Headers("Content-Type: application/json")
+    @POST("/alcohols/ratings/")
+    suspend fun addRating(@Body rating: AlcoholRating): Response<Any>
+
 
 }
