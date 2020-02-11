@@ -60,7 +60,7 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
     }
     private fun delButtonListener() {
         val sizeOfArray = viewModel.ingredientProportions.size
-        if(sizeOfArray >1) {
+        if(sizeOfArray >0) {
             viewModel.ingredientProportions.removeAt(sizeOfArray-1)
             adapterUpdate()
 
