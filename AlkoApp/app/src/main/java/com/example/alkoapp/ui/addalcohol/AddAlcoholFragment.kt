@@ -82,7 +82,10 @@ class AddAlcoholFragment : Fragment() {
 
         try {
             name = this.alco_add_name.text.toString()
-            alcoholContent = this.alcohol_content.text.toString().toFloat()
+            val temp = this.alcohol_content.text.toString()
+            if( temp.isNotEmpty()) {
+                    alcoholContent = temp.toFloat()
+                }
             description = this.description.text.toString()
 //            type = this.type_spinner.selectedItem.toString()
             type = this.type_spinner.selectedItemId.toInt()
@@ -92,6 +95,7 @@ class AddAlcoholFragment : Fragment() {
         } catch (e: Throwable) {
             Log.d("Validation", e.message.toString())
             Log.d("Validation", "zonk")
+
         }
 
 
@@ -106,7 +110,7 @@ class AddAlcoholFragment : Fragment() {
             description ="None :("
         }
 
-        if (alcoholContent < 0 || alcoholContent > 100) {
+        if (alcoholContent < 0.0 || alcoholContent > 100.0  ) {
             flag = false
 //          Log.d("Validation", "alcoC not-valid")
             Toast.makeText(requireContext(),"Only positive numbers lower then 100",Toast.LENGTH_SHORT).show()

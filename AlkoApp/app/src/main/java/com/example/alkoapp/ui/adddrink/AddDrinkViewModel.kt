@@ -34,7 +34,7 @@ class AddDrinkViewModel(
     }
 
     fun addDefaultIngredient() {
-        ingredientProportions.add(IngredientProportions("", 1, ingredientProportions.size, "lemon", "%"))
+        ingredientProportions.add(IngredientProportions("", 1, ingredientProportions.size, "lemon", "g"))
     }
 
 
