@@ -151,7 +151,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/ingredients_table"
+            android:id="@+id/ingredientsTable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -168,7 +168,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ingredients_table">
+            app:layout_constraintTop_toBottomOf="@id/ingredientsTable">
 
             <Button
                 android:id="@+id/del_ingredient_button"

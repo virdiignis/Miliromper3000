@@ -40,10 +40,9 @@ class AddDrinkFragment : Fragment() {
 
         viewModel.getIngredients()
 
+        viewModel.addDefaultIngredient()
 
-
-
-        //Counter można zasrtąpić jakimś array
+        //Counter można zastąpić jakimś array
 
 /*
         viewModel.ingredients.observe(viewLifecycleOwner, Observer { ingredients  ->
@@ -56,10 +55,10 @@ class AddDrinkFragment : Fragment() {
 
 */
         viewModel.ingredients.observe(viewLifecycleOwner, Observer { ingredients  ->
-            ingredients_table!!.also {
+            ingredientsTable!!.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
-                it.adapter = IngredientRowAdapter(ingredients, counter)
+                it.adapter = IngredientRowAdapter(ingredients, viewModel.ingredientProportions)
             }
         })
 
@@ -71,8 +70,9 @@ class AddDrinkFragment : Fragment() {
     }
 
     private fun addButtonListener() {
-        counter += 1
+        viewModel.addDefaultIngredient()
         adapterUpdate()
+
 
     }
     private fun delButtonListener() {
@@ -87,10 +87,10 @@ class AddDrinkFragment : Fragment() {
 
     private fun adapterUpdate(){
         viewModel.ingredients.observe(viewLifecycleOwner, Observer { ingredients ->
-            ingredients_table!!.also {
+            ingredientsTable!!.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
-                it.adapter = IngredientRowAdapter(ingredients, counter)
+                it.adapter = IngredientRowAdapter(ingredients, viewModel.ingredientProportions)
             }
         })
     }
