@@ -12,13 +12,13 @@ class AlcoholsRepository(
 //    suspend fun getAlcohols() = apiRequest { api.getAlcohols() }
     suspend fun getAlcohols() = apiRequest { api.getAlcohols() }
 
+    suspend fun getAlcohol(id: Int) = apiRequest { api.getAlcohol(id) }
+
     suspend fun getProducers() = apiRequest { api.getProducers() }
     suspend fun getProductionCountries() = apiRequest { api.getProductionCountries() }
     suspend fun getTypes() = apiRequest { api.getTypes() }
     suspend fun getRating(id : Int) = apiRequest{api.getRatings(id)}
-    suspend fun addRating(rating: AlcoholRating) = apiRequest {
-        api.addRating(rating)
-    }
+    suspend fun addRating(rating: AlcoholRating) = apiRequest { api.addRating(rating) }
 
 
     suspend fun addAlcohol (item : AlcoholX) = apiRequest{api.addAlcohol(item) }

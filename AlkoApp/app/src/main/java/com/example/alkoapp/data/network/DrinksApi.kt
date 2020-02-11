@@ -4,6 +4,7 @@ import com.example.alkoapp.data.models.Drink
 import com.example.alkoapp.data.models.Ingredient
 import retrofit2.Response
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
@@ -15,6 +16,7 @@ interface DrinksApi {
         operator fun invoke() : DrinksApi {
             return Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .baseUrl("http://10.0.2.2:8000/")
                 .build()
                 .create(DrinksApi::class.java)

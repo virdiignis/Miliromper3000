@@ -10,8 +10,7 @@ import com.example.alkoapp.data.models.Rate
 import com.example.alkoapp.data.network.AlcoholApi
 import com.example.alkoapp.data.repository.AlcoholsRepository
 import com.example.alkoapp.util.Coroutines
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 class OneAlcoViewModel : ViewModel() {
 
@@ -24,12 +23,14 @@ class OneAlcoViewModel : ViewModel() {
     val ratings: LiveData<ArrayList<Rate>>
         get() = _ratings
 
-    fun getRatings(id : Int) = runBlocking {
+    fun getRatings(id: Int) = runBlocking {
         job = Coroutines.ioThenMain(
             { repository.getRating(id) },
             { _ratings.value = it as ArrayList<Rate>? }
         )
     }
+
+    suspend fun getAlcohol(id: Int) = repository.getAlcohol(id)
 
 
     override fun onCleared() {
@@ -37,21 +38,20 @@ class OneAlcoViewModel : ViewModel() {
         if (::job.isInitialized) job.cancel()
     }
 
-    fun rate(rating: AlcoholRating) {
+    fun rate(rating: AlcoholRating): Job {
         job = Coroutines.ioThenMain(
             {
                 try {
                     repository.addRating(rating)
-
                 } catch (e: Throwable) {
                     Log.d("ERROR", e.message.toString())
                 }
             },
             {
-                val s = it.toString()
                 Log.d("Response", it.toString())
             }
         )
+        return job
     }
 
 

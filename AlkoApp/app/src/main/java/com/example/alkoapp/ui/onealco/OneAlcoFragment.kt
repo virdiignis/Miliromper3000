@@ -2,6 +2,7 @@ package com.example.alkoapp.ui.onealco
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,10 +16,11 @@ import com.example.alkoapp.data.models.Alcohol
 import com.example.alkoapp.data.models.AlcoholRating
 import com.example.alkoapp.databinding.OneAlcoFragmentBinding
 import com.example.alkoapp.ui.onedrink.RatingAdapter
+import com.example.alkoapp.util.Coroutines
 import kotlinx.android.synthetic.main.one_alco_fragment.*
 
 
-class OneAlcoFragment(val itemAlcohol: Alcohol) : Fragment() {
+class OneAlcoFragment(var itemAlcohol: Alcohol) : Fragment() {
 
     private lateinit var viewModel: OneAlcoViewModel
 
@@ -61,7 +63,21 @@ class OneAlcoFragment(val itemAlcohol: Alcohol) : Fragment() {
             user = 1 // TODO: change this when we have login XDD
         )
 
-        viewModel.rate(arating)
+        val job = viewModel.rate(arating)
+
+        job.invokeOnCompletion {
+            Coroutines.ioThenMain(
+                {
+                    viewModel.getAlcohol(itemAlcohol.id)
+//                    viewModel.getRatings(itemAlcohol.id)
+                },
+                {
+                    //                    alcohol_rate_recycler_view.adapter!!.notifyDataSetChanged()
+                    super.getFragmentManager()?.popBackStack()
+                    super.getFragmentManager()?.beginTransaction()
+                        ?.replace(id, OneAlcoFragment(it!!))?.addToBackStack("app")?.commit()
+                })
+        }
     }
 
 
