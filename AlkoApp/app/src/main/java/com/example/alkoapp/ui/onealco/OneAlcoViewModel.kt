@@ -24,7 +24,7 @@ class OneAlcoViewModel : ViewModel() {
         get() = _ratings
 
     fun getRatings(id: Int) = runBlocking {
-        job = Coroutines.ioThenMain(
+        Coroutines.ioThenMain(
             { repository.getRating(id) },
             { _ratings.value = it as ArrayList<Rate>? }
         )
@@ -38,11 +38,28 @@ class OneAlcoViewModel : ViewModel() {
         if (::job.isInitialized) job.cancel()
     }
 
-    fun rate(rating: AlcoholRating): Job {
+    fun addRating(rating: AlcoholRating): Job {
         job = Coroutines.ioThenMain(
             {
                 try {
                     repository.addRating(rating)
+                } catch (e: Throwable) {
+                    Log.d("ERROR", e.message.toString())
+                }
+            },
+            {
+                Log.d("Response", it.toString())
+            }
+        )
+        return job
+    }
+
+
+    fun changeRating(id:Int, rating: AlcoholRating): Job {
+        job = Coroutines.ioThenMain(
+            {
+                try {
+                    repository.changeRating(id, rating)
                 } catch (e: Throwable) {
                     Log.d("ERROR", e.message.toString())
                 }

@@ -14,7 +14,7 @@ $body$
 
 drop trigger if exists update_average_alcohol_rating_trigger on "dbAlco_alcoholrating";
 create trigger update_average_alcohol_rating_trigger
-    after insert
+    after insert, update, delete
     on "dbAlco_alcoholrating"
     for each row
 execute procedure update_average_alcohol_rating();
@@ -36,7 +36,7 @@ $body$
 
 drop trigger if exists update_average_drink_rating_trigger on "dbAlco_drinkrating";
 create trigger update_average_drink_rating_trigger
-    after insert
+    after insert, update, delete
     on "dbAlco_drinkrating"
     for each row
 execute procedure update_average_drink_rating();

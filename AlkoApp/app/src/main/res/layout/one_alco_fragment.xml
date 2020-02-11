@@ -20,35 +20,35 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_alcohol_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:title="@{alcohol.name}"
-            app:titleMarginEnd="32dp" />
+                android:id="@+id/toolbar_alcohol_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="@{alcohol.name}"
+                app:titleMarginEnd="32dp"/>
 
+
+        <CheckBox
+                android:id="@+id/favouriteButton"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                android:button="@android:drawable/btn_star"
+                app:layout_constraintBottom_toBottomOf="@id/toolbar_alcohol_header"
+                app:layout_constraintEnd_toStartOf="@id/deleteButton"
+                app:layout_constraintTop_toTopOf="@id/toolbar_alcohol_header"/>
 
         <ImageButton
-            android:id="@+id/favouriteButton"
-            android:layout_width="?attr/actionBarSize"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/transparent"
-            android:src="@android:drawable/btn_star"
-            app:layout_constraintBottom_toBottomOf="@id/toolbar_alcohol_header"
-            app:layout_constraintEnd_toStartOf="@id/deleteButton"
-            app:layout_constraintTop_toTopOf="@id/toolbar_alcohol_header" />
-
-        <ImageButton
-            android:id="@+id/deleteButton"
-            android:layout_width="?attr/actionBarSize"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/transparent"
-            android:src="@android:drawable/ic_delete"
+                android:id="@+id/deleteButton"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                android:src="@android:drawable/ic_delete"
             app:layout_constraintBottom_toBottomOf="@id/toolbar_alcohol_header"
             app:layout_constraintEnd_toEndOf="@id/toolbar_alcohol_header"
             app:layout_constraintTop_toTopOf="@id/toolbar_alcohol_header" />

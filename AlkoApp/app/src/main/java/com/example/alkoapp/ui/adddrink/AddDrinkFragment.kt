@@ -78,9 +78,9 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
         })
     }
 
-    private glassesAdapter(){
-        viewModel.glasses.observe((viewLifecycleOwner, Observer { glasses -> glass }))
-    }
+//    private glassesAdapter(){
+//        viewModel.glasses.observe((viewLifecycleOwner, Observer { glasses -> glass }))
+//    }
 
     override fun onIngredientsSpinnerChange(view: View, ingredient: String, position: Int)
     {

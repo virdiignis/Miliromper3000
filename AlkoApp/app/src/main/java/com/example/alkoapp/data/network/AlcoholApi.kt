@@ -49,6 +49,10 @@ interface AlcoholApi {
     @POST("/alcohols/ratings/")
     suspend fun addRating(@Body rating: AlcoholRating): Response<Any>
 
+    @Headers("Content-Type: application/json")
+    @PUT("/alcohols/ratings/{id}/")
+    suspend fun changeRating(@Path(value = "id") id: Int, @Body rating: AlcoholRating): Response<Any>
+
     @GET("/alcohols/{id}/")
     suspend fun getAlcohol(@Path("id") id: Int): Response<Alcohol>
 
