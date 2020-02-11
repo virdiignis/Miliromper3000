@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.add_drink_fragment.*
 class AddDrinkFragment : Fragment() {
 
     private lateinit var viewModel: AddDrinkViewModel
-    var counter = 1
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -76,9 +76,10 @@ class AddDrinkFragment : Fragment() {
 
     }
     private fun delButtonListener() {
-        if(counter >1) {
-            counter -= 1
-//            adapterUpdate()
+        val sizeOfArray = viewModel.ingredientProportions.size
+        if(sizeOfArray >1) {
+            viewModel.ingredientProportions.removeAt(sizeOfArray-1)
+            adapterUpdate()
 
         }
 

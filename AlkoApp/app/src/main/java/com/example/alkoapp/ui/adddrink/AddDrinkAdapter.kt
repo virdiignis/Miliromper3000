@@ -39,13 +39,14 @@ class IngredientRowAdapter(
     }
 
     override fun onBindViewHolder(holder: IngredientItemHolder, position: Int) {
-        holder.bind(ingredients)
+        holder.bind(ingredients, ingredientProportions[position])
     }
 }
 
 class IngredientSpinnerAdapter(
     val context: Context?,
     private var ingredients: ArrayList<Ingredient>
+
 ) : BaseAdapter() {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -60,6 +61,11 @@ class IngredientSpinnerAdapter(
 
     override fun getItem(position: Int): Any {
         return ingredients[position].name
+    }
+
+    fun findItem(itemName : String) : Int
+    {
+        return ingredients.indexOf(Ingredient(itemName))
     }
 
     override fun getItemId(position: Int): Long {
@@ -81,9 +87,13 @@ class IngredientItemHolder(
 
     val units: Array<String> = arrayOf("ml", "oz", "g", "part", "%")
 
-    fun bind(ingredients: ArrayList<Ingredient>){
+    fun bind(ingredients: ArrayList<Ingredient>,  ingredient : IngredientProportions){
         unitSpinner.adapter = ArrayAdapter<String>(context!!, android.R.layout.simple_spinner_item, units)
         ingredientsSpinner.adapter = IngredientSpinnerAdapter(context, ingredients)
+
+        unitSpinner.setSelection(units.indexOf(ingredient.unit))
+        ingredientsSpinner.setSelection((ingredientsSpinner.adapter as IngredientSpinnerAdapter).findItem(ingredient.ingredient))
+
 
     }
 
