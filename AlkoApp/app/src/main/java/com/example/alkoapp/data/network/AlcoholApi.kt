@@ -8,6 +8,7 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
@@ -17,6 +18,7 @@ interface AlcoholApi {
         operator fun invoke() : AlcoholApi {
             return Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .baseUrl("http://10.0.2.2:8000/")
                 .build()
                 .create(AlcoholApi::class.java)
@@ -46,6 +48,9 @@ interface AlcoholApi {
     @Headers("Content-Type: application/json")
     @POST("/alcohols/ratings/")
     suspend fun addRating(@Body rating: AlcoholRating): Response<Any>
+
+    @GET("/alcohols/{id}/")
+    suspend fun getAlcohol(@Path("id") id: Int): Response<Alcohol>
 
 
 }
