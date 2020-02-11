@@ -127,7 +127,7 @@ class AddAlcoholFragment : Fragment() {
             )
 
             viewModel.addItem(anotherItem)
-//            TODO: Info about succes or not in adding from database
+//            TODO: Info about success or not in adding from database
             Toast.makeText(requireContext(),"Item added",Toast.LENGTH_SHORT).show()
 
             super.getFragmentManager()?.beginTransaction()?.replace(id, ShowAlcoholFragment())
