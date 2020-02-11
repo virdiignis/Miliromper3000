@@ -216,7 +216,8 @@ class BartenderStuffItemHolder(
 }
 
 class BarenderStuffRowAdapter(
-    var stuff: ArrayList<BartenderStuff>
+    val stuff: ArrayList<BartenderStuff>,
+    val current_stuff :ArrayList<BartenderStuff>
 ) : RecyclerView.Adapter<BartenderStuffItemHolder>() {
 
     override fun getItemId(position: Int): Long {
@@ -234,7 +235,7 @@ class BarenderStuffRowAdapter(
     }
 
     override fun getItemCount(): Int {
-        return stuff.size
+        return current_stuff.size
     }
 
 

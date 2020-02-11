@@ -14,6 +14,7 @@ import com.example.alkoapp.R
 import com.example.alkoapp.data.network.DrinksApi
 import com.example.alkoapp.data.repository.DrinksRepository
 import kotlinx.android.synthetic.main.add_drink_fragment.*
+import kotlinx.android.synthetic.main.recycler_bartender_stuff_row.*
 
 
 class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
@@ -46,12 +47,13 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
 
         ingredientsAdapterUpdate()
         glassesAdapter()
-
+        bartenderAdapter()
 
 
         add_ingredient_button.setOnClickListener { addButtonListener() }
         del_ingredient_button.setOnClickListener { delButtonListener() }
-
+        add_bartender_stuff_button.setOnClickListener { addStuffButtonListener() }
+        del_bartender_stuff_button.setOnClickListener { delStuffButtonListener() }
     }
 
     private fun addButtonListener() {
@@ -59,6 +61,7 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
         ingredientsAdapterUpdate()
 
     }
+
 
     private fun delButtonListener() {
         val sizeOfArray = viewModel.ingredientProportions.size
@@ -68,6 +71,22 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
 
         }
     }
+
+    private fun addStuffButtonListener() {
+        viewModel.addBartenderStuff()
+        bartenderAdapter()
+
+    }
+
+    private fun delStuffButtonListener() {
+        val sizeOfArray = viewModel.bartenderStuff.size
+        if (sizeOfArray > 0) {
+            viewModel.bartenderStuff.removeAt(sizeOfArray - 1)
+            bartenderAdapter()
+
+        }
+    }
+
 
     private fun ingredientsAdapterUpdate() {
         viewModel.ingredients.observe(viewLifecycleOwner, Observer { ingredients ->
@@ -84,6 +103,16 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
         viewModel.glasses.observe(viewLifecycleOwner, Observer { glasses ->
             glass_spinner!!.also {
                 it.adapter = ServingGlassAdapter(context, glasses)
+            }
+        })
+    }
+
+    private fun bartenderAdapter() {
+        viewModel.stuff.observe(viewLifecycleOwner, Observer { stuff ->
+            bartender_stuff_table!!.also {
+                it.layoutManager = LinearLayoutManager(requireContext())
+                it.setHasFixedSize(true)
+                it.adapter = BarenderStuffRowAdapter(stuff, viewModel.bartenderStuff)
             }
         })
     }

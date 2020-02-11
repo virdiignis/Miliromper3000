@@ -1,5 +1,6 @@
 package com.example.alkoapp.ui.adddrink
 
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -61,15 +62,18 @@ class AddDrinkViewModel(
 
 
     fun addDefaultIngredient() {
-        ingredientProportions.add(
-            IngredientProportions(
-                "",
-                1,
-                ingredientProportions.size,
-                "lemon",
-                "g"
+        if(ingredientProportions.size != ingredients.value?.size) {
+            ingredientProportions.add(
+                IngredientProportions(
+                    "",
+                    1,
+                    ingredientProportions.size,
+                    "lemon",
+                    "g"
+                )
             )
-        )
+        }
+
     }
 
     fun addBartenderStuff() {
