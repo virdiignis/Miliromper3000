@@ -23,12 +23,18 @@ class AddDrinkViewModel(
         get() = _ingredients
 
 
+    var ingredientProportions: ArrayList<IngredientProportions> = arrayListOf()
+
 
     fun getIngredients() = runBlocking {
         job = Coroutines.ioThenMain(
             { repository.getIngredients() },
             { _ingredients.value = it as ArrayList<Ingredient>? }
         )
+    }
+
+    fun addDefaultIngredient() {
+        ingredientProportions.add(IngredientProportions("", 1, 1, "Blue Quarcao", "%"))
     }
 
 

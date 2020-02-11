@@ -1,9 +1,9 @@
 package com.example.alkoapp.data.models
 
 data class IngredientProportions(
-    val amount: String,
-    val drink: Int,
+    var amount: String,
+    var drink: Int,
     val id: Int,
-    val ingredient: String,
-    val unit: String
+    var ingredient: String,
+    var unit: String
 )
