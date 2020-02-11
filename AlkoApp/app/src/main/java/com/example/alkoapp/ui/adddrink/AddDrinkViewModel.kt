@@ -3,6 +3,8 @@ package com.example.alkoapp.ui.adddrink
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.alkoapp.data.models.BartenderStuff
+import com.example.alkoapp.data.models.Glass
 import com.example.alkoapp.data.models.Ingredient
 import com.example.alkoapp.data.models.IngredientProportions
 import com.example.alkoapp.data.repository.DrinksRepository
@@ -22,6 +24,15 @@ class AddDrinkViewModel(
     val ingredients: LiveData<ArrayList<Ingredient>>
         get() = _ingredients
 
+    private val _glasses = MutableLiveData<ArrayList<Glass>>()
+
+    val glasses : LiveData<ArrayList<Glass>>
+        get() = _glasses
+
+    private val _stuff = MutableLiveData<ArrayList<BartenderStuff>>()
+
+    val stuff : LiveData<ArrayList<BartenderStuff>>
+        get() = _stuff
 
     var ingredientProportions: ArrayList<IngredientProportions> = arrayListOf()
 
@@ -32,6 +43,19 @@ class AddDrinkViewModel(
             { _ingredients.value = it as ArrayList<Ingredient>? }
         )
     }
+    fun getGlasses() =  runBlocking {
+        job = Coroutines.ioThenMain(
+            { repository.getGlasses() },
+            { _glasses.value = it as ArrayList<Glass>? }
+        )
+    }
+    fun getStuff() =  runBlocking {
+        job = Coroutines.ioThenMain(
+            { repository.getStuff() },
+            { _stuff.value = it as ArrayList<BartenderStuff>? }
+        )
+    }
+
 
     fun addDefaultIngredient() {
         ingredientProportions.add(IngredientProportions("", 1, ingredientProportions.size, "lemon", "g"))
