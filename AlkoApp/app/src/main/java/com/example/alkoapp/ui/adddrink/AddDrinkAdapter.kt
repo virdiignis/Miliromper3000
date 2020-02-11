@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
 import android.widget.TextView
@@ -15,7 +16,9 @@ import kotlinx.android.synthetic.main.recycler_ingredient_alcohol_row.view.*
 
 
 class IngredientRowAdapter(
-    private var ingredients: ArrayList<Ingredient>, var ingredientProportions:ArrayList<IngredientProportions>
+    private var ingredients: ArrayList<Ingredient>,
+    var ingredientProportions: ArrayList<IngredientProportions>,
+    val listener: AddDrinkSpinnerListener
 ) : RecyclerView.Adapter<IngredientItemHolder>() {
 
 
@@ -39,7 +42,7 @@ class IngredientRowAdapter(
     }
 
     override fun onBindViewHolder(holder: IngredientItemHolder, position: Int) {
-        holder.bind(ingredients, ingredientProportions[position])
+        holder.bind(ingredients, ingredientProportions[position], listener, position)
     }
 }
 
@@ -63,8 +66,7 @@ class IngredientSpinnerAdapter(
         return ingredients[position].name
     }
 
-    fun findItem(itemName : String) : Int
-    {
+    fun findItem(itemName: String): Int {
         return ingredients.indexOf(Ingredient(itemName))
     }
 
@@ -87,12 +89,54 @@ class IngredientItemHolder(
 
     val units: Array<String> = arrayOf("ml", "oz", "g", "part", "%")
 
-    fun bind(ingredients: ArrayList<Ingredient>,  ingredient : IngredientProportions){
-        unitSpinner.adapter = ArrayAdapter<String>(context!!, android.R.layout.simple_spinner_item, units)
+    fun bind(
+        ingredients: ArrayList<Ingredient>,
+        ingredient: IngredientProportions,
+        listener: AddDrinkSpinnerListener,
+        position: Int
+    ) {
+        unitSpinner.adapter =
+            ArrayAdapter<String>(context!!, android.R.layout.simple_spinner_item, units)
         ingredientsSpinner.adapter = IngredientSpinnerAdapter(context, ingredients)
 
         unitSpinner.setSelection(units.indexOf(ingredient.unit))
-        ingredientsSpinner.setSelection((ingredientsSpinner.adapter as IngredientSpinnerAdapter).findItem(ingredient.ingredient))
+        ingredientsSpinner.setSelection(
+            (ingredientsSpinner.adapter as IngredientSpinnerAdapter).findItem(
+                ingredient.ingredient
+            )
+        )
+
+        unitSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, p2: Int, p3: Long) {
+                listener.onUnitSpinnerChange(
+                    itemView,
+                    unitSpinner.selectedItem.toString(),
+                    position
+                )
+            }
+        }
+
+        ingredientsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, p2: Int, p3: Long) {
+                listener.onIngredientsSpinnerChange(
+                    itemView,
+                    ingredientsSpinner.selectedItem.toString(),
+                    position
+                )
+            }
+        }
+
+
 
 
     }

@@ -16,7 +16,7 @@ import com.example.alkoapp.data.repository.DrinksRepository
 import kotlinx.android.synthetic.main.add_drink_fragment.*
 
 
-class AddDrinkFragment : Fragment() {
+class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
 
     private lateinit var viewModel: AddDrinkViewModel
 
@@ -42,25 +42,8 @@ class AddDrinkFragment : Fragment() {
 
         viewModel.addDefaultIngredient()
 
-        //Counter można zastąpić jakimś array
 
-/*
-        viewModel.ingredients.observe(viewLifecycleOwner, Observer { ingredients  ->
-            ingredientsTable!!.also {
-                it.layoutManager = LinearLayoutManager(requireContext())
-                it.setHasFixedSize(true)
-                it.adapter = IngredientRowAdapter(ingredients, counter)
-            }
-        })
-
-*/
-        viewModel.ingredients.observe(viewLifecycleOwner, Observer { ingredients  ->
-            ingredientsTable!!.also {
-                it.layoutManager = LinearLayoutManager(requireContext())
-                it.setHasFixedSize(true)
-                it.adapter = IngredientRowAdapter(ingredients, viewModel.ingredientProportions)
-            }
-        })
+        adapterUpdate()
 
 
 
@@ -91,8 +74,20 @@ class AddDrinkFragment : Fragment() {
             ingredientsTable!!.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
-                it.adapter = IngredientRowAdapter(ingredients, viewModel.ingredientProportions)
+                it.adapter = IngredientRowAdapter(ingredients, viewModel.ingredientProportions, this)
             }
         })
+    }
+
+    override fun onIngredientsSpinnerChange(view: View, ingredient: String, position: Int)
+    {
+        viewModel.ingredientProportions[position].ingredient = ingredient
+
+    }
+
+    override fun onUnitSpinnerChange(view: View, unit: String, position: Int)
+    {
+        viewModel.ingredientProportions[position].unit = unit
+
     }
 }
