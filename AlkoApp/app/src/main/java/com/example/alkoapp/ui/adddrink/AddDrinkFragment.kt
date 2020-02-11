@@ -45,6 +45,7 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
         viewModel.addDefaultIngredient()
 
         ingredientsAdapterUpdate()
+        glassesAdapter()
 
 
 
@@ -61,35 +62,38 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
 
     private fun delButtonListener() {
         val sizeOfArray = viewModel.ingredientProportions.size
-        if(sizeOfArray >0) {
-            viewModel.ingredientProportions.removeAt(sizeOfArray-1)
+        if (sizeOfArray > 0) {
+            viewModel.ingredientProportions.removeAt(sizeOfArray - 1)
             ingredientsAdapterUpdate()
 
         }
     }
 
-    private fun ingredientsAdapterUpdate(){
+    private fun ingredientsAdapterUpdate() {
         viewModel.ingredients.observe(viewLifecycleOwner, Observer { ingredients ->
             ingredientsTable!!.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
-                it.adapter = IngredientRowAdapter(ingredients, viewModel.ingredientProportions, this)
+                it.adapter =
+                    IngredientRowAdapter(ingredients, viewModel.ingredientProportions, this)
             }
         })
     }
 
-    private glassesAdapter(){
-        viewModel.glasses.observe((viewLifecycleOwner, Observer { glasses -> glass }))
+    private fun glassesAdapter() {
+        viewModel.glasses.observe(viewLifecycleOwner, Observer { glasses ->
+            glass_spinner!!.also {
+                it.adapter = ServingGlassAdapter(context, glasses)
+            }
+        })
     }
 
-    override fun onIngredientsSpinnerChange(view: View, ingredient: String, position: Int)
-    {
+    override fun onIngredientsSpinnerChange(view: View, ingredient: String, position: Int) {
         viewModel.ingredientProportions[position].ingredient = ingredient
 
     }
 
-    override fun onUnitSpinnerChange(view: View, unit: String, position: Int)
-    {
+    override fun onUnitSpinnerChange(view: View, unit: String, position: Int) {
         viewModel.ingredientProportions[position].unit = unit
 
     }
