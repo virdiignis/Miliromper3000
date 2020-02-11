@@ -124,6 +124,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/alcohols_label"
+            tools:itemCount="2"
             tools:listitem="@layout/recycler_ingredient_alcohol_row">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -172,6 +173,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ingredients_label"
+            tools:itemCount="2"
             tools:listitem="@layout/recycler_ingredient_alcohol_row">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -220,6 +222,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bartender_stuffs_label"
+            tools:itemCount="2"
             tools:listitem="@layout/recycler_bartender_stuff_row">
 
         </androidx.recyclerview.widget.RecyclerView>

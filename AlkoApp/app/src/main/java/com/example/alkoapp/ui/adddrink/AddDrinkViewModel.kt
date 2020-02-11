@@ -43,7 +43,6 @@ class AddDrinkViewModel(
             { _ingredients.value = it as ArrayList<Ingredient>? }
         )
     }
-
     fun getGlasses() =  runBlocking {
         job = Coroutines.ioThenMain(
             { repository.getGlasses() },

@@ -39,11 +39,12 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
             .get(AddDrinkViewModel::class.java)
 
         viewModel.getIngredients()
+        viewModel.getGlasses()
+        viewModel.getStuff()
 
         viewModel.addDefaultIngredient()
 
-
-        adapterUpdate()
+        ingredientsAdapterUpdate()
 
 
 
@@ -54,22 +55,20 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
 
     private fun addButtonListener() {
         viewModel.addDefaultIngredient()
-        adapterUpdate()
-
+        ingredientsAdapterUpdate()
 
     }
+
     private fun delButtonListener() {
         val sizeOfArray = viewModel.ingredientProportions.size
         if(sizeOfArray >0) {
             viewModel.ingredientProportions.removeAt(sizeOfArray-1)
-            adapterUpdate()
+            ingredientsAdapterUpdate()
 
         }
-
-
     }
 
-    private fun adapterUpdate(){
+    private fun ingredientsAdapterUpdate(){
         viewModel.ingredients.observe(viewLifecycleOwner, Observer { ingredients ->
             ingredientsTable!!.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
@@ -77,6 +76,10 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
                 it.adapter = IngredientRowAdapter(ingredients, viewModel.ingredientProportions, this)
             }
         })
+    }
+
+    private glassesAdapter(){
+        viewModel.glasses.observe((viewLifecycleOwner, Observer { glasses -> glass }))
     }
 
     override fun onIngredientsSpinnerChange(view: View, ingredient: String, position: Int)
