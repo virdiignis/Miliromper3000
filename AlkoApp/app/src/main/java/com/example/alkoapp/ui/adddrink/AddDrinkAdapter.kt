@@ -10,9 +10,11 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alkoapp.R
+import com.example.alkoapp.data.models.BartenderStuff
 import com.example.alkoapp.data.models.Glass
 import com.example.alkoapp.data.models.Ingredient
 import com.example.alkoapp.data.models.IngredientProportions
+import kotlinx.android.synthetic.main.add_drink_fragment.view.*
 import kotlinx.android.synthetic.main.recycler_ingredient_alcohol_row.view.*
 
 
@@ -163,5 +165,51 @@ class ServingGlassAdapter(
 
     override fun getCount(): Int {
         return glasses.size
+    }
+}
+
+
+
+class BartenderStuffAdapter(
+    val context: Context?,
+    private  var stuff: ArrayList<BartenderStuff>
+):BaseAdapter(){
+
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        val view: TextView = convertView as TextView? ?: LayoutInflater.from(context).inflate(
+            android.R.layout.simple_spinner_item,
+            parent,
+            false
+        ) as TextView
+        view.text = stuff[position].name
+        return view
+    }
+
+    override fun getItem(position: Int): Any {
+        return stuff[position].name
+    }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+
+    override fun getCount(): Int {
+        return stuff.size
+    }
+
+}
+
+
+class BartenderStuffItemHolder(
+    itemView: View, val context: Context?
+) : RecyclerView.ViewHolder(itemView){
+    val bartenderStuffSpinner = itemView.bartender_stuff_table
+
+    fun bind(
+        item : BartenderStuff,
+        position: Int
+//    TODO: place for listener
+    ){
+//        bartenderStuffSpinner.adapter = BartenderStuffAdapter(context, stuff)
     }
 }

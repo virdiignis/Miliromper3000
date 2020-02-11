@@ -62,7 +62,7 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar_drink_header" />
 
         <TextView
-            android:id="@+id/glass_spinner"
+            android:id="@+id/glass"
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_marginStart="24dp"
@@ -100,7 +100,7 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/how_to_serve_label"
-            app:layout_constraintTop_toBottomOf="@+id/glass_spinner" />
+            app:layout_constraintTop_toBottomOf="@+id/glass" />
 
         <TextView
             android:id="@+id/description_label"

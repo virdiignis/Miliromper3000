@@ -26,15 +26,16 @@ class AddDrinkViewModel(
 
     private val _glasses = MutableLiveData<ArrayList<Glass>>()
 
-    val glasses : LiveData<ArrayList<Glass>>
+    val glasses: LiveData<ArrayList<Glass>>
         get() = _glasses
 
     private val _stuff = MutableLiveData<ArrayList<BartenderStuff>>()
 
-    val stuff : LiveData<ArrayList<BartenderStuff>>
+    val stuff: LiveData<ArrayList<BartenderStuff>>
         get() = _stuff
 
     var ingredientProportions: ArrayList<IngredientProportions> = arrayListOf()
+    var bartenderStuff: ArrayList<BartenderStuff> = arrayListOf()
 
 
     fun getIngredients() = runBlocking {
@@ -43,13 +44,15 @@ class AddDrinkViewModel(
             { _ingredients.value = it as ArrayList<Ingredient>? }
         )
     }
-    fun getGlasses() =  runBlocking {
+
+    fun getGlasses() = runBlocking {
         job = Coroutines.ioThenMain(
             { repository.getGlasses() },
             { _glasses.value = it as ArrayList<Glass>? }
         )
     }
-    fun getStuff() =  runBlocking {
+
+    fun getStuff() = runBlocking {
         job = Coroutines.ioThenMain(
             { repository.getStuff() },
             { _stuff.value = it as ArrayList<BartenderStuff>? }
@@ -58,16 +61,31 @@ class AddDrinkViewModel(
 
 
     fun addDefaultIngredient() {
-        ingredientProportions.add(IngredientProportions("", 1, ingredientProportions.size, "lemon", "g"))
+        ingredientProportions.add(
+            IngredientProportions(
+                "",
+                1,
+                ingredientProportions.size,
+                "lemon",
+                "g"
+            )
+        )
     }
 
+    fun addBartenderStuff() {
+        var size = bartenderStuff.size
+        if (size == stuff.value?.size) {
+//            TODO: validacja
+            return
+        } else {
+            bartenderStuff.add(BartenderStuff("null", stuff.value?.get(size)?.name as String))
+        }
+    }
 
 //TODO: Potrzebuje stworzyć spinner i do niego się odowływać
 //   dodatkowy spinner tylko z jednoskami
 //    f. do  dowania vidowkow
 //    A no i najważniejsze adapter lub coś do tworzenia customowych View
-
-
 
 
     override fun onCleared() {
