@@ -15,6 +15,7 @@ import com.example.alkoapp.data.models.Glass
 import com.example.alkoapp.data.models.Ingredient
 import com.example.alkoapp.data.models.IngredientProportions
 import kotlinx.android.synthetic.main.add_drink_fragment.view.*
+import kotlinx.android.synthetic.main.recycler_bartender_stuff_row.view.*
 import kotlinx.android.synthetic.main.recycler_ingredient_alcohol_row.view.*
 
 
@@ -87,10 +88,10 @@ class IngredientItemHolder(
     itemView: View, val context: Context?
 ) : RecyclerView.ViewHolder(itemView) {
 
-    val unitSpinner = itemView.unit_spinner
-    val ingredientsSpinner = itemView.ingredient_spinner
+    val unitSpinner = itemView.unit_spinner!!
+    val ingredientsSpinner = itemView.ingredient_spinner!!
 
-    val units: Array<String> = arrayOf("ml", "oz", "g", "part", "%")
+    private val units: Array<String> = arrayOf("ml", "oz", "g", "part", "%")
 
     fun bind(
         ingredients: ArrayList<Ingredient>,
@@ -169,11 +170,10 @@ class ServingGlassAdapter(
 }
 
 
-
-class BartenderStuffAdapter(
+class BartenderStuffSpinnerAdapter(
     val context: Context?,
-    private  var stuff: ArrayList<BartenderStuff>
-):BaseAdapter(){
+    private var stuff: ArrayList<BartenderStuff>
+) : BaseAdapter() {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view: TextView = convertView as TextView? ?: LayoutInflater.from(context).inflate(
@@ -202,14 +202,44 @@ class BartenderStuffAdapter(
 
 class BartenderStuffItemHolder(
     itemView: View, val context: Context?
-) : RecyclerView.ViewHolder(itemView){
-    val bartenderStuffSpinner = itemView.bartender_stuff_table
+) : RecyclerView.ViewHolder(itemView) {
+
+    val bartenderStuffSpinner = itemView.bartender_stuff_spinner
 
     fun bind(
-        item : BartenderStuff,
+        stuff: ArrayList<BartenderStuff>,
         position: Int
 //    TODO: place for listener
-    ){
-//        bartenderStuffSpinner.adapter = BartenderStuffAdapter(context, stuff)
+    ) {
+        bartenderStuffSpinner.adapter = BartenderStuffSpinnerAdapter(context, stuff)
     }
+}
+
+class BarenderStuffRowAdapter(
+    var stuff: ArrayList<BartenderStuff>
+) : RecyclerView.Adapter<BartenderStuffItemHolder>() {
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BartenderStuffItemHolder {
+        return BartenderStuffItemHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.recycler_bartender_stuff_row,
+                parent,
+                false
+            ), parent.context
+        )
+    }
+
+    override fun getItemCount(): Int {
+        return stuff.size
+    }
+
+
+    override fun onBindViewHolder(holder: BartenderStuffItemHolder, position: Int) {
+        holder.bind(stuff,position)
+    }
+
 }
