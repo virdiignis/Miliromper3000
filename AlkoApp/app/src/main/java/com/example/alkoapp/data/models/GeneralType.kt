@@ -1,5 +1,5 @@
 package com.example.alkoapp.data.models
 
-data class GenerealType(
+data class GeneralType(
     val name: String
 )
