@@ -9,6 +9,8 @@ class DrinksRepository(
 
     suspend fun getDrinks() = apiRequest { api.getDrinks() }
     suspend fun getIngredients() = apiRequest{api.getIngredients()}
+    suspend fun getGlasses() = apiRequest{api.getGlasses()}
+    suspend fun getStuff() = apiRequest{api.getStuff()}
 
 
 }

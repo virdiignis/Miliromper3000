@@ -1,6 +1,8 @@
 package com.example.alkoapp.data.network
 
+import com.example.alkoapp.data.models.BartenderStuff
 import com.example.alkoapp.data.models.Drink
+import com.example.alkoapp.data.models.Glass
 import com.example.alkoapp.data.models.Ingredient
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -26,6 +28,12 @@ interface DrinksApi {
 
     @GET("drinks/ingredients/")
     suspend fun getIngredients() : Response<List<Ingredient>>
+
+    @GET("drinks/glasses/")
+    suspend fun getGlasses() : Response<List<Glass>>
+
+    @GET(" /drinks/bartender_stuff/")
+    suspend fun getStuff() : Response<List<BartenderStuff>>
 
 
 }

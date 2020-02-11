@@ -108,9 +108,7 @@ class IngredientItemHolder(
 
         unitSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, p2: Int, p3: Long) {
                 listener.onUnitSpinnerChange(
@@ -122,10 +120,7 @@ class IngredientItemHolder(
         }
 
         ingredientsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, p2: Int, p3: Long) {
                 listener.onIngredientsSpinnerChange(
@@ -135,8 +130,6 @@ class IngredientItemHolder(
                 )
             }
         }
-
-
 
 
     }
