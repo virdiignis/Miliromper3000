@@ -1,5 +1,6 @@
 package com.example.alkoapp.data.network
 
+import android.util.Log
 import android.widget.Toast
 import retrofit2.Response
 import java.io.IOException
@@ -10,7 +11,8 @@ abstract class SafeApiRequest {
         if (response.isSuccessful && response.body() != null) {
             return response.body()!!
         } else {
-            //@todo handle api exception
+            //TODO: FIXME XD
+            Log.e("API", response.body().toString())
             throw ApiException(response.code().toString())
         }
     }
@@ -20,7 +22,8 @@ abstract class SafeApiRequest {
         if (response.isSuccessful) {
             return response.body()
         } else {
-            //@todo handle api exception
+            //TODO: FIXME XD
+            Log.e("API", response.body().toString())
             throw ApiException(response.code().toString())
         }
     }
