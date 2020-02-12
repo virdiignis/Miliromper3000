@@ -8,12 +8,12 @@ class Ingredient(models.Model):
 
 class BartenderStuff(models.Model):
     name = models.CharField(max_length=50, primary_key=True)
-    image = models.ImageField(upload_to="images/")
+    image = models.ImageField(upload_to="images/", null=True, blank=True)
 
 
 class Glass(models.Model):
     name = models.CharField(max_length=50, primary_key=True)
-    image = models.ImageField(upload_to="images")
+    image = models.ImageField(upload_to="images", null=True, blank=True)
 
 
 class Drink(models.Model):
