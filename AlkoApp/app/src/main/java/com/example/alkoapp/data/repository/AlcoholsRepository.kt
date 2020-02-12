@@ -21,10 +21,6 @@ class AlcoholsRepository(
     suspend fun addRating(rating: AlcoholRating) = apiRequest { api.addRating(rating) }
     suspend fun changeRating(id: Int, rating: AlcoholRating) =
         apiRequest { api.changeRating(id, rating) }
-
-
     suspend fun addAlcohol(item: AlcoholX) = apiRequest { api.addAlcohol(item) }
     suspend fun deleteAlcohol(id: Int) = nullableBodyRequest { api.deleteAlcohol(id) }
-
-
 }
