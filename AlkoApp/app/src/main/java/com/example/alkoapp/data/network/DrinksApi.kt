@@ -1,11 +1,13 @@
 package com.example.alkoapp.data.network
 
 import com.example.alkoapp.data.models.*
+import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
+import java.util.concurrent.TimeUnit
 
 interface DrinksApi {
 
@@ -13,7 +15,13 @@ interface DrinksApi {
 
     companion object{
         operator fun invoke() : DrinksApi {
+            val okClient = OkHttpClient.Builder()
+                .callTimeout(10, TimeUnit.MINUTES)
+                .connectTimeout(10, TimeUnit.MINUTES)
+                .readTimeout(30, TimeUnit.MINUTES)
+                .writeTimeout(30, TimeUnit.MINUTES)
             return Retrofit.Builder()
+                .client(okClient.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .baseUrl("http://10.0.2.2:8000/")

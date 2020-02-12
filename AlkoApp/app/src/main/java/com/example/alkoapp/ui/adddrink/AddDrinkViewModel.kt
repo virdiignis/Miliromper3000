@@ -80,7 +80,7 @@ class AddDrinkViewModel(
         if (ingredientProportions.size != ingredients.value?.size) {
             ingredientProportions.add(
                 IngredientProportions(
-                    "",
+                    "0",
                     12,
                     ingredientProportions.size,
                     "lemon",
@@ -110,7 +110,7 @@ class AddDrinkViewModel(
             alcoholsProportions.add(
                 AlcoholProportions(
                     alcohol = 1,
-                    amount = "",
+                    amount = "0",
                     id = size,
                     unit = "ml",
                     drink = 0

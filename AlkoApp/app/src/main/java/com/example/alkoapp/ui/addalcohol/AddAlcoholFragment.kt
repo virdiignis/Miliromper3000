@@ -37,6 +37,7 @@ class AddAlcoholFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this, AddViewMFactory(repository))
             .get(AddAlcoholViewModel::class.java)
+
         viewModel.getProducers()
         viewModel.getProductionCountries()
         viewModel.getTypes()

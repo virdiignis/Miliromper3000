@@ -192,6 +192,7 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
         val instruction: String?
         val name: String
         var stuff: List<String>
+        var flag = true
         try {
             alcohols = viewModel.alcoholsProportions
             description = this.description.text.toString()
@@ -203,28 +204,52 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
             name = this.name.text.toString()
             stuff = viewModel.bartenderStuff
 
+            if (ingredients.isEmpty() && alcohols.isEmpty()) {
+                Toast.makeText(
+                    requireContext(),
+                    "You need to add at list 1 ingredient", Toast.LENGTH_LONG
+                ).show()
+                flag = false
+            }
+            if(name.isEmpty())
+            {
+                Toast.makeText(
+                    requireContext(),
+                    "You need to name it", Toast.LENGTH_LONG
+                ).show()
+                flag = false
+            }
+            if(how_to_serve.isEmpty())
+            {
+                Toast.makeText(
+                    requireContext(),
+                    "You need to say how it`s done - please write how to serve it", Toast.LENGTH_LONG
+                ).show()
+                flag = false
+            }
 
-            val drink = Drink2(
-                alcohols,
-                description,
-                glass,
-                how_to_serve,
-                ingredients,
-                instruction,
-                name,
-                stuff
-            )
-            viewModel.addItem(drink, ingredients, alcohols)
-
-
+            if (flag) {
+                val drink = Drink2(
+                    alcohols,
+                    description,
+                    glass,
+                    how_to_serve,
+                    ingredients,
+                    instruction,
+                    name,
+                    stuff
+                )
+                viewModel.addItem(drink, ingredients, alcohols)
+            }
 
 
         } catch (e: Throwable) {
             Toast.makeText(requireContext(), "Some problems occurs", Toast.LENGTH_LONG).show()
         }
-
-        super.getFragmentManager()?.beginTransaction()?.replace(id, ShowDrinksFragment())
-            ?.commit()
+        if (flag) {
+            super.getFragmentManager()?.beginTransaction()?.replace(id, ShowDrinksFragment())
+                ?.commit()
+        }
     }
 
 
