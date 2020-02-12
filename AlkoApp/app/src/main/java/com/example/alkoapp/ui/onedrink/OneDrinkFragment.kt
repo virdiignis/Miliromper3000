@@ -1,5 +1,7 @@
 package com.example.alkoapp.ui.onedrink
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -20,8 +22,9 @@ import kotlinx.coroutines.Job
 
 
 class OneDrinkFragment(val itemDrink: Drink) : Fragment() {
-
     private lateinit var viewModel: OneDrinkViewModel
+    private lateinit var sharedPreferences: SharedPreferences
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,6 +39,8 @@ class OneDrinkFragment(val itemDrink: Drink) : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        sharedPreferences = activity!!.getPreferences(Context.MODE_PRIVATE)
+
         viewModel = ViewModelProviders.of(this).get(OneDrinkViewModel::class.java)
 
         viewModel.getRatings(itemDrink.id)
@@ -49,7 +54,12 @@ class OneDrinkFragment(val itemDrink: Drink) : Fragment() {
 
                 ratingBar.setOnRatingBarChangeListener { _, _, _ -> }
                 val user_rating =
-                    viewModel.ratings.value?.find { it.user == 1 } // TODO: change this when users are working xD :/
+                    viewModel.ratings.value?.find {
+                        it.user == sharedPreferences.getInt(
+                            "user_id",
+                            1
+                        )
+                    }
                 if (user_rating != null) {
                     ratingBar.rating = user_rating.rating!!.toFloat()
                     favouriteButton.isChecked = user_rating.favourite
@@ -68,14 +78,14 @@ class OneDrinkFragment(val itemDrink: Drink) : Fragment() {
 
     private fun rate(ratingBar: RatingBar, rating: Float, fromUser: Boolean) {
         val old_rating =
-            viewModel.ratings.value?.find { it.user == 1 } // TODO: change this when users are working xD :/
+            viewModel.ratings.value?.find { it.user == sharedPreferences.getInt("user_id", 1) }
         lateinit var job: Job
 
         if (old_rating == null) {
             val arating = DrinkRating(
                 drink = itemDrink.id,
                 rating = rating.toString(),
-                user = 1, // TODO: change this when we have login XDD,
+                user = sharedPreferences.getInt("user_id", 1),
                 favourite = false,
                 id = null,
                 comment = null
@@ -114,13 +124,13 @@ class OneDrinkFragment(val itemDrink: Drink) : Fragment() {
 
     private fun fav() {
         val rating =
-            viewModel.ratings.value?.find { it.user == 1 } // TODO: change this when users are working xD :/
+            viewModel.ratings.value?.find { it.user == sharedPreferences.getInt("user_id", 1) }
         if (rating == null) {
             val newRating = DrinkRating(
                 drink = itemDrink.id,
                 favourite = true,
                 rating = null,
-                user = 1,
+                user = sharedPreferences.getInt("user_id", 1),
                 id = null,
                 comment = null
             )
