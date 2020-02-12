@@ -20,10 +20,10 @@ class Drink(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
     instruction = models.TextField()
-    how_to_serve = models.TextField()
-    stuff = models.ManyToManyField("BartenderStuff")
+    how_to_serve = models.TextField(null=True, blank=True)
+    stuff = models.ManyToManyField("BartenderStuff", null=True, blank=True)
     glass = models.ForeignKey(Glass, on_delete=models.SET_NULL, null=True)
-    average_rating = models.DecimalField(decimal_places=1, max_digits=2, default=0.0)
+    average_rating = models.DecimalField(decimal_places=1, max_digits=2, default=0.0, blank=True)
 
 
 class IngredientProportion(models.Model):
