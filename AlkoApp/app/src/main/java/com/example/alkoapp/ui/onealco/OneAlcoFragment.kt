@@ -14,7 +14,7 @@ import com.example.alkoapp.R
 import com.example.alkoapp.data.models.Alcohol
 import com.example.alkoapp.data.models.AlcoholRating
 import com.example.alkoapp.databinding.OneAlcoFragmentBinding
-import com.example.alkoapp.ui.onedrink.RatingAdapter
+import com.example.alkoapp.ui.onealco.RatingAdapter
 import com.example.alkoapp.util.Coroutines
 import kotlinx.android.synthetic.main.one_alco_fragment.*
 import kotlinx.coroutines.Job
@@ -54,7 +54,7 @@ class OneAlcoFragment(var itemAlcohol: Alcohol) : Fragment() {
                 val user_rating =
                     viewModel.ratings.value?.find { it.user == 1 } // TODO: change this when users are working xD :/
                 if (user_rating != null) {
-                    ratingBar.rating = user_rating.rating.toFloat()
+                    ratingBar.rating = user_rating.rating!!.toFloat()
                     favouriteButton.isChecked = user_rating.favourite
                 }
 
@@ -98,7 +98,7 @@ class OneAlcoFragment(var itemAlcohol: Alcohol) : Fragment() {
                 comment = old_rating.comment
             )
 
-            job = viewModel.changeRating(old_rating.id, arating)
+            job = viewModel.changeRating(old_rating.id!!, arating)
         }
 
         job.invokeOnCompletion {
@@ -138,7 +138,7 @@ class OneAlcoFragment(var itemAlcohol: Alcohol) : Fragment() {
                 user = rating.user,
                 comment = rating.comment
             )
-            viewModel.changeRating(rating.id, newRating)
+            viewModel.changeRating(rating.id!!, newRating)
         }
 
     }

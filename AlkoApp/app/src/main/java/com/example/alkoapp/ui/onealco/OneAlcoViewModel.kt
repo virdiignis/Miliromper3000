@@ -4,29 +4,26 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.alkoapp.data.models.Alcohol
 import com.example.alkoapp.data.models.AlcoholRating
-import com.example.alkoapp.data.models.Rate
 import com.example.alkoapp.data.network.AlcoholApi
 import com.example.alkoapp.data.repository.AlcoholsRepository
 import com.example.alkoapp.util.Coroutines
 import kotlinx.coroutines.*
 
 class OneAlcoViewModel : ViewModel() {
-
     private lateinit var job: Job
     val api = AlcoholApi()
     val repository = AlcoholsRepository(api)
 
-    private val _ratings = MutableLiveData<ArrayList<Rate>>()
+    private val _ratings = MutableLiveData<ArrayList<AlcoholRating>>()
 
-    val ratings: LiveData<ArrayList<Rate>>
+    val ratings: LiveData<ArrayList<AlcoholRating>>
         get() = _ratings
 
     fun getRatings(id: Int) = runBlocking {
         Coroutines.ioThenMain(
             { repository.getRating(id) },
-            { _ratings.value = it as ArrayList<Rate>? }
+            { _ratings.value = it as ArrayList<AlcoholRating>? }
         )
     }
 
