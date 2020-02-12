@@ -1,6 +1,8 @@
 package com.example.alkoapp.ui.adddrink
 
 import android.content.Context
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -86,6 +88,7 @@ class IngredientItemHolder(
 
     val unitSpinner = itemView.unit_spinner!!
     val ingredientsSpinner = itemView.ingredient_alcohols_spinner!!
+    val amountBox = itemView.amount
 
     private val units: Array<String> = arrayOf("ml", "oz", "g", "part", "%")
 
@@ -95,6 +98,7 @@ class IngredientItemHolder(
         listener: AddDrinkSpinnerListener,
         position: Int
     ) {
+        amountBox.setText(ingredient.amount)
         unitSpinner.adapter =
             ArrayAdapter<String>(context!!, android.R.layout.simple_spinner_item, units)
 
@@ -132,6 +136,24 @@ class IngredientItemHolder(
                 )
             }
         }
+
+        amountBox.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                listener.onAmountEdited(
+
+                    amountBox.text.toString(),
+                    position
+                )
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+
+
     }
 }
 
@@ -151,7 +173,7 @@ class ServingGlassAdapter(
     }
 
     override fun getItem(position: Int): Any {
-        return glasses[position]
+        return glasses[position].name
     }
 
     override fun getItemId(position: Int): Long {
@@ -206,7 +228,7 @@ class BartenderStuffItemHolder(
 
     fun bind(
         stuff: ArrayList<BartenderStuff>,
-        currentStuff: BartenderStuff,
+        currentStuff: String,
         listener: AddDrinkSpinnerListener,
         position: Int
     ) {
@@ -214,7 +236,7 @@ class BartenderStuffItemHolder(
 
         bartenderStuffSpinner.setSelection(
             (bartenderStuffSpinner.adapter as BartenderStuffSpinnerAdapter)
-                .findItem(currentStuff.name)
+                .findItem(currentStuff)
         )
 
         bartenderStuffSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -233,7 +255,7 @@ class BartenderStuffItemHolder(
 
 class BartenderStuffRowAdapter(
     val stuff: ArrayList<BartenderStuff>,
-    val current_stuff: ArrayList<BartenderStuff>,
+    val current_stuff: ArrayList<String>,
     val listener: AddDrinkSpinnerListener
 ) : RecyclerView.Adapter<BartenderStuffItemHolder>() {
 

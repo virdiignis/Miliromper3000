@@ -5,8 +5,8 @@ data class Drink2(
     val description: String,
     val glass: String,
     val how_to_serve: String,
-    val ingredients: List<Any>,
+    val ingredients: List<IngredientProportions>,
     val instruction: String,
     val name: String,
-    val stuff: List<BartenderStuff>
+    val stuff: List<String>
 )

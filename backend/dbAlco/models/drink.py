@@ -51,3 +51,4 @@ class DrinkRating(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="drinkratings")
     rating = models.DecimalField(max_digits=2, decimal_places=1)
     favourite = models.BooleanField(default=False)
+

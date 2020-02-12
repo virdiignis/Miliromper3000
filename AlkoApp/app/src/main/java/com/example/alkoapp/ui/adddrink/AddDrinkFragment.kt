@@ -15,6 +15,7 @@ import com.example.alkoapp.data.models.*
 
 import com.example.alkoapp.data.network.DrinksApi
 import com.example.alkoapp.data.repository.DrinksRepository
+import com.example.alkoapp.ui.showdrinks.ShowDrinksFragment
 import kotlinx.android.synthetic.main.add_drink_fragment.*
 
 
@@ -161,12 +162,17 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
     }
 
     override fun onStuffChange(view: View, name: String, position: Int) {
-        viewModel.bartenderStuff[position].name = name
+        viewModel.bartenderStuff[position] = name
     }
 
     override fun onAlcoholChange(view: View, id: Int, position: Int) {
         viewModel.alcoholsProportions[position].alcohol = id
     }
+
+    override fun onAmountEdited( amount: String, position: Int) {
+        viewModel.ingredientProportions[position].amount = amount
+    }
+
 
     fun addDrinkToBase() {
         val alcohols: List<AlcoholProportions>
@@ -176,32 +182,39 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
         val ingredients: List<IngredientProportions>
         val instruction: String?
         val name: String
-        val stuff: List<BartenderStuff>
+        var stuff: List<String>
         try {
             alcohols = viewModel.alcoholsProportions
             description = this.description.text.toString()
             glass = this.glass_spinner.selectedItem.toString()
             how_to_serve = this.how_to_serve.text.toString()
             ingredients = viewModel.ingredientProportions
+//            ingredients = emptyList()
             instruction = "Mix all ingredients together"
             name = this.name.text.toString()
             stuff = viewModel.bartenderStuff
 
 
-        val drink = Drink2(
-            alcohols,
-            description,
-            glass,
-            how_to_serve,
-            ingredients,
-            instruction,
-            name,
-            stuff
-        )
+            val drink = Drink2(
+                alcohols,
+                description,
+                glass,
+                how_to_serve,
+                ingredients,
+                instruction,
+                name,
+                stuff
+
+
+            )
+            viewModel.addItem(drink)
 
         } catch (e: Throwable) {
             Toast.makeText(requireContext(), "Some problems occurs", Toast.LENGTH_LONG).show()
         }
+
+        super.getFragmentManager()?.beginTransaction()?.replace(id, ShowDrinksFragment())
+            ?.commit()
     }
 
 

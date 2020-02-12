@@ -1,5 +1,6 @@
 package com.example.alkoapp.data.repository
 
+import com.example.alkoapp.data.models.Drink2
 import com.example.alkoapp.data.models.DrinkRating
 import com.example.alkoapp.data.network.DrinksApi
 import com.example.alkoapp.data.network.SafeApiRequest
@@ -10,6 +11,7 @@ class DrinksRepository(
 
     suspend fun getDrinks() = apiRequest { api.getDrinks() }
     suspend fun getDrink(id: Int) = apiRequest { api.getDrink(id) }
+    suspend fun addDrink(drink: Drink2) = apiRequest { api.addDrink(drink) }
     suspend fun getIngredients() = apiRequest { api.getIngredients() }
     suspend fun getGlasses() = apiRequest { api.getGlasses() }
     suspend fun getStuff() = apiRequest { api.getStuff() }
@@ -19,6 +21,7 @@ class DrinksRepository(
         apiRequest { api.changeRating(id, rating) }
 
     suspend fun deleteDrink(id: Int) = nullableBodyRequest { api.deleteDrink(id) }
+
 
 
 }

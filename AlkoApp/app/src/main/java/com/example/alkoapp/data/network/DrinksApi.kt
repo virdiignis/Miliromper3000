@@ -51,5 +51,9 @@ interface DrinksApi {
     @DELETE("/drinks/{id}/")
     suspend fun deleteDrink(@Path("id") id: Int): Response<Any>
 
+    @Headers("Content-Type: application/json")
+    @POST("/drinks/")
+    suspend fun addDrink(@Body alcohol: Drink2) : Response<Any>
+
 
 }
