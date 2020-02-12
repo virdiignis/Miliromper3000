@@ -119,7 +119,7 @@ class AddDrinkViewModel(
         }
     }
 
-    fun addItem(item: Drink2, ingredientProportions: List<IngredientProportions>) = runBlocking {
+    fun addItem(item: Drink2, ingredientProportions: List<IngredientProportions>, alcohols : List<AlcoholProportions>) = runBlocking {
 
         job = Coroutines.ioThenMain(
             {
@@ -128,6 +128,10 @@ class AddDrinkViewModel(
                     for (proportion in ingredientProportions){
                         proportion.drink = temp.id
                         repository.addProportion(proportion)
+                    }
+                    for (alcohol in alcohols){
+                        alcohol.drink = temp.id
+                        repository.addAlcoholProportion(alcohol)
                     }
 
                 } catch (e: Throwable) {

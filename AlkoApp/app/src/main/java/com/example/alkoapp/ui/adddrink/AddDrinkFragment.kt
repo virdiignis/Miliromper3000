@@ -214,7 +214,7 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
                 name,
                 stuff
             )
-            viewModel.addItem(drink, ingredients)
+            viewModel.addItem(drink, ingredients, alcohols)
 
 
 
