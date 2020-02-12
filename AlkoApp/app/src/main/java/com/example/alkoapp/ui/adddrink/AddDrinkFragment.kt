@@ -52,8 +52,14 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
 
         add_ingredient_button.setOnClickListener { addButtonListener() }
         del_ingredient_button.setOnClickListener { delButtonListener() }
+
         add_bartender_stuff_button.setOnClickListener { addStuffButtonListener() }
         del_bartender_stuff_button.setOnClickListener { delStuffButtonListener() }
+
+        add_alcohol_button.setOnClickListener{addAlcoholButtonListener()}
+        del_alcohol_button.setOnClickListener{delAlcoholButtonListener()}
+
+        add_drink_confirm_button.setOnClickListener{addDrinkToBase()}
     }
 
     private fun addButtonListener() {
@@ -83,6 +89,21 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
         if (sizeOfArray > 0) {
             viewModel.bartenderStuff.removeAt(sizeOfArray - 1)
             bartenderAdapter()
+
+        }
+    }
+
+    private fun addAlcoholButtonListener() {
+        viewModel.addAlcoholProportion()
+        alcoholAdapter()
+
+    }
+
+    private fun delAlcoholButtonListener() {
+        val sizeOfArray = viewModel.alcoholsProportions.size
+        if (sizeOfArray > 0) {
+            viewModel.alcoholsProportions.removeAt(sizeOfArray - 1)
+            alcoholAdapter()
 
         }
     }
@@ -117,6 +138,14 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
         })
     }
 
+    private fun alcoholAdapter(){
+        viewModel.alcohols.observe(viewLifecycleOwner, Observer { alcohols ->alcohols_table!!.also{
+            it.layoutManager = LinearLayoutManager(requireContext())
+            it.setHasFixedSize(true)
+            it.adapter = AlcoholRowAdapter(alcohols, viewModel.alcoholsProportions, this)
+        } })
+    }
+
     override fun onIngredientsSpinnerChange(view: View, ingredient: String, position: Int) {
         viewModel.ingredientProportions[position].ingredient = ingredient
 
@@ -130,4 +159,22 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
     override fun onStuffChange(view: View, name: String, position: Int) {
         viewModel.bartenderStuff[position].name = name
     }
+
+    override fun onAlcoholChange(view: View, id: Int, position: Int)
+    {
+        viewModel.alcoholsProportions[position].alcohol = id
+    }
+
+    fun addDrinkToBase()
+    {
+
+
+    }
+
+
+
+
+
+
+
 }

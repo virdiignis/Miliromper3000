@@ -97,9 +97,11 @@ class IngredientItemHolder(
     ) {
         unitSpinner.adapter =
             ArrayAdapter<String>(context!!, android.R.layout.simple_spinner_item, units)
+
         ingredientsSpinner.adapter = IngredientSpinnerAdapter(context, ingredients)
 
         unitSpinner.setSelection(units.indexOf(ingredient.unit))
+
         ingredientsSpinner.setSelection(
             (ingredientsSpinner.adapter as IngredientSpinnerAdapter).findItem(
                 ingredient.ingredient
@@ -200,19 +202,20 @@ class BartenderStuffItemHolder(
     itemView: View, val context: Context?
 ) : RecyclerView.ViewHolder(itemView) {
 
-    val bartenderStuffSpinner = itemView.bartender_stuff_spinner
+    val bartenderStuffSpinner = itemView.bartender_stuff_spinner!!
 
     fun bind(
         stuff: ArrayList<BartenderStuff>,
         currentStuff: BartenderStuff,
         listener: AddDrinkSpinnerListener,
         position: Int
-//    TODO: place for listener
     ) {
         bartenderStuffSpinner.adapter = BartenderStuffSpinnerAdapter(context, stuff)
 
-        bartenderStuffSpinner.setSelection((bartenderStuffSpinner.adapter as BartenderStuffSpinnerAdapter)
-            .findItem(currentStuff.name))
+        bartenderStuffSpinner.setSelection(
+            (bartenderStuffSpinner.adapter as BartenderStuffSpinnerAdapter)
+                .findItem(currentStuff.name)
+        )
 
         bartenderStuffSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -309,8 +312,6 @@ class AlcoholItemHolder(
         unitSpinner.adapter =
             ArrayAdapter<String>(context!!, android.R.layout.simple_spinner_item, units)
 
-//        TODO: Alcohol spinner alcohols proportions
-
         unitSpinner.setSelection(units.indexOf(alcoholProportion.unit))
 
         unitSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -326,11 +327,27 @@ class AlcoholItemHolder(
             }
         }
 
+        alcoholsSpinner.adapter = AlcoholSpinnerAdapter(context, alcohols)
+        alcoholsSpinner.setSelection(
+            (alcoholsSpinner.adapter as AlcoholSpinnerAdapter).findItem(alcoholProportion.id)
+        )
 
+        alcoholsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, p2: Int, p3: Long) {
+                listener.onAlcoholChange(
+                    itemView,
+                    alcoholsSpinner.selectedItemPosition,
+                    position
+                )
+            }
+        }
     }
 
 
 }
+
 
 class AlcoholSpinnerAdapter(
     val context: Context?,
@@ -352,9 +369,9 @@ class AlcoholSpinnerAdapter(
         return alcohols[position].name
     }
 
-//    fun findItem(itemName: String): Int {
-//        return alcohols.indexOf(Alcohol(itemName))
-//    }
+    fun findItem(id: Int): Int {
+        return alcohols.indexOf(alcohols.find { it.id == id })
+    }
 
     override fun getItemId(position: Int): Long {
         return position.toLong()
