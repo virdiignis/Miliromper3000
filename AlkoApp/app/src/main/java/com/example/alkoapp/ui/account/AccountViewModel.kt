@@ -23,4 +23,6 @@ class AccountViewModel() : ViewModel() {
         val authToken2 = "Token $authToken"
         return repository.me(authToken2)
     }
+
+    suspend fun register(u: User): Any = repository.register(u)
 }
