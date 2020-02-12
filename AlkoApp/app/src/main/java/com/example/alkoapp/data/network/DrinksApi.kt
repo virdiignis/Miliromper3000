@@ -53,7 +53,10 @@ interface DrinksApi {
 
     @Headers("Content-Type: application/json")
     @POST("/drinks/")
-    suspend fun addDrink(@Body alcohol: Drink2) : Response<Any>
+    suspend fun addDrink(@Body alcohol: Drink2) : Response<Drink>
 
+    @Headers("Content-Type: application/json")
+    @POST("/drinks/ingredients/proportions/")
+    suspend fun addProportion(@Body proportion: IngredientProportions) : Response<Any>
 
 }

@@ -119,12 +119,16 @@ class AddDrinkViewModel(
         }
     }
 
-    fun addItem(item: Drink2) = runBlocking {
+    fun addItem(item: Drink2, ingredientProportions: List<IngredientProportions>) = runBlocking {
 
         job = Coroutines.ioThenMain(
             {
                 try {
-                    repository.addDrink(item)
+                    var temp = repository.addDrink(item)
+                    for (proportion in ingredientProportions){
+                        proportion.drink = temp.id
+                        repository.addProportion(proportion)
+                    }
 
                 } catch (e: Throwable) {
                     Log.d("ERROR", e.message.toString())

@@ -204,10 +204,11 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
                 instruction,
                 name,
                 stuff
-
-
             )
-            viewModel.addItem(drink)
+            viewModel.addItem(drink, ingredients)
+
+
+
 
         } catch (e: Throwable) {
             Toast.makeText(requireContext(), "Some problems occurs", Toast.LENGTH_LONG).show()

@@ -2,6 +2,7 @@ package com.example.alkoapp.data.repository
 
 import com.example.alkoapp.data.models.Drink2
 import com.example.alkoapp.data.models.DrinkRating
+import com.example.alkoapp.data.models.IngredientProportions
 import com.example.alkoapp.data.network.DrinksApi
 import com.example.alkoapp.data.network.SafeApiRequest
 
@@ -21,7 +22,9 @@ class DrinksRepository(
         apiRequest { api.changeRating(id, rating) }
 
     suspend fun deleteDrink(id: Int) = nullableBodyRequest { api.deleteDrink(id) }
-
+    suspend fun addProportion(proportion: IngredientProportions) {
+        api.addProportion(proportion)
+    }
 
 
 }
