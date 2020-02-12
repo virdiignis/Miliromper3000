@@ -28,6 +28,7 @@ class OneAlcoViewModel : ViewModel() {
     }
 
     suspend fun getAlcohol(id: Int) = repository.getAlcohol(id)
+    suspend fun deleteAlcohol(id: Int) = repository.deleteAlcohol(id)
 
 
     override fun onCleared() {

@@ -61,9 +61,8 @@ class OneDrinkFragment(val itemDrink: Drink) : Fragment() {
             }
         })
 
-        favouriteButton.setOnClickListener {
-            fav()
-        }
+        favouriteButton.setOnClickListener { fav() }
+        deleteButton.setOnClickListener { del() }
     }
 
 
@@ -138,5 +137,15 @@ class OneDrinkFragment(val itemDrink: Drink) : Fragment() {
             viewModel.changeRating(rating.id!!, newRating)
         }
 
+    }
+
+    private fun del() {
+        Coroutines.ioThenMain(
+            {
+                viewModel.deleteDrink(itemDrink.id)
+            }, {
+                super.getFragmentManager()?.popBackStack()
+            }
+        )
     }
 }

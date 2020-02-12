@@ -64,9 +64,8 @@ class OneAlcoFragment(var itemAlcohol: Alcohol) : Fragment() {
             }
         })
 
-        favouriteButton.setOnClickListener {
-            fav()
-        }
+        favouriteButton.setOnClickListener { fav() }
+        deleteButton.setOnClickListener { del() }
 
     }
 
@@ -141,6 +140,16 @@ class OneAlcoFragment(var itemAlcohol: Alcohol) : Fragment() {
             viewModel.changeRating(rating.id!!, newRating)
         }
 
+    }
+
+    private fun del() {
+        Coroutines.ioThenMain(
+            {
+                viewModel.deleteAlcohol(itemAlcohol.id)
+            }, {
+                super.getFragmentManager()?.popBackStack()
+            }
+        )
     }
 }
 

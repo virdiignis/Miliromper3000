@@ -48,5 +48,8 @@ interface DrinksApi {
     @GET("/drinks/{id}/")
     suspend fun getDrink(@Path("id") id: Int): Response<Drink>
 
+    @DELETE("/drinks/{id}/")
+    suspend fun deleteDrink(@Path("id") id: Int): Response<Any>
+
 
 }

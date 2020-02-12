@@ -56,5 +56,7 @@ interface AlcoholApi {
     @GET("/alcohols/{id}/")
     suspend fun getAlcohol(@Path("id") id: Int): Response<Alcohol>
 
+    @DELETE("/alcohols/{id}/")
+    suspend fun deleteAlcohol(@Path("id") id: Int): Response<Any>
 
 }
