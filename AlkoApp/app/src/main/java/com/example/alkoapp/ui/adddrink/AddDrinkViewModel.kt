@@ -41,7 +41,7 @@ class AddDrinkViewModel(
 
     var ingredientProportions: ArrayList<IngredientProportions> = arrayListOf()
     var bartenderStuff: ArrayList<BartenderStuff> = arrayListOf()
-    var currentAlcohols : ArrayList<AlcoholProportions> = arrayListOf()
+    var alcoholsProportions: ArrayList<AlcoholProportions> = arrayListOf()
 
     fun getIngredients() = runBlocking {
         job = Coroutines.ioThenMain(
@@ -74,7 +74,7 @@ class AddDrinkViewModel(
 
 
     fun addDefaultIngredient() {
-        if(ingredientProportions.size != ingredients.value?.size) {
+        if (ingredientProportions.size != ingredients.value?.size) {
             ingredientProportions.add(
                 IngredientProportions(
                     "",
@@ -89,12 +89,30 @@ class AddDrinkViewModel(
     }
 
     fun addBartenderStuff() {
-        var size = bartenderStuff.size
+        val size = bartenderStuff.size
         if (size == stuff.value?.size) {
 //            TODO: validacja
             return
         } else {
             bartenderStuff.add(BartenderStuff("null", stuff.value?.get(size)?.name as String))
+        }
+    }
+
+    fun addAlcoholProportion() {
+        val size = alcoholsProportions.size
+        if (size == alcohols.value?.size) {
+//           FIXME
+            return
+        } else {
+            alcoholsProportions.add(
+                AlcoholProportions(
+                    alcohol = 1,
+                    amount = "",
+                    id = size,
+                    unit = "ml",
+                    drink = 0
+                )
+            )
         }
     }
 

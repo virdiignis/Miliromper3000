@@ -1,7 +1,7 @@
 package com.example.alkoapp.data.models
 
 data class AlcoholProportions(
-    val alcohol: Int,
+    var alcohol: Int,
     val amount: String,
     val drink: Int,
     val id: Int,
