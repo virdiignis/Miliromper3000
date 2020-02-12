@@ -25,10 +25,11 @@ router.register(r'alcohols/ratings', views.AlcoholRatingViewSet, basename="alcoh
 router.register(r'alcohols', views.AlcoholViewSet, basename="alcohols")
 router.register(r'producers', views.ProducerViewSet, basename="producers")
 router.register(r'countries', views.CountryViewSet, basename="countries")
-router.register(r'drinks/ingredients/proportions', views.IngredientProportionViewSet, basename="ingredients_proportions")
+router.register(r'drinks/ingredients/proportions', views.IngredientProportionViewSet,
+                basename="ingredients_proportions")
 router.register(r'drinks/ingredients', views.IngredientViewSet, basename="ingredients")
 router.register(r'drinks/alcohols/proportions', views.AlcoholProportionViewSet, basename="alcohol_proportions")
-router.register(r'drinks/bartender_stuff', views.BartenderStuffViewSet,basename="bartender_stuff")
+router.register(r'drinks/bartender_stuff', views.BartenderStuffViewSet, basename="bartender_stuff")
 router.register(r'drinks/glasses', views.GlassViewSet, basename="glasses")
 router.register(r'drinks/ratings', views.DrinkRatingViewSet, basename="drinks_ratings")
 router.register(r'drinks', views.DrinkViewSet, basename="drinks")
@@ -41,7 +42,8 @@ router.register(r'users', views.UserViewSet, basename="users")
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
+    # path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
     path('alcohols/ratings/avg/<int:_id>/', views.alcohol_average_rating),
     path('drinks/ratings/avg/<int:_id>/', views.drink_average_rating),

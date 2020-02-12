@@ -45,7 +45,5 @@ class DrinkSerializer(ModelSerializer):
 
     class Meta:
         model = Drink
-        fields = (
-            'name', 'description', 'instruction', 'how_to_serve', 'stuff', 'glass', 'ingredients', 'alcohols',
-            'ratings',
-            "average_rating", "id")
+        fields = ('name', 'description', 'instruction', 'how_to_serve', 'stuff', 'glass', 'ingredients',
+                  'alcohols', 'ratings', "average_rating", "id")
