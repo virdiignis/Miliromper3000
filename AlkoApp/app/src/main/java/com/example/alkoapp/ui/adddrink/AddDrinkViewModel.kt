@@ -73,6 +73,8 @@ class AddDrinkViewModel(
     }
 
 
+
+
     fun addDefaultIngredient() {
         if (ingredientProportions.size != ingredients.value?.size) {
             ingredientProportions.add(

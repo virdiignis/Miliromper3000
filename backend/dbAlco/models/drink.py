@@ -19,7 +19,7 @@ class Glass(models.Model):
 class Drink(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
-    instruction = models.TextField()
+    instruction = models.TextField(null=True, blank=True)
     how_to_serve = models.TextField(null=True, blank=True)
     stuff = models.ManyToManyField("BartenderStuff", null=True, blank=True)
     glass = models.ForeignKey(Glass, on_delete=models.SET_NULL, null=True)
