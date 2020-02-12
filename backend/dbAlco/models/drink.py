@@ -49,6 +49,5 @@ class AlcoholProportion(models.Model):
 class DrinkRating(models.Model):
     drink = models.ForeignKey(Drink, on_delete=models.CASCADE, related_name="ratings")
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="drinkratings")
-    rating = models.DecimalField(max_digits=2, decimal_places=1)
+    rating = models.DecimalField(max_digits=2, decimal_places=1, null=True, blank=True)
     favourite = models.BooleanField(default=False)
-
