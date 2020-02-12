@@ -274,7 +274,7 @@
             app:layout_constraintTop_toBottomOf="@id/bartender_stuffs_buttons_row" />
 
         <Button
-            android:id="@+id/addDrinkConfirmButton"
+            android:id="@+id/add_drink_confirm_button"
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_marginStart="8dp"

@@ -58,6 +58,8 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
 
         add_alcohol_button.setOnClickListener{addAlcoholButtonListener()}
         del_alcohol_button.setOnClickListener{delAlcoholButtonListener()}
+
+        add_drink_confirm_button.setOnClickListener{addDrinkToBase()}
     }
 
     private fun addButtonListener() {
@@ -93,7 +95,7 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
 
     private fun addAlcoholButtonListener() {
         viewModel.addAlcoholProportion()
-        alcoholAdapter() 
+        alcoholAdapter()
 
     }
 
@@ -162,4 +164,17 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
     {
         viewModel.alcoholsProportions[position].alcohol = id
     }
+
+    fun addDrinkToBase()
+    {
+
+
+    }
+
+
+
+
+
+
+
 }
