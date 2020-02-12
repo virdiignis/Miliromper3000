@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RatingBar
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -126,15 +127,21 @@ class OneDrinkFragment(val itemDrink: Drink) : Fragment() {
         val rating =
             viewModel.ratings.value?.find { it.user == sharedPreferences.getInt("user_id", 1) }
         if (rating == null) {
-            val newRating = DrinkRating(
-                drink = itemDrink.id,
-                favourite = true,
-                rating = null,
-                user = sharedPreferences.getInt("user_id", 1),
-                id = null,
-                comment = null
-            )
-            viewModel.addRating(newRating)
+//            val newRating = DrinkRating(
+//                drink = itemDrink.id,
+//                favourite = true,
+//                rating = null,
+//                user = sharedPreferences.getInt("user_id", 1),
+//                id = null,
+//                comment = null
+//            )
+//            viewModel.addRating(newRating)
+            favouriteButton.isChecked = false
+            Toast.makeText(
+                activity,
+                "You have to rate drink first to add it to favourites.",
+                Toast.LENGTH_SHORT
+            ).show()
         } else {
             val newRating = DrinkRating(
                 id = rating.id,
