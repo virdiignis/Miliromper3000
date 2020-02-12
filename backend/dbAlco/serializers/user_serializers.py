@@ -2,7 +2,13 @@ from django.contrib.auth.models import User
 from rest_framework.serializers import HyperlinkedModelSerializer, ModelSerializer
 
 
-class UserSerializer(ModelSerializer):
+class UserGetSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = "__all__"
+        fields = ('id', 'username', 'first_name', 'last_name', 'email')
+
+
+class UserCreateSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'first_name', 'last_name', 'email', "password")

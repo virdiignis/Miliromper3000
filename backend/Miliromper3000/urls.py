@@ -39,6 +39,7 @@ router.register(r'pubs/occurrences', views.PubOccurrenceViewSet, basename="pubs_
 router.register(r'pubs/ratings', views.PubRatingViewSet, basename="pubs_ratings")
 router.register(r'pubs', views.PubViewSet, basename="pubs")
 router.register(r'users', views.UserViewSet, basename="users")
+router.register(r'me', views.UserViewSet, basename="me")
 
 urlpatterns = [
     path('', include(router.urls)),
