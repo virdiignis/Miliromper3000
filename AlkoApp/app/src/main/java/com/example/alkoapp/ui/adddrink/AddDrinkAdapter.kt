@@ -10,11 +10,7 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alkoapp.R
-import com.example.alkoapp.data.models.BartenderStuff
-import com.example.alkoapp.data.models.Glass
-import com.example.alkoapp.data.models.Ingredient
-import com.example.alkoapp.data.models.IngredientProportions
-import kotlinx.android.synthetic.main.add_drink_fragment.view.*
+import com.example.alkoapp.data.models.*
 import kotlinx.android.synthetic.main.recycler_bartender_stuff_row.view.*
 import kotlinx.android.synthetic.main.recycler_ingredient_alcohol_row.view.*
 
@@ -89,7 +85,7 @@ class IngredientItemHolder(
 ) : RecyclerView.ViewHolder(itemView) {
 
     val unitSpinner = itemView.unit_spinner!!
-    val ingredientsSpinner = itemView.ingredient_spinner!!
+    val ingredientsSpinner = itemView.ingredient_alcohols_spinner!!
 
     private val units: Array<String> = arrayOf("ml", "oz", "g", "part", "%")
 
@@ -134,11 +130,7 @@ class IngredientItemHolder(
                 )
             }
         }
-
-
     }
-
-
 }
 
 class ServingGlassAdapter(
@@ -189,6 +181,11 @@ class BartenderStuffSpinnerAdapter(
         return stuff[position].name
     }
 
+    fun findItem(itemName: String): Int {
+        return stuff.indexOf(stuff.find { it.name == itemName })
+    }
+
+
     override fun getItemId(position: Int): Long {
         return position.toLong()
     }
@@ -196,7 +193,6 @@ class BartenderStuffSpinnerAdapter(
     override fun getCount(): Int {
         return stuff.size
     }
-
 }
 
 
@@ -208,16 +204,34 @@ class BartenderStuffItemHolder(
 
     fun bind(
         stuff: ArrayList<BartenderStuff>,
+        currentStuff: BartenderStuff,
+        listener: AddDrinkSpinnerListener,
         position: Int
 //    TODO: place for listener
     ) {
         bartenderStuffSpinner.adapter = BartenderStuffSpinnerAdapter(context, stuff)
+
+        bartenderStuffSpinner.setSelection((bartenderStuffSpinner.adapter as BartenderStuffSpinnerAdapter)
+            .findItem(currentStuff.name))
+
+        bartenderStuffSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, p2: Int, p3: Long) {
+                listener.onStuffChange(
+                    itemView,
+                    bartenderStuffSpinner.selectedItem.toString(),
+                    position
+                )
+            }
+        }
     }
 }
 
-class BarenderStuffRowAdapter(
+class BartenderStuffRowAdapter(
     val stuff: ArrayList<BartenderStuff>,
-    val current_stuff :ArrayList<BartenderStuff>
+    val current_stuff: ArrayList<BartenderStuff>,
+    val listener: AddDrinkSpinnerListener
 ) : RecyclerView.Adapter<BartenderStuffItemHolder>() {
 
     override fun getItemId(position: Int): Long {
@@ -240,7 +254,115 @@ class BarenderStuffRowAdapter(
 
 
     override fun onBindViewHolder(holder: BartenderStuffItemHolder, position: Int) {
-        holder.bind(stuff,position)
+        holder.bind(stuff, current_stuff[position], listener, position)
     }
 
 }
+
+
+class AlcoholRowAdapter(
+    private var alcohols: ArrayList<Alcohol>,
+    var currentAlcohols: ArrayList<AlcoholProportions>,
+    val listener: AddDrinkSpinnerListener
+) : RecyclerView.Adapter<IngredientItemHolder>() {
+
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientItemHolder {
+        return IngredientItemHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.recycler_ingredient_alcohol_row,
+                parent,
+                false
+            ), parent.context
+        )
+    }
+
+    override fun getItemCount(): Int {
+        return currentAlcohols.size
+    }
+
+    override fun onBindViewHolder(holder: IngredientItemHolder, position: Int) {
+
+    }
+}
+
+
+class AlcoholItemHolder(
+    itemView: View, val context: Context?
+) : RecyclerView.ViewHolder(itemView) {
+    val unitSpinner = itemView.unit_spinner!!
+    val alcoholsSpinner = itemView.ingredient_alcohols_spinner
+
+    private val units: Array<String> = arrayOf("ml", "oz", "part", "%")
+
+    fun bind(
+        alcohols: ArrayList<Alcohol>,
+        alcoholProportion: AlcoholProportions,
+        listener: AddDrinkSpinnerListener,
+        position: Int
+    ) {
+        unitSpinner.adapter =
+            ArrayAdapter<String>(context!!, android.R.layout.simple_spinner_item, units)
+
+//        TODO: Alcohol spinner alcohols proportions
+
+        unitSpinner.setSelection(units.indexOf(alcoholProportion.unit))
+
+        unitSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, p2: Int, p3: Long) {
+                listener.onUnitSpinnerChange(
+                    itemView,
+                    unitSpinner.selectedItem.toString(),
+                    position
+                )
+            }
+        }
+
+
+    }
+
+
+}
+
+class AlcoholSpinnerAdapter(
+    val context: Context?,
+    private var alcohols: ArrayList<Alcohol>
+
+) : BaseAdapter() {
+
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        val view: TextView = convertView as TextView? ?: LayoutInflater.from(context).inflate(
+            android.R.layout.simple_spinner_item,
+            parent,
+            false
+        ) as TextView
+        view.text = alcohols[position].name
+        return view
+    }
+
+    override fun getItem(position: Int): Any {
+        return alcohols[position].name
+    }
+
+//    fun findItem(itemName: String): Int {
+//        return alcohols.indexOf(Alcohol(itemName))
+//    }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+
+    override fun getCount(): Int {
+        return alcohols.size
+    }
+}
+
+

@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <Spinner
-        android:id="@+id/ingredient_spinner"
+        android:id="@+id/ingredient_alcohols_spinner"
         android:layout_width="276dp"
         android:layout_height="wrap_content"
         android:textAlignment="textEnd" />
