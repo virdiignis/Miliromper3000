@@ -14,7 +14,6 @@ import com.example.alkoapp.R
 import com.example.alkoapp.data.network.DrinksApi
 import com.example.alkoapp.data.repository.DrinksRepository
 import kotlinx.android.synthetic.main.add_drink_fragment.*
-import kotlinx.android.synthetic.main.recycler_bartender_stuff_row.*
 
 
 class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
@@ -42,6 +41,7 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
         viewModel.getIngredients()
         viewModel.getGlasses()
         viewModel.getStuff()
+        viewModel.getAlcohols()
 
         viewModel.addDefaultIngredient()
 
@@ -112,7 +112,7 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
             bartender_stuff_table!!.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
-                it.adapter = BarenderStuffRowAdapter(stuff, viewModel.bartenderStuff)
+                it.adapter = BartenderStuffRowAdapter(stuff, viewModel.bartenderStuff, this)
             }
         })
     }
@@ -125,5 +125,9 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
     override fun onUnitSpinnerChange(view: View, unit: String, position: Int) {
         viewModel.ingredientProportions[position].unit = unit
 
+    }
+
+    override fun onStuffChange(view: View, name: String, position: Int) {
+        viewModel.bartenderStuff[position].name = name
     }
 }

@@ -4,10 +4,9 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.alkoapp.data.models.BartenderStuff
-import com.example.alkoapp.data.models.Glass
-import com.example.alkoapp.data.models.Ingredient
-import com.example.alkoapp.data.models.IngredientProportions
+import com.example.alkoapp.data.models.*
+import com.example.alkoapp.data.network.AlcoholApi
+import com.example.alkoapp.data.repository.AlcoholsRepository
 import com.example.alkoapp.data.repository.DrinksRepository
 import com.example.alkoapp.util.Coroutines
 import kotlinx.coroutines.Job
@@ -19,6 +18,11 @@ class AddDrinkViewModel(
     // TODO: Implement the ViewModel
 
     private lateinit var job: Job
+
+    private val _alcohols = MutableLiveData<ArrayList<Alcohol>>()
+
+    val alcohols: LiveData<ArrayList<Alcohol>>
+        get() = _alcohols
 
     private val _ingredients = MutableLiveData<ArrayList<Ingredient>>()
 
@@ -37,7 +41,7 @@ class AddDrinkViewModel(
 
     var ingredientProportions: ArrayList<IngredientProportions> = arrayListOf()
     var bartenderStuff: ArrayList<BartenderStuff> = arrayListOf()
-
+    var currentAlcohols : ArrayList<AlcoholProportions> = arrayListOf()
 
     fun getIngredients() = runBlocking {
         job = Coroutines.ioThenMain(
@@ -57,6 +61,14 @@ class AddDrinkViewModel(
         job = Coroutines.ioThenMain(
             { repository.getStuff() },
             { _stuff.value = it as ArrayList<BartenderStuff>? }
+        )
+    }
+
+    fun getAlcohols() = runBlocking {
+
+        job = Coroutines.ioThenMain(
+            { AlcoholsRepository(AlcoholApi()).getAlcohols() },
+            { _alcohols.value = it as ArrayList<Alcohol>? }
         )
     }
 
@@ -85,11 +97,6 @@ class AddDrinkViewModel(
             bartenderStuff.add(BartenderStuff("null", stuff.value?.get(size)?.name as String))
         }
     }
-
-//TODO: Potrzebuje stworzyć spinner i do niego się odowływać
-//   dodatkowy spinner tylko z jednoskami
-//    f. do  dowania vidowkow
-//    A no i najważniejsze adapter lub coś do tworzenia customowych View
 
 
     override fun onCleared() {
