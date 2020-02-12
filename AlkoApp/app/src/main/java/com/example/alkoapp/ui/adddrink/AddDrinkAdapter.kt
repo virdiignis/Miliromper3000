@@ -289,7 +289,7 @@ class AlcoholRowAdapter(
     private var alcohols: ArrayList<Alcohol>,
     var currentAlcohols: ArrayList<AlcoholProportions>,
     val listener: AddDrinkSpinnerListener
-) : RecyclerView.Adapter<IngredientItemHolder>() {
+) : RecyclerView.Adapter<AlcoholItemHolder>() {
 
 
     override fun getItemId(position: Int): Long {
@@ -297,8 +297,8 @@ class AlcoholRowAdapter(
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientItemHolder {
-        return IngredientItemHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlcoholItemHolder {
+        return AlcoholItemHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.recycler_ingredient_alcohol_row,
                 parent,
@@ -311,7 +311,8 @@ class AlcoholRowAdapter(
         return currentAlcohols.size
     }
 
-    override fun onBindViewHolder(holder: IngredientItemHolder, position: Int) {
+    override fun onBindViewHolder(holder: AlcoholItemHolder, position: Int) {
+        holder.bind(alcohols,currentAlcohols[position], listener, position)
 
     }
 }
@@ -322,7 +323,7 @@ class AlcoholItemHolder(
 ) : RecyclerView.ViewHolder(itemView) {
     val unitSpinner = itemView.unit_spinner!!
     val alcoholsSpinner = itemView.ingredient_alcohols_spinner
-
+    var amountBox = itemView.amount
     private val units: Array<String> = arrayOf("ml", "oz", "part", "%")
 
     fun bind(
@@ -331,6 +332,8 @@ class AlcoholItemHolder(
         listener: AddDrinkSpinnerListener,
         position: Int
     ) {
+        amountBox.setText(alcoholProportion.amount)
+
         unitSpinner.adapter =
             ArrayAdapter<String>(context!!, android.R.layout.simple_spinner_item, units)
 
@@ -341,7 +344,7 @@ class AlcoholItemHolder(
             override fun onNothingSelected(parent: AdapterView<*>?) {}
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, p2: Int, p3: Long) {
-                listener.onUnitSpinnerChange(
+                listener.onAlcoholUnitSpinnerChange(
                     itemView,
                     unitSpinner.selectedItem.toString(),
                     position
@@ -350,6 +353,7 @@ class AlcoholItemHolder(
         }
 
         alcoholsSpinner.adapter = AlcoholSpinnerAdapter(context, alcohols)
+
         alcoholsSpinner.setSelection(
             (alcoholsSpinner.adapter as AlcoholSpinnerAdapter).findItem(alcoholProportion.id)
         )
@@ -365,6 +369,22 @@ class AlcoholItemHolder(
                 )
             }
         }
+
+        amountBox.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                listener.onAlcoholAmountEdited(
+
+                    amountBox.text.toString(),
+                    position
+                )
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
     }
 
 
@@ -388,7 +408,7 @@ class AlcoholSpinnerAdapter(
     }
 
     override fun getItem(position: Int): Any {
-        return alcohols[position].name
+        return alcohols[position].id
     }
 
     fun findItem(id: Int): Int {
