@@ -355,7 +355,7 @@ class AlcoholItemHolder(
         alcoholsSpinner.adapter = AlcoholSpinnerAdapter(context, alcohols)
 
         alcoholsSpinner.setSelection(
-            (alcoholsSpinner.adapter as AlcoholSpinnerAdapter).findItem(alcoholProportion.id)
+            (alcoholsSpinner.adapter as AlcoholSpinnerAdapter).findItem(alcoholProportion.alcohol)
         )
 
         alcoholsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -364,7 +364,7 @@ class AlcoholItemHolder(
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, p2: Int, p3: Long) {
                 listener.onAlcoholChange(
                     itemView,
-                    alcoholsSpinner.selectedItemPosition,
+                    alcoholsSpinner.selectedItemId.toInt(),
                     position
                 )
             }
@@ -416,7 +416,7 @@ class AlcoholSpinnerAdapter(
     }
 
     override fun getItemId(position: Int): Long {
-        return position.toLong()
+        return alcohols[position].id.toLong()
     }
 
     override fun getCount(): Int {
