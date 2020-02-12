@@ -39,8 +39,8 @@ class DrinkRatingSerializer(ModelSerializer):
 
 
 class DrinkSerializer(ModelSerializer):
-    ingredients = IngredientProportionSerializer(many=True)
-    alcohols = AlcoholProportionSerializer(many=True)
+    ingredients = IngredientProportionSerializer(many=True, read_only=True)
+    alcohols = AlcoholProportionSerializer(many=True, read_only=True)
     ratings = DrinkRatingSerializer(many=True, read_only=True)
 
     class Meta:

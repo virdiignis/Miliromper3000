@@ -1,5 +1,6 @@
 package com.example.alkoapp.ui.adddrink
 
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -40,7 +41,7 @@ class AddDrinkViewModel(
         get() = _stuff
 
     var ingredientProportions: ArrayList<IngredientProportions> = arrayListOf()
-    var bartenderStuff: ArrayList<BartenderStuff> = arrayListOf()
+    var bartenderStuff: ArrayList<String> = arrayListOf()
     var alcoholsProportions: ArrayList<AlcoholProportions> = arrayListOf()
 
     fun getIngredients() = runBlocking {
@@ -80,7 +81,7 @@ class AddDrinkViewModel(
             ingredientProportions.add(
                 IngredientProportions(
                     "",
-                    1,
+                    12,
                     ingredientProportions.size,
                     "lemon",
                     "g"
@@ -96,7 +97,7 @@ class AddDrinkViewModel(
 //            TODO: validacja
             return
         } else {
-            bartenderStuff.add(BartenderStuff("null", stuff.value?.get(size)?.name as String))
+            bartenderStuff.add(stuff.value?.get(size)?.name as String)
         }
     }
 
@@ -116,6 +117,22 @@ class AddDrinkViewModel(
                 )
             )
         }
+    }
+
+    fun addItem(item: Drink2) = runBlocking {
+
+        job = Coroutines.ioThenMain(
+            {
+                try {
+                    repository.addDrink(item)
+
+                } catch (e: Throwable) {
+                    Log.d("ERROR", e.message.toString())
+                }
+            },
+            { Log.d("Response", it.toString()) }
+        )
+
     }
 
 
