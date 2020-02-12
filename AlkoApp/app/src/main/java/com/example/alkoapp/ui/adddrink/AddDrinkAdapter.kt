@@ -151,7 +151,7 @@ class ServingGlassAdapter(
     }
 
     override fun getItem(position: Int): Any {
-        return glasses[position].name
+        return glasses[position]
     }
 
     override fun getItemId(position: Int): Long {

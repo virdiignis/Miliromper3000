@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.alkoapp.R
+import com.example.alkoapp.data.models.*
 
 
 import com.example.alkoapp.data.network.DrinksApi
@@ -56,10 +58,10 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
         add_bartender_stuff_button.setOnClickListener { addStuffButtonListener() }
         del_bartender_stuff_button.setOnClickListener { delStuffButtonListener() }
 
-        add_alcohol_button.setOnClickListener{addAlcoholButtonListener()}
-        del_alcohol_button.setOnClickListener{delAlcoholButtonListener()}
+        add_alcohol_button.setOnClickListener { addAlcoholButtonListener() }
+        del_alcohol_button.setOnClickListener { delAlcoholButtonListener() }
 
-        add_drink_confirm_button.setOnClickListener{addDrinkToBase()}
+        add_drink_confirm_button.setOnClickListener { addDrinkToBase() }
     }
 
     private fun addButtonListener() {
@@ -138,12 +140,14 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
         })
     }
 
-    private fun alcoholAdapter(){
-        viewModel.alcohols.observe(viewLifecycleOwner, Observer { alcohols ->alcohols_table!!.also{
-            it.layoutManager = LinearLayoutManager(requireContext())
-            it.setHasFixedSize(true)
-            it.adapter = AlcoholRowAdapter(alcohols, viewModel.alcoholsProportions, this)
-        } })
+    private fun alcoholAdapter() {
+        viewModel.alcohols.observe(viewLifecycleOwner, Observer { alcohols ->
+            alcohols_table!!.also {
+                it.layoutManager = LinearLayoutManager(requireContext())
+                it.setHasFixedSize(true)
+                it.adapter = AlcoholRowAdapter(alcohols, viewModel.alcoholsProportions, this)
+            }
+        })
     }
 
     override fun onIngredientsSpinnerChange(view: View, ingredient: String, position: Int) {
@@ -160,21 +164,45 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
         viewModel.bartenderStuff[position].name = name
     }
 
-    override fun onAlcoholChange(view: View, id: Int, position: Int)
-    {
+    override fun onAlcoholChange(view: View, id: Int, position: Int) {
         viewModel.alcoholsProportions[position].alcohol = id
     }
 
-    fun addDrinkToBase()
-    {
+    fun addDrinkToBase() {
+        val alcohols: List<AlcoholProportions>
+        val description: String
+        val glass: String
+        val how_to_serve: String
+        val ingredients: List<IngredientProportions>
+        val instruction: String?
+        val name: String
+        val stuff: List<BartenderStuff>
+        try {
+            alcohols = viewModel.alcoholsProportions
+            description = this.description.text.toString()
+            glass = this.glass_spinner.selectedItem.toString()
+            how_to_serve = this.how_to_serve.text.toString()
+            ingredients = viewModel.ingredientProportions
+            instruction = "Mix all ingredients together"
+            name = this.name.text.toString()
+            stuff = viewModel.bartenderStuff
 
 
+        val drink = Drink2(
+            alcohols,
+            description,
+            glass,
+            how_to_serve,
+            ingredients,
+            instruction,
+            name,
+            stuff
+        )
+
+        } catch (e: Throwable) {
+            Toast.makeText(requireContext(), "Some problems occurs", Toast.LENGTH_LONG).show()
+        }
     }
-
-
-
-
-
 
 
 }
