@@ -76,7 +76,7 @@ class AccountFragment : Fragment() {
                         val token = accountsViewModel.login(credentials)
                         sharedPreferences.edit().putString("token", token.auth_token).apply()
                         val user = accountsViewModel.me(token.auth_token)
-                        sharedPreferences.edit().putInt("user_id", user.id).apply()
+                        sharedPreferences.edit().putInt("user_id", user.id!!).apply()
                         logged_in = true
                         activity!!.runOnUiThread {
                             password_field.visibility = View.INVISIBLE

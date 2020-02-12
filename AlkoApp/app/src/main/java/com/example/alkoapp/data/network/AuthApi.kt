@@ -28,4 +28,7 @@ interface AuthApi {
     @GET("/me/")
     suspend fun me(@Header("Authorization") authToken: String): Response<User>
 
+    @POST("/users/")
+    suspend fun register(@Body u: User): Response<Any>
+
 }
