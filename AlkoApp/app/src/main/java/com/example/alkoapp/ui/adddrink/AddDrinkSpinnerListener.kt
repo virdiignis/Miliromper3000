@@ -8,6 +8,8 @@ interface AddDrinkSpinnerListener {
     fun onStuffChange(view: View, name: String, position: Int)
     fun onAlcoholChange(view: View, id: Int, position: Int)
     fun onAmountEdited( amount:String, position: Int)
+    fun onAlcoholUnitSpinnerChange(view: View, unit: String, position: Int)
+    fun onAlcoholAmountEdited(amount: String, position: Int)
 
 
 }

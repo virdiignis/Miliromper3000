@@ -51,6 +51,7 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
         ingredientsAdapterUpdate()
         glassesAdapter()
         bartenderAdapter()
+        alcoholAdapter()
 
 
         add_ingredient_button.setOnClickListener { addButtonListener() }
@@ -160,6 +161,10 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
         viewModel.ingredientProportions[position].unit = unit
 
     }
+    override fun onAlcoholUnitSpinnerChange(view: View, unit: String, position: Int) {
+        viewModel.alcoholsProportions[position].unit = unit
+
+    }
 
     override fun onStuffChange(view: View, name: String, position: Int) {
         viewModel.bartenderStuff[position] = name
@@ -171,6 +176,10 @@ class AddDrinkFragment : Fragment(), AddDrinkSpinnerListener {
 
     override fun onAmountEdited( amount: String, position: Int) {
         viewModel.ingredientProportions[position].amount = amount
+    }
+
+    override fun onAlcoholAmountEdited(amount: String, position: Int) {
+        viewModel.alcoholsProportions[position].amount = amount
     }
 
 
