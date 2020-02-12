@@ -38,7 +38,7 @@ interface AlcoholApi {
     suspend fun getTypes() : Response<List<Type>>
 
     @GET("/alcohols/ratings/")
-    suspend fun getRatings(@Query("alcohol") id : Int) : Response<List<Rate>>
+    suspend fun getRatings(@Query("alcohol") id: Int): Response<List<AlcoholRating>>
 
 
     @Headers("Content-Type: application/json")
